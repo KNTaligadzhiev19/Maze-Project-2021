@@ -1,4 +1,9 @@
 #pragma once
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <conio.h>
+using namespace std;
 
 #define SIZE 22
 class MazeGenerationAlgorithm
@@ -24,5 +29,7 @@ public:
 
 		char symb;
 	};
+
+	void initializeCell(Cell currentCell[][SIZE]);
 };
 
