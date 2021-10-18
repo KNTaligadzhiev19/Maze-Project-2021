@@ -5,7 +5,10 @@
 #include <conio.h>
 using namespace std;
 
-#define SIZE 22
+#define/* EASY_*/SIZE 16
+#define MEDIUM_SIZE 24
+#define HARD_SIZE 28
+
 class MazeGenerationAlgorithm
 {
 private:

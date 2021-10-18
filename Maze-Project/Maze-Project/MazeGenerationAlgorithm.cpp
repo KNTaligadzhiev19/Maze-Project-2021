@@ -144,7 +144,7 @@ void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE], int& positi
 	int randomNumber;
 	int randomXCordinate = ((2 * rand()) + 1) % (SIZE - 1);
 	int randomYCordinate = ((2 * rand()) + 1) % (SIZE - 1);
-
+	
 	positionX = randomXCordinate;
 	positionY = randomYCordinate;
 
@@ -161,7 +161,7 @@ void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE], int& positi
 	{
 		if (((currentCell[randomYCordinate - 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].topWall == true) && (currentCell[randomYCordinate - 2][randomXCordinate].bottomWall == true)) ||
 			((currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].bottomWall == true) && (currentCell[randomYCordinate + 2][randomXCordinate].topWall == true)) ||
-			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].leftWall) && (currentCell[randomYCordinate][randomXCordinate - 2].rightWall)) ||
+			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].leftWall==true) && (currentCell[randomYCordinate][randomXCordinate - 2].rightWall==true)) ||
 			((currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].rightWall == true) && (currentCell[randomYCordinate][randomXCordinate + 2].leftWall == true)))
 		{
 			randomNumber = (rand() % 4) + 1;
@@ -251,6 +251,7 @@ void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE], int& positi
 			};
 		}
 		else {
+
 			randomXCordinate = xTrack.back();
 			xTrack.pop_back();
 
