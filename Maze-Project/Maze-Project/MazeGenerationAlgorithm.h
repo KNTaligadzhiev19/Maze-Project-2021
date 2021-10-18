@@ -33,5 +33,7 @@ public:
 	void initializeCell(Cell currentCell[][SIZE]);
 
 	void startGame(Cell currentCell[][SIZE]);
+
+	void generateMaze(Cell currentCell[][SIZE], int& positionX, int& positionY, int& finalPointX, int& finalPointY);
 };
 

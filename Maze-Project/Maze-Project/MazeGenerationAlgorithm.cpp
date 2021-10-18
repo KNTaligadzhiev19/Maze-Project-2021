@@ -136,3 +136,135 @@ void MazeGenerationAlgorithm::startGame(Cell currentCell[][SIZE])
 		system("cls");
 	}
 }
+
+void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE], int& positionX, int& positionY, int& finalPointX, int& finalPointY)
+{
+	srand((unsigned int)time(0));
+
+	int randomNumber;
+	int randomXCordinate = ((2 * rand()) + 1) % (SIZE - 1);
+	int randomYCordinate = ((2 * rand()) + 1) % (SIZE - 1);
+
+	positionX = randomXCordinate;
+	positionY = randomYCordinate;
+
+	int visitedCells = 1;
+
+	int totalCells = ((SIZE - 1) / 2) * ((SIZE - 1) / 2);
+
+	vector<int> xTrack, yTrack;
+
+	currentCell[randomYCordinate][randomXCordinate].symb = 'S';
+	currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+
+	while (visitedCells < totalCells)
+	{
+		if (((currentCell[randomYCordinate - 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].topWall == true) && (currentCell[randomYCordinate - 2][randomXCordinate].bottomWall == true)) ||
+			((currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].bottomWall == true) && (currentCell[randomYCordinate + 2][randomXCordinate].topWall == true)) ||
+			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].leftWall) && (currentCell[randomYCordinate][randomXCordinate - 2].rightWall)) ||
+			((currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].rightWall == true) && (currentCell[randomYCordinate][randomXCordinate + 2].leftWall == true)))
+		{
+			randomNumber = (rand() % 4) + 1;
+
+			if ((randomNumber == 1) && randomYCordinate > 1)
+			{
+				if (currentCell[randomYCordinate - 2][randomXCordinate].isVisited == false)
+				{
+					currentCell[randomYCordinate - 1][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate - 1][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].topWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomYCordinate -= 2;
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].bottomWall = false;
+					visitedCells++;
+				}
+				else
+					continue;
+			}
+			else if ((randomNumber == 2) && (randomYCordinate < SIZE - 2))
+			{
+				if (currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false)
+				{
+					currentCell[randomYCordinate + 1][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate + 1][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].bottomWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomYCordinate += 2;
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].topWall = false;
+					visitedCells++;
+				}
+				else {
+					continue;
+				}
+			}
+			else if ((randomNumber == 3) && (randomXCordinate > 1))
+			{
+				if (currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false)
+				{
+					currentCell[randomYCordinate][randomXCordinate - 1].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate - 1].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].leftWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomXCordinate -= 2;
+
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].rightWall = false;
+
+					visitedCells++;
+				}
+				else
+					continue;
+			}
+			else if ((randomNumber == 4) && (randomXCordinate < SIZE - 2))
+			{
+				if (currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false)
+				{
+					currentCell[randomYCordinate][randomXCordinate + 1].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate + 1].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].rightWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomXCordinate += 2;
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].leftWall = false;
+					visitedCells++;
+				}
+				else
+					continue;
+			};
+		}
+		else {
+			randomXCordinate = xTrack.back();
+			xTrack.pop_back();
+
+			randomYCordinate = yTrack.back();
+			yTrack.pop_back();
+		}
+	}
+	finalPointX = randomXCordinate;
+	finalPointY = randomYCordinate;
+
+	currentCell[finalPointY][finalPointX].symb = 'E';
+
+	system("cls");
+
+	startGame(currentCell);
+
+}
