@@ -31,5 +31,7 @@ public:
 	};
 
 	void initializeCell(Cell currentCell[][SIZE]);
+
+	void startGame(Cell currentCell[][SIZE]);
 };
 
