@@ -1,14 +1,11 @@
 #include <iostream>
 #include "MazeGenerationAlgorithm.h"
 #include "EasyLevelMaze.h"
+#include "MediumLevelMaze.h"
 
 int main()
 {
-	/*int a, b, c, d;
-
-	EasyLevelMaze easyMaze;*/
-
-	MazeGenerationAlgorithm maze;
+	MediumLevelMaze maze;
 
 
 }

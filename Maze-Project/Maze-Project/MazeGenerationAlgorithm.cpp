@@ -1,11 +1,29 @@
 #include "MazeGenerationAlgorithm.h"
+#include <time.h>
 
-void MazeGenerationAlgorithm::initializeCell(Cell currentCell[][SIZE])
+int MazeGenerationAlgorithm::chooseSize(int level)
+{
+	if (level == 1)
+	{
+		return 12;
+	}
+	else if (level == 2)
+	{
+		return 4;
+	}
+	else if (level == 3)
+	{
+		return 0;
+	}
+}
+
+void MazeGenerationAlgorithm::initializeCell()
 {
 
-	for (int i = 0; i < SIZE; i++)
+	const int size = HARD_SIZE-chooseSize(level);
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < SIZE; j++)
+		for (int j = 0; j < size; j++)
 		{
 			currentCell[i][j].symb = char(GRIDSYMB);
 
@@ -17,35 +35,36 @@ void MazeGenerationAlgorithm::initializeCell(Cell currentCell[][SIZE])
 		}
 	}
 
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < SIZE; j++)
+		for (int j = 0; j < size; j++)
 		{
 			currentCell[i][j].topWall = false;
-			currentCell[SIZE - 2][j].bottomWall = false;
+			currentCell[size - 2][j].bottomWall = false;
 			currentCell[i][1].leftWall = false;
-			currentCell[i][SIZE - 2].rightWall = false;
+			currentCell[i][size - 2].rightWall = false;
 		}
 	}
 }
 
-void MazeGenerationAlgorithm::startGame(Cell currentCell[][SIZE])
+void MazeGenerationAlgorithm::startGame()
 {
+	const int size = HARD_SIZE - chooseSize(level);
 	int positionX = 0, positionY = 0;
 	int finalPointX = 0, finalPointY = 0;
 
 	while (true)
 	{
-		for (int i = 0; i < (SIZE * 3) + 4; i++)
+		for (int i = 0; i < (size * 3) + 4; i++)
 		{
 			cout << char(GRIDSYMB);
 		}
 
-		for (int i = 0; i < SIZE; i++)
+		for (int i = 0; i < size; i++)
 		{
 			cout << endl;
 			cout << char(GRIDSYMB) << char(GRIDSYMB);
-			for (int j = 0; j < SIZE; j++)
+			for (int j = 0; j < size; j++)
 			{
 				if (currentCell[i][j].symb == 'S')
 				{
@@ -67,7 +86,7 @@ void MazeGenerationAlgorithm::startGame(Cell currentCell[][SIZE])
 			cout << char(GRIDSYMB) << char(GRIDSYMB);
 		}
 		cout << endl;
-		for (int i = 0; i < (SIZE * 3) + 4; i++)
+		for (int i = 0; i < (size * 3) + 4; i++)
 		{
 			cout << char(GRIDSYMB);
 		}
@@ -138,20 +157,21 @@ void MazeGenerationAlgorithm::startGame(Cell currentCell[][SIZE])
 	}
 }
 
-void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE],int& positionX, int& positionY, int& finalPointX, int& finalPointY)
+void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY)
 {
+	const int size = HARD_SIZE - chooseSize(level);
 	srand((unsigned int)time(0));
 
 	int randomNumber;
-	int randomXCordinate = ((2 * rand()) + 1) % (SIZE - 1);
-	int randomYCordinate = ((2 * rand()) + 1) % (SIZE - 1);
+	int randomXCordinate = ((2 * rand()) + 1) % (size - 1);
+	int randomYCordinate = ((2 * rand()) + 1) % (size - 1);
 	
 	positionX = randomXCordinate;
 	positionY = randomYCordinate;
 
 	int visitedCells = 1;
 
-	int totalCells = ((SIZE - 1) / 2) * ((SIZE - 1) / 2);
+	int totalCells = ((size - 1) / 2) * ((size - 1) / 2);
 
 	vector<int> xTrack, yTrack;
 
@@ -187,7 +207,7 @@ void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE],int& positio
 				else
 					continue;
 			}
-			else if ((randomNumber == 2) && (randomYCordinate < SIZE - 2))
+			else if ((randomNumber == 2) && (randomYCordinate < size - 2))
 			{
 				if (currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false)
 				{
@@ -230,7 +250,7 @@ void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE],int& positio
 				else
 					continue;
 			}
-			else if ((randomNumber == 4) && (randomXCordinate < SIZE - 2))
+			else if ((randomNumber == 4) && (randomXCordinate < size - 2))
 			{
 				if (currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false)
 				{
@@ -267,6 +287,6 @@ void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE],int& positio
 
 	system("cls");
 
-	startGame(currentCell);
+	startGame();
 
 }

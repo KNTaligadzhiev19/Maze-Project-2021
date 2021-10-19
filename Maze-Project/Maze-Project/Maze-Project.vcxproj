@@ -144,6 +144,7 @@
     <ClCompile Include="LoginSystem.cpp" />
     <ClCompile Include="Maze-Project.cpp" />
     <ClCompile Include="MazeGenerationAlgorithm.cpp" />
+    <ClCompile Include="MediumLevelMaze.cpp" />
     <ClCompile Include="RegistrationSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="FrontEnd.h" />
     <ClInclude Include="LoginSystem.h" />
     <ClInclude Include="MazeGenerationAlgorithm.h" />
+    <ClInclude Include="MediumLevelMaze.h" />
     <ClInclude Include="RegistrationSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

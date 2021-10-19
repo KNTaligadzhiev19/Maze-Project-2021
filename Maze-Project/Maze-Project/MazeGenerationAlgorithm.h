@@ -5,7 +5,7 @@
 #include <conio.h>
 using namespace std;
 
-#define/* EASY_*/SIZE 16
+#define EASY_SIZE 16
 #define MEDIUM_SIZE 24
 #define HARD_SIZE 28
 
@@ -13,7 +13,7 @@ using namespace std;
 class MazeGenerationAlgorithm
 {
 protected:
-	int positionX, positionY, finalPointX, finalPointY;
+	int positionX = 0, positionY = 0, finalPointX = 0, finalPointY = 0;
 
 	enum Positions {
 		ARROW_LEFT = 75,
@@ -35,23 +35,26 @@ protected:
 		char symb;
 	};
 
+	int level = 0;
 
 public:
-	//Cell currentCell[SIZE][SIZE];
 
-	
+	Cell currentCell[HARD_SIZE][HARD_SIZE];
 
-	void initializeCell(Cell currentCell[][SIZE]);
+	int chooseSize(int level);
 
-	void startGame(Cell currentCell[][SIZE]);
+	void initializeCell();
 
-	void generateMaze(Cell currentCell[][SIZE],int& positionX, int& positionY, int& finalPointX, int& finalPointY);
+	void startGame();
 
-	MazeGenerationAlgorithm(Cell (&currentCell)[][SIZE])
+	void generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY);
+
+	/*MazeGenerationAlgorithm()
 	{
+		initializeCell();
 
-		
-	}
+		generateMaze(positionX, positionY, finalPointX, finalPointY);
+	}*/
 
 	
 };

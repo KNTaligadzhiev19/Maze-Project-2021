@@ -4,11 +4,13 @@ class EasyLevelMaze : public MazeGenerationAlgorithm
 {
 public:
 
-	Cell(*p)[SIZE]=&current
-	
-	EasyLevelMaze() :MazeGenerationAlgorithm(currentCell1)
+	EasyLevelMaze()
 	{
-		cout << 1;
+		level = 1;
+
+		initializeCell();
+
+		generateMaze(positionX, positionY, finalPointX, finalPointY);
 	}
 };
 
