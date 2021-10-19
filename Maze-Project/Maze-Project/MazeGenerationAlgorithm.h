@@ -9,9 +9,12 @@ using namespace std;
 #define MEDIUM_SIZE 24
 #define HARD_SIZE 28
 
+
 class MazeGenerationAlgorithm
 {
 private:
+	int positionX, positionY, finalPointX, finalPointY;
+
 	enum Positions {
 		ARROW_LEFT = 75,
 		ARROW_RIGHT = 77,
@@ -20,7 +23,6 @@ private:
 		GRIDSYMB = 177,
 	};
 
-public:
 	struct Cell
 	{
 		bool isVisited;
@@ -33,10 +35,26 @@ public:
 		char symb;
 	};
 
-	void initializeCell(Cell currentCell[][SIZE]);
 
-	void startGame(Cell currentCell[][SIZE]);
+public:
+	Cell currentCell[SIZE][SIZE];
 
-	void generateMaze(Cell currentCell[][SIZE], int& positionX, int& positionY, int& finalPointX, int& finalPointY);
+	
+
+	void initializeCell();
+
+	void startGame();
+
+	void generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY);
+
+	MazeGenerationAlgorithm()
+	{
+
+		initializeCell();
+		
+		generateMaze(positionX, positionY, finalPointX, finalPointY);
+	}
+
+	
 };
 

@@ -1,13 +1,14 @@
 #include <iostream>
 #include "MazeGenerationAlgorithm.h"
+#include "EasyLevelMaze.h"
 
 int main()
 {
+	/*int a, b, c, d;
+
+	EasyLevelMaze easyMaze;*/
+
 	MazeGenerationAlgorithm maze;
-	int a, b, c, d;
 
-	MazeGenerationAlgorithm::Cell currenctCell[SIZE][SIZE];
 
-	maze.initializeCell(currenctCell);
-	maze.generateMaze(currenctCell,a,b,c,d);
 }
