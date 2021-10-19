@@ -12,7 +12,7 @@ using namespace std;
 
 class MazeGenerationAlgorithm
 {
-private:
+protected:
 	int positionX, positionY, finalPointX, finalPointY;
 
 	enum Positions {
@@ -37,22 +37,20 @@ private:
 
 
 public:
-	Cell currentCell[SIZE][SIZE];
+	//Cell currentCell[SIZE][SIZE];
 
 	
 
-	void initializeCell();
+	void initializeCell(Cell currentCell[][SIZE]);
 
-	void startGame();
+	void startGame(Cell currentCell[][SIZE]);
 
-	void generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY);
+	void generateMaze(Cell currentCell[][SIZE],int& positionX, int& positionY, int& finalPointX, int& finalPointY);
 
-	MazeGenerationAlgorithm()
+	MazeGenerationAlgorithm(Cell (&currentCell)[][SIZE])
 	{
 
-		initializeCell();
 		
-		generateMaze(positionX, positionY, finalPointX, finalPointY);
 	}
 
 	

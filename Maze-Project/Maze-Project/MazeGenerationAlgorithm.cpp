@@ -1,6 +1,6 @@
 #include "MazeGenerationAlgorithm.h"
 
-void MazeGenerationAlgorithm::initializeCell()
+void MazeGenerationAlgorithm::initializeCell(Cell currentCell[][SIZE])
 {
 
 	for (int i = 0; i < SIZE; i++)
@@ -29,7 +29,7 @@ void MazeGenerationAlgorithm::initializeCell()
 	}
 }
 
-void MazeGenerationAlgorithm::startGame()
+void MazeGenerationAlgorithm::startGame(Cell currentCell[][SIZE])
 {
 	int positionX = 0, positionY = 0;
 	int finalPointX = 0, finalPointY = 0;
@@ -138,7 +138,7 @@ void MazeGenerationAlgorithm::startGame()
 	}
 }
 
-void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY)
+void MazeGenerationAlgorithm::generateMaze(Cell currentCell[][SIZE],int& positionX, int& positionY, int& finalPointX, int& finalPointY)
 {
 	srand((unsigned int)time(0));
 
@@ -267,6 +267,6 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 
 	system("cls");
 
-	startGame();
+	startGame(currentCell);
 
 }
