@@ -1,11 +1,13 @@
 #include "MazeGenerationAlgorithm.h"
+#include <time.h>
 
 void MazeGenerationAlgorithm::initializeCell()
 {
 
-	for (int i = 0; i < SIZE; i++)
+	const int pop = HARD_SIZE - 4;
+	for (int i = 0; i < pop; i++)
 	{
-		for (int j = 0; j < SIZE; j++)
+		for (int j = 0; j < pop; j++)
 		{
 			currentCell[i][j].symb = char(GRIDSYMB);
 
@@ -17,35 +19,36 @@ void MazeGenerationAlgorithm::initializeCell()
 		}
 	}
 
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < pop; i++)
 	{
-		for (int j = 0; j < SIZE; j++)
+		for (int j = 0; j < pop; j++)
 		{
 			currentCell[i][j].topWall = false;
-			currentCell[SIZE - 2][j].bottomWall = false;
+			currentCell[pop - 2][j].bottomWall = false;
 			currentCell[i][1].leftWall = false;
-			currentCell[i][SIZE - 2].rightWall = false;
+			currentCell[i][pop - 2].rightWall = false;
 		}
 	}
 }
 
 void MazeGenerationAlgorithm::startGame()
 {
+	const int pop = HARD_SIZE - 4;
 	int positionX = 0, positionY = 0;
 	int finalPointX = 0, finalPointY = 0;
 
 	while (true)
 	{
-		for (int i = 0; i < (SIZE * 3) + 4; i++)
+		for (int i = 0; i < (pop * 3) + 4; i++)
 		{
 			cout << char(GRIDSYMB);
 		}
 
-		for (int i = 0; i < SIZE; i++)
+		for (int i = 0; i < pop; i++)
 		{
 			cout << endl;
 			cout << char(GRIDSYMB) << char(GRIDSYMB);
-			for (int j = 0; j < SIZE; j++)
+			for (int j = 0; j < pop; j++)
 			{
 				if (currentCell[i][j].symb == 'S')
 				{
@@ -67,7 +70,7 @@ void MazeGenerationAlgorithm::startGame()
 			cout << char(GRIDSYMB) << char(GRIDSYMB);
 		}
 		cout << endl;
-		for (int i = 0; i < (SIZE * 3) + 4; i++)
+		for (int i = 0; i < (pop * 3) + 4; i++)
 		{
 			cout << char(GRIDSYMB);
 		}
@@ -140,18 +143,19 @@ void MazeGenerationAlgorithm::startGame()
 
 void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY)
 {
+	const int pop = HARD_SIZE -4;
 	srand((unsigned int)time(0));
 
 	int randomNumber;
-	int randomXCordinate = ((2 * rand()) + 1) % (SIZE - 1);
-	int randomYCordinate = ((2 * rand()) + 1) % (SIZE - 1);
+	int randomXCordinate = ((2 * rand()) + 1) % (pop - 1);
+	int randomYCordinate = ((2 * rand()) + 1) % (pop - 1);
 	
 	positionX = randomXCordinate;
 	positionY = randomYCordinate;
 
 	int visitedCells = 1;
 
-	int totalCells = ((SIZE - 1) / 2) * ((SIZE - 1) / 2);
+	int totalCells = ((pop - 1) / 2) * ((pop - 1) / 2);
 
 	vector<int> xTrack, yTrack;
 
@@ -187,7 +191,7 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 				else
 					continue;
 			}
-			else if ((randomNumber == 2) && (randomYCordinate < SIZE - 2))
+			else if ((randomNumber == 2) && (randomYCordinate < pop - 2))
 			{
 				if (currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false)
 				{
@@ -230,7 +234,7 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 				else
 					continue;
 			}
-			else if ((randomNumber == 4) && (randomXCordinate < SIZE - 2))
+			else if ((randomNumber == 4) && (randomXCordinate < pop - 2))
 			{
 				if (currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false)
 				{

@@ -37,7 +37,7 @@ private:
 
 
 public:
-	Cell currentCell[SIZE][SIZE];
+	Cell currentCell[HARD_SIZE][HARD_SIZE];
 
 	
 
