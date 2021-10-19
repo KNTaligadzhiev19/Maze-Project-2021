@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="EasyLevelMaze.cpp" />
     <ClCompile Include="FrontEnd.cpp" />
+    <ClCompile Include="HardLevelMaze.cpp" />
     <ClCompile Include="LoginSystem.cpp" />
     <ClCompile Include="Maze-Project.cpp" />
     <ClCompile Include="MazeGenerationAlgorithm.cpp" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="EasyLevelMaze.h" />
     <ClInclude Include="FrontEnd.h" />
+    <ClInclude Include="HardLevelMaze.h" />
     <ClInclude Include="LoginSystem.h" />
     <ClInclude Include="MazeGenerationAlgorithm.h" />
     <ClInclude Include="MediumLevelMaze.h" />

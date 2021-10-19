@@ -149,7 +149,6 @@ void MazeGenerationAlgorithm::startGame()
 
 		if ((finalPointX == positionX) && (finalPointY == positionY))
 		{
-			cout << "\nYou win!\n";
 			break;
 		}
 

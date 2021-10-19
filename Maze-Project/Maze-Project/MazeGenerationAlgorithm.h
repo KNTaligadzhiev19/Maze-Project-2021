@@ -5,10 +5,7 @@
 #include <conio.h>
 using namespace std;
 
-#define EASY_SIZE 16
-#define MEDIUM_SIZE 24
 #define HARD_SIZE 28
-
 
 class MazeGenerationAlgorithm
 {
@@ -48,13 +45,6 @@ public:
 	void startGame();
 
 	void generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY);
-
-	/*MazeGenerationAlgorithm()
-	{
-		initializeCell();
-
-		generateMaze(positionX, positionY, finalPointX, finalPointY);
-	}*/
 
 	
 };
