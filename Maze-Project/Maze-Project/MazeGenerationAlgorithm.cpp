@@ -15,6 +15,7 @@ int MazeGenerationAlgorithm::chooseSize(int level)
 	{
 		return 0;
 	}
+
 }
 
 void MazeGenerationAlgorithm::initializeCell()
@@ -66,13 +67,13 @@ void MazeGenerationAlgorithm::startGame()
 			cout << char(GRIDSYMB) << char(GRIDSYMB);
 			for (int j = 0; j < size; j++)
 			{
-				if (currentCell[i][j].symb == 'S')
+				if (currentCell[i][j].symb == BEGINSYMB)
 				{
 					positionX = i;
 					positionY = j;
 					cout << " " << currentCell[i][j].symb << " ";
 				}
-				else if (currentCell[i][j].symb == 'E')
+				else if (currentCell[i][j].symb == ENDSYMB)
 				{
 					finalPointX = i;
 					finalPointY = j;
@@ -99,7 +100,7 @@ void MazeGenerationAlgorithm::startGame()
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
 				positionY--;
 			}
-			else if (currentCell[positionX][positionY - 1].symb == 'E')
+			else if (currentCell[positionX][positionY - 1].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
 				currentCell[positionX][positionY].symb = ' ';
@@ -112,7 +113,7 @@ void MazeGenerationAlgorithm::startGame()
 				swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
 				positionX++;
 			}
-			else if (currentCell[positionX + 1][positionY].symb == 'E')
+			else if (currentCell[positionX + 1][positionY].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
 				currentCell[positionX][positionY].symb = ' ';
@@ -125,7 +126,7 @@ void MazeGenerationAlgorithm::startGame()
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
 				positionY++;
 			}
-			else if (currentCell[positionX][positionY + 1].symb == 'E')
+			else if (currentCell[positionX][positionY + 1].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
 				currentCell[positionX][positionY].symb = ' ';
@@ -138,7 +139,7 @@ void MazeGenerationAlgorithm::startGame()
 				swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
 				positionX--;
 			}
-			else if (currentCell[positionX - 1][positionY].symb == 'E')
+			else if (currentCell[positionX - 1][positionY].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
 				currentCell[positionX][positionY].symb = ' ';
@@ -174,7 +175,7 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 
 	vector<int> xTrack, yTrack;
 
-	currentCell[randomYCordinate][randomXCordinate].symb = 'S';
+	currentCell[randomYCordinate][randomXCordinate].symb = BEGINSYMB;
 	currentCell[randomYCordinate][randomXCordinate].isVisited = true;
 
 	while (visitedCells < totalCells)
@@ -282,7 +283,7 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 	finalPointX = randomXCordinate;
 	finalPointY = randomYCordinate;
 
-	currentCell[finalPointY][finalPointX].symb = 'E';
+	currentCell[finalPointY][finalPointX].symb = ENDSYMB;
 
 	system("cls");
 

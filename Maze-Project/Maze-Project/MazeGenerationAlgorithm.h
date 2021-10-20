@@ -18,6 +18,8 @@ protected:
 		ARROW_UP = 72,
 		ARROW_DOWN = 80,
 		GRIDSYMB = 177,
+		BEGINSYMB=char(234),
+		ENDSYMB=char(233),
 	};
 
 	struct Cell

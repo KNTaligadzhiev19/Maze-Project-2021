@@ -4,9 +4,8 @@
 #include "MediumLevelMaze.h"
 #include "HardLevelMaze.h"
 
+
 int main()
 {
 	EasyLevelMaze maze;
-
-
 }
