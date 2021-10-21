@@ -27,7 +27,7 @@ string printRowLine(char sign)
 	return wholeLine;
 }
 
-int main()
+void printRules()
 {
 	char angle[4] = { char(218), char(191), char(192), char(217) };
 	char rowLine = char(196), colLine = char(179);

@@ -3,9 +3,12 @@
 #include "EasyLevelMaze.h"
 #include "MediumLevelMaze.h"
 #include "HardLevelMaze.h"
+#include "FrontEnd.h"
 
 
 int main()
 {
-	EasyLevelMaze maze;
+	//EasyLevelMaze maze;
+
+	printRules();
 }
