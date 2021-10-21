@@ -56,6 +56,7 @@ void MazeGenerationAlgorithm::startGame()
 
 	while (true)
 	{
+
 		for (int i = 0; i < (size * 3) + 4; i++)
 		{
 			cout << char(GRIDSYMB);
@@ -86,6 +87,7 @@ void MazeGenerationAlgorithm::startGame()
 			}
 			cout << char(GRIDSYMB) << char(GRIDSYMB);
 		}
+		
 		cout << endl;
 		for (int i = 0; i < (size * 3) + 4; i++)
 		{

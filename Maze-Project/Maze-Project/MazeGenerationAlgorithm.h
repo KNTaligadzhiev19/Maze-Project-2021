@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <conio.h>
+#include "FrontEnd.h"
 using namespace std;
 
 #define HARD_SIZE 28
