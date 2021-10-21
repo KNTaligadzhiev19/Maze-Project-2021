@@ -1,6 +1,8 @@
 #include "FrontEnd.h"
 #include <iostream>
 #include <iomanip>
+#include <vector>
+
 using namespace std;
 
 
@@ -29,7 +31,7 @@ string printRowLine(char sign)
 
 void printRules()
 {
-	char angle[4] = { char(218), char(191), char(192), char(217) };
+	vector<char> angle = { char(218), char(191), char(192), char(217) };
 	char rowLine = char(196), colLine = char(179);
 
 	cout << "\n\n" << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
@@ -37,8 +39,8 @@ void printRules()
 	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
 
 	cout << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
-	cout << setw(33) << colLine << setw(26) << "X  -  Your Position" << setw(6) << colLine << endl;
-	cout << setw(33) << colLine << setw(22) << "Y  -  Your Goal" << setw(10) << colLine << endl;
+	cout << setw(33) << colLine << setw(8) << char(234) << "  -  Your Position" << setw(6) << colLine << endl;
+	cout << setw(33) << colLine << setw(8) << char(233) << "  -  Your Goal" << setw(10) << colLine << endl;
 	cout << setw(33) << char(195) << printRowLine(rowLine) << char(180) << endl;
 
 	cout << setw(33) << colLine << setw(20) << "W  -  Move Up" << setw(12) << colLine << endl;

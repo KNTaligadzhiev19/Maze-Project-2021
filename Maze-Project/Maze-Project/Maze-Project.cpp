@@ -7,7 +7,7 @@
 
 int main()
 {
-	HardLevelMaze maze;
+	//HardLevelMaze maze;
 
-//	printRules();
+    printRules();
 }
