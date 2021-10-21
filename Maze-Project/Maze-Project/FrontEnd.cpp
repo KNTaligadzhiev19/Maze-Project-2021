@@ -49,7 +49,7 @@ void printRules()
 	cout << setw(33) << colLine << setw(23) << "D  -  Move Right" << setw(9) << colLine << endl;
 	cout << setw(33) << char(195) << rowLine << rowLine << rowLine;
 	cout << setw(26) << rowLine << rowLine << rowLine << char(180) << endl;
-	cout << setw(33) << colLine << setw(25) << "You can use Buttons" << setw(7) << colLine << endl;
+	cout << setw(33) << colLine << setw(25) << "You can use Arrows" << setw(7) << colLine << endl;
 	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
 
 	cout << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
