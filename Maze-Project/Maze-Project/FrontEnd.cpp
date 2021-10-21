@@ -1,8 +1,8 @@
-#include "FrontEnd.h"
+```#include "FrontEnd.h"
 #include <iostream>
 #include <iomanip>
 #include <vector>
-
+#include <conio.h>
 using namespace std;
 
 
@@ -19,7 +19,7 @@ bool setColor(WORD newColor)
 }
 
 
-string printRowLine(char sign) 
+string printRowLine(char sign)
 {
 	string wholeLine = "";
 	for (int i = 0; i <= 30; i++)
@@ -31,7 +31,7 @@ string printRowLine(char sign)
 
 void printRules()
 {
-	vector<char> angle = { char(218), char(191), char(192), char(217) };
+	char angle[4] = { char(218), char(191), char(192), char(217) };
 	char rowLine = char(196), colLine = char(179);
 
 	cout << "\n\n" << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
@@ -39,8 +39,8 @@ void printRules()
 	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
 
 	cout << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
-	cout << setw(33) << colLine << setw(8) << char(234) << "  -  Your Position" << setw(6) << colLine << endl;
-	cout << setw(33) << colLine << setw(8) << char(233) << "  -  Your Goal" << setw(10) << colLine << endl;
+	cout << setw(33) << colLine << setw(26) << "X  -  Your Position" << setw(6) << colLine << endl;
+	cout << setw(33) << colLine << setw(22) << "Y  -  Your Goal" << setw(10) << colLine << endl;
 	cout << setw(33) << char(195) << printRowLine(rowLine) << char(180) << endl;
 
 	cout << setw(33) << colLine << setw(20) << "W  -  Move Up" << setw(12) << colLine << endl;
@@ -49,7 +49,7 @@ void printRules()
 	cout << setw(33) << colLine << setw(23) << "D  -  Move Right" << setw(9) << colLine << endl;
 	cout << setw(33) << char(195) << rowLine << rowLine << rowLine;
 	cout << setw(26) << rowLine << rowLine << rowLine << char(180) << endl;
-	cout << setw(33) << colLine << setw(25) << "You can use Arrows" << setw(7) << colLine << endl;
+	cout << setw(33) << colLine << setw(25) << "You can use Buttons" << setw(7) << colLine << endl;
 	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
 
 	cout << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
@@ -57,4 +57,72 @@ void printRules()
 	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
 }
 
+int returnChoice(char choice, int& position, vector<string>& form)
+{
 
+	switch (choice)
+	{
+	case 'S': case 's': case DOWN:
+		position++;
+		if (position == form.size())
+		{
+			position = 0;
+		}
+		break;
+	case 'W':
+		position--;
+		if (position == -1)
+		{
+			position = form.size() - 1;
+		}
+		break;
+	}
+
+	return position;
+}
+
+void printEnterChoice()
+{
+	cout << 1;
+}
+
+void printMenu()
+{
+	vector<string> form = { " S I G N  U P ", " S I G N  I N " , " Q U I T " };
+	vector<int> ident = { 22,22,19, 10,10,13 };
+	vector<int> ident2 = { 8, 8, 10, 9, 9, 12 };
+	int position = 0;
+
+	while (true)
+	{
+
+		system("cls");
+		cout << "\n\n\n\n\n\n" << setw(33) << char(218) << printRowLine(char(196)) << char(191) << endl;
+		for (int i = 0; i < form.size(); i++)
+		{
+			if (position == i)
+			{
+				cout << setw(33) << char(179) << setw(ident2[i]) << char(175) << form[i] << char(174) << setw(ident2[i + 3]) << char(179) << endl;
+			}
+			else {
+				cout << setw(33) << char(179) << setw(ident[i]) << form[i] << setw(ident[i + 3]) << char(179) << endl;
+			}
+		}
+
+		cout << setw(33) << char(192) << printRowLine(char(196)) << char(217) << endl;
+		char input = _getch();
+
+		if (input != ENTER)
+		{
+			returnChoice(input, position, form);
+		}
+		else {
+			printEnterChoice();
+			//exit(1);
+		}
+
+	}
+}
+
+
+```
