@@ -1,13 +1,18 @@
-#include <iostream>
-#include "EasyLevelMaze.h"
-#include "MediumLevelMaze.h"
-#include "HardLevelMaze.h"
-#include "FrontEnd.h"
+﻿#include <iostream>
+#include "Maze Configuration/Header Files/EasyLevelMaze.h"
+#include "Maze Configuration/Header Files/MediumLevelMaze.h"
+#include "Maze Configuration/Header Files/HardLevelMaze.h"
+#include "Interface/Header Files/FrontEnd.h"
 
 
 int main()
 {
-	//HardLevelMaze maze;
+	srand((unsigned int)time(0));
 
-    printRules();
+	HardLevelMaze maze;
+	//Should call startGame() function as a method
+
+	//Constructors should be used only for initialazing data()
+
+   // printGameMenu();
 }

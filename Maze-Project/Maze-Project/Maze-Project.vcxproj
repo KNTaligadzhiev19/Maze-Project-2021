@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7fddec11-c3fb-496e-893a-bb202dab7461}</ProjectGuid>
+    <ProjectGuid>{883a8856-c37b-4cae-b0fd-0ad4f15fab7a}</ProjectGuid>
     <RootNamespace>MazeProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -139,23 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EasyLevelMaze.cpp" />
-    <ClCompile Include="FrontEnd.cpp" />
-    <ClCompile Include="HardLevelMaze.cpp" />
-    <ClCompile Include="LoginSystem.cpp" />
+    <ClCompile Include="Interface\CPP Files\FrontEnd.cpp" />
+    <ClCompile Include="Maze Configuration\CPP Files\EasyLevelMaze.cpp" />
+    <ClCompile Include="Maze Configuration\CPP Files\HardLevelMaze.cpp" />
+    <ClCompile Include="Maze Configuration\CPP Files\MazeGenerationAlgorithm.cpp" />
+    <ClCompile Include="Maze Configuration\CPP Files\MediumLevelMaze.cpp" />
     <ClCompile Include="Maze-Project.cpp" />
-    <ClCompile Include="MazeGenerationAlgorithm.cpp" />
-    <ClCompile Include="MediumLevelMaze.cpp" />
-    <ClCompile Include="RegistrationSystem.cpp" />
+    <ClCompile Include="Sign System\CPP Files\LoginSystem.cpp" />
+    <ClCompile Include="Sign System\CPP Files\RegistrationSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EasyLevelMaze.h" />
-    <ClInclude Include="FrontEnd.h" />
-    <ClInclude Include="HardLevelMaze.h" />
-    <ClInclude Include="LoginSystem.h" />
-    <ClInclude Include="MazeGenerationAlgorithm.h" />
-    <ClInclude Include="MediumLevelMaze.h" />
-    <ClInclude Include="RegistrationSystem.h" />
+    <ClInclude Include="Interface\Header Files\FrontEnd.h" />
+    <ClInclude Include="Maze Configuration\Header Files\EasyLevelMaze.h" />
+    <ClInclude Include="Maze Configuration\Header Files\HardLevelMaze.h" />
+    <ClInclude Include="Maze Configuration\Header Files\MazeGenerationAlgorithm.h" />
+    <ClInclude Include="Maze Configuration\Header Files\MediumLevelMaze.h" />
+    <ClInclude Include="Sign System\Header Files\LoginSystem.h" />
+    <ClInclude Include="Sign System\Header Files\RegistrationSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
