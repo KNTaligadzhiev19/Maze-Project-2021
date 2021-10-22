@@ -1,5 +1,6 @@
 #include "../Header Files/MazeGenerationAlgorithm.h"
 #include <time.h>
+#include <conio.h>
 
 int MazeGenerationAlgorithm::chooseSize(int level)
 {

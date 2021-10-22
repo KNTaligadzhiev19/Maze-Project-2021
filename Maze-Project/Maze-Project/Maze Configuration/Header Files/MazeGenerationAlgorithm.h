@@ -1,8 +1,6 @@
 #pragma once
-#include <iostream>
 #include <vector>
-#include <algorithm>
-#include <conio.h>
+#include <iostream>
 #include "../../Interface/Header Files/FrontEnd.h"
 using namespace std;
 
