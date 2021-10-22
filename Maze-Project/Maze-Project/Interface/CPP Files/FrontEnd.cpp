@@ -11,6 +11,13 @@
 
 using namespace std;
 
+#define LEFT_UP_ANGLE 218
+#define RIGHT_UP_ANGLE 191
+#define LEFT_DOWN_ANGLE 192
+#define RIGHT_DOWN_ANGLE 217
+#define ROW_LINE 196
+#define COLUMN_LINE 179
+
 string printRowLine(char sign, int size)
 {
 	string wholeLine = "";
@@ -24,53 +31,21 @@ string printRowLine(char sign, int size)
 void inputLoginAndRegisterData(string& name, string& password)
 {
 	system("cls");
-	char inputSign;
-	char angle[4] = { char(218), char(191), char(192), char(217) };
 	char rowLine = char(196), colLine = char(179);
 
-	cout << "\n\n" << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
-	cout << setw(33) << colLine << setw(21) << "S I G N  I N" << setw(11) << colLine << endl;
-	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
-	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
-	cout << setw(33) << colLine << "  Enter a name: ";
-
-	for (int i = 0;;)
-	{
-		char inputSign = _getch();
-
-		if (i == 0 && (inputSign > 96 && inputSign < 123)) 
-		{
-			inputSign = char(inputSign - 32);
-		}
-
-		cout << inputSign;
-		
-
-		if (inputSign == ENTER) 
-		{
-			break;
-		}
-		name += inputSign;
-		i++;
-	}
+	cout << "\n\n" << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(24) << "W E L C O M E !" << setw(8) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
+	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << "  Enter a name: ";
+	
+	getline(cin, name);
 
 	
-	cout << setw(33) << colLine << "  Enter a name: " << name;
-	cout << setw(16 - name.size()) << colLine << endl;
+	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << "  Enter a password: ";
 	
-	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
-	cout << setw(33) << colLine << "  Enter a password: ";
-	
-	for (int i = 0;;)
-	{
-		char inputSign = _getch();
-		password += inputSign;
-		cout << "*";
-		if (inputSign == ENTER)
-		{
-			break;
-		}
-	}
+	getline(cin, password);
 
 }
 
@@ -78,30 +53,29 @@ void inputLoginAndRegisterData(string& name, string& password)
 
 void printRules()
 {
-	char angle[4] = { char(218), char(191), char(192), char(217) };
 	char rowLine = char(196), colLine = char(179);
 
-	cout << "\n\n" << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
-	cout << setw(33) << colLine << setw(20) << "R U L E S" << setw(12) << colLine << endl;
-	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
+	cout << "\n\n" << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(20) << "R U L E S" << setw(12) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
 
-	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
-	cout << setw(33) << colLine << setw(26) << "X  -  Your Position" << setw(6) << colLine << endl;
-	cout << setw(33) << colLine << setw(22) << "Y  -  Your Goal" << setw(10) << colLine << endl;
-	cout << setw(33) << char(195) << printRowLine(rowLine, 30) << char(180) << endl;
+	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(26) << "X  -  Your Position" << setw(6) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(22) << "Y  -  Your Goal" << setw(10) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(195) << printRowLine(char(ROW_LINE), 30) << char(180) << endl;
 
-	cout << setw(33) << colLine << setw(20) << "W  -  Move Up" << setw(12) << colLine << endl;
-	cout << setw(33) << colLine << setw(22) << "A  -  Move Left" << setw(10) << colLine << endl;
-	cout << setw(33) << colLine << setw(22) << "S  -  Move Down" << setw(10) << colLine << endl;
-	cout << setw(33) << colLine << setw(23) << "D  -  Move Right" << setw(9) << colLine << endl;
-	cout << setw(33) << char(195) << rowLine << rowLine << rowLine;
-	cout << setw(26) << rowLine << rowLine << rowLine << char(180) << endl;
-	cout << setw(33) << colLine << setw(25) << "You can use Arrows" << setw(7) << colLine << endl;
-	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(20) << "W  -  Move Up" << setw(12) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(22) << "A  -  Move Left" << setw(10) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(22) << "S  -  Move Down" << setw(10) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(23) << "D  -  Move Right" << setw(9) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(195) << char(ROW_LINE) << char(ROW_LINE) << char(ROW_LINE);
+	cout << setw(26) << char(ROW_LINE) << char(ROW_LINE) << char(ROW_LINE) << char(180) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(25) << "You can use Arrows" << setw(7) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
 
-	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
-	cout << setw(33) << colLine << setw(23) << "ESC - Leave Game" << setw(9) << colLine << endl;
-	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
+	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
+	cout << setw(33) << char(COLUMN_LINE) << setw(23) << "ESC - Leave Game" << setw(9) << char(COLUMN_LINE) << endl;
+	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
 }
 
 int returnChoice(char choice, int& position, vector<string>& options)
