@@ -287,6 +287,4 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 	finalPointY = randomYCordinate;
 
 	currentCell[finalPointY][finalPointX].symb = ENDSYMB;
-
-
 }
