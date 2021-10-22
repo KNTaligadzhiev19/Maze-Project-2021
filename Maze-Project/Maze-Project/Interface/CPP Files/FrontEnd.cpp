@@ -11,17 +11,34 @@
 
 using namespace std;
 
+string printRowLine(char sign, int size)
+{
+	string wholeLine = "";
+	for (int i = 0; i <= size; i++)
+	{
+		wholeLine += sign;
+	}
+	return wholeLine;
+}
+
 void inputLoginAndRegisterData(string& name, string& password)
 {
 	system("cls");
 	char inputSign;
-	cout << "Enter a name: ";
+	char angle[4] = { char(218), char(191), char(192), char(217) };
+	char rowLine = char(196), colLine = char(179);
+
+	cout << "\n\n" << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
+	cout << setw(33) << colLine << setw(21) << "S I G N  I N" << setw(11) << colLine << endl;
+	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
+	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
+	cout << setw(33) << colLine << "  Enter a name: ";
 
 	for (int i = 0;;)
 	{
 		char inputSign = _getch();
 
-		if (i == 0 && inputSign > 90) 
+		if (i == 0 && (inputSign > 96 && inputSign < 123)) 
 		{
 			inputSign = char(inputSign - 32);
 		}
@@ -35,47 +52,33 @@ void inputLoginAndRegisterData(string& name, string& password)
 		}
 		i++;
 	}
-	
-	cout << "\nEnter a password: ";
+	cout << setw(33) << colLine << "  Enter a name: "<<name<<endl;
+	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
+	cout << setw(33) << colLine << "  Enter a password: ";
 	
 	for (int i = 0;;)
 	{
 		char inputSign = _getch();
-		password += inputSign;
-
-		cout << "*";
-
-		if (inputSign == ENTER)
-		{
-			break;
-		}
+		
 	}
 
 }
 
-string printRowLine(char sign)
-{
-	string wholeLine = "";
-	for (int i = 0; i <= 30; i++)
-	{
-		wholeLine += sign;
-	}
-	return wholeLine;
-}
+
 
 void printRules()
 {
 	char angle[4] = { char(218), char(191), char(192), char(217) };
 	char rowLine = char(196), colLine = char(179);
 
-	cout << "\n\n" << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
+	cout << "\n\n" << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
 	cout << setw(33) << colLine << setw(20) << "R U L E S" << setw(12) << colLine << endl;
-	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
+	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
 
-	cout << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
+	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
 	cout << setw(33) << colLine << setw(26) << "X  -  Your Position" << setw(6) << colLine << endl;
 	cout << setw(33) << colLine << setw(22) << "Y  -  Your Goal" << setw(10) << colLine << endl;
-	cout << setw(33) << char(195) << printRowLine(rowLine) << char(180) << endl;
+	cout << setw(33) << char(195) << printRowLine(rowLine, 30) << char(180) << endl;
 
 	cout << setw(33) << colLine << setw(20) << "W  -  Move Up" << setw(12) << colLine << endl;
 	cout << setw(33) << colLine << setw(22) << "A  -  Move Left" << setw(10) << colLine << endl;
@@ -84,11 +87,11 @@ void printRules()
 	cout << setw(33) << char(195) << rowLine << rowLine << rowLine;
 	cout << setw(26) << rowLine << rowLine << rowLine << char(180) << endl;
 	cout << setw(33) << colLine << setw(25) << "You can use Arrows" << setw(7) << colLine << endl;
-	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
+	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
 
-	cout << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
+	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
 	cout << setw(33) << colLine << setw(23) << "ESC - Leave Game" << setw(9) << colLine << endl;
-	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
+	cout << setw(33) << angle[2] << printRowLine(rowLine, 30) << angle[3] << endl;
 }
 
 int returnChoice(char choice, int& position, vector<string>& options)
@@ -130,7 +133,7 @@ void printMenu()
 	{
 
 		system("cls");
-		cout << "\n\n\n\n\n\n" << setw(33) << char(218) << printRowLine(char(196)) << char(191) << endl;
+		cout << "\n\n\n\n\n\n" << setw(33) << char(218) << printRowLine(char(196), 30) << char(191) << endl;
 		for (int i = 0; i < options.size(); i++)
 		{
 			if (position == i)
@@ -141,7 +144,7 @@ void printMenu()
 				cout << setw(33) << char(179) << setw(ident[i]) << options[i] << setw(ident[i + 3]) << char(179) << endl;
 			}
 		}
-		cout << setw(33) << char(192) << printRowLine(char(196)) << char(217) << endl;
+		cout << setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << endl;
 
 		char input = _getch();
 
@@ -172,7 +175,7 @@ void printGameMenu()
 	while (true)
 	{
 		system("cls");
-		cout << "\n\n\n\n\n\n" << setw(33) << char(218) << printRowLine(char(196)) << char(191) << endl;
+		cout << "\n\n\n\n\n\n" << setw(33) << char(218) << printRowLine(char(196), 30) << char(191) << endl;
 		for (int i = 0; i < options.size(); i++)
 		{
 			if (position == i)
@@ -183,7 +186,7 @@ void printGameMenu()
 				cout << setw(33) << char(179) << setw(ident[i]) << options[i] << setw(ident[i + 6]) << char(179) << endl;
 			}
 		}
-		cout << setw(33) << char(192) << printRowLine(char(196)) << char(217) << endl;
+		cout << setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << endl;
 
 		char input = _getch();
 
