@@ -259,7 +259,6 @@ void printUserMenu()
 			}
 			else {
 				delete login;
-				delete login;
 				delete name;
 				delete password;
 				printUserMenu();
