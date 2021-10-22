@@ -11,12 +11,14 @@ enum KeyBinds {
 	ARROW_DOWN = 80,
 };
 
-bool setColor(WORD newColor);
+void inputLoginAndRegisterData(string& name, string& password);
 
 void printRules();
-
-void printEnterChoice();
 
 void printMenu();
 
 void printGameMenu();
+
+void printPlayerMenu();
+
+void printUserMenu();

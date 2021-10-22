@@ -1,20 +1,22 @@
 #include "../Header Files/FrontEnd.h"
+#include "../../Maze Configuration/Header Files/EasyLevelMaze.h"
+#include "../../Maze Configuration/Header Files/MediumLevelMaze.h"
+#include "../../Maze Configuration/Header Files/HardLevelMaze.h"
+#include "../../Sign System/Header Files/RegistrationSystem.h"
+#include "../../Sign System/Header Files/LoginSystem.h"
 #include <iostream>
 #include <iomanip>
 #include <vector>
 #include <conio.h>
 using namespace std;
 
-bool setColor(WORD newColor)
+void inputLoginAndRegisterData(string& name, string& password)
 {
-	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	system("cls");
 
-	if (hStdOut != INVALID_HANDLE_VALUE)
-	{
-		return SetConsoleTextAttribute(hStdOut, newColor);
-	}
+	cout << "Enter a name: "; getline(cin, name);
+	cout << "Enter a password: "; getline(cin, password);
 
-	return false;
 }
 
 string printRowLine(char sign)
@@ -47,7 +49,7 @@ void printRules()
 	cout << setw(33) << colLine << setw(23) << "D  -  Move Right" << setw(9) << colLine << endl;
 	cout << setw(33) << char(195) << rowLine << rowLine << rowLine;
 	cout << setw(26) << rowLine << rowLine << rowLine << char(180) << endl;
-	cout << setw(33) << colLine << setw(25) << "You can use Buttons" << setw(7) << colLine << endl;
+	cout << setw(33) << colLine << setw(25) << "You can use Arrows" << setw(7) << colLine << endl;
 	cout << setw(33) << angle[2] << printRowLine(rowLine) << angle[3] << endl;
 
 	cout << setw(33) << angle[0] << printRowLine(rowLine) << angle[1] << endl;
@@ -74,18 +76,14 @@ int returnChoice(char choice, int& position, vector<string>& options)
 			position = options.size() - 1;
 		}
 		break;
+	case ENTER:
+		return position;
 	}
 
 	return position;
 }
 
-void printEnterChoice(int& choice)
-{
-	switch (choice)
-	{
-
-	}
-}
+int choice1 = 0;
 
 void printMenu()
 {
@@ -114,17 +112,22 @@ void printMenu()
 		char input = _getch();
 
 		if (input != ENTER)
-		{
 			returnChoice(input, position, options);
-		}
+
 		else {
-			printEnterChoice(position);
+			choice1 = returnChoice(input, position, options);
+			break;
 		}
+			
+		
 
 	}
 }
 
-void printGameMenu() {
+int choice2;
+
+void printGameMenu() 
+{
 	vector<string> options = { " Easy Level ", " Medium Level " , " Hard Level ", " Stats ", " Rules ", " Quit " };
 
 	vector<int> ident = { 22,23,22, 19,19,18,10,9,10, 13,13,14 };
@@ -155,7 +158,112 @@ void printGameMenu() {
 			returnChoice(input, position, options);
 		}
 		else {
-			printEnterChoice(position);
+			choice2 = returnChoice(input, position, options);
+			break;
 		}
+
+	}
+}
+
+void printPlayerMenu()
+{
+	printGameMenu();
+
+	switch (choice2)
+	{
+		case 0:
+		{
+			EasyLevelMaze* easyMaze = new EasyLevelMaze;
+			system("cls");
+			easyMaze->startGame();
+
+			delete easyMaze;
+			printPlayerMenu();
+			break;
+		}
+		case 1:
+		{
+			MediumLevelMaze* mediumMaze = new MediumLevelMaze;
+			system("cls");
+			mediumMaze->startGame();
+
+			delete mediumMaze;
+			printPlayerMenu();
+			break;
+		}
+		case 2:
+		{
+			HardLevelMaze* hardMaze = new HardLevelMaze;
+			system("cls");
+			hardMaze->startGame();
+
+			delete hardMaze;
+			printPlayerMenu();
+			break;
+		}
+		case 3:
+		{
+			//Unavailable
+			break;
+		}
+		case 4:
+		{
+			system("cls");
+			printRules();
+			cin.get();
+			printPlayerMenu();
+			break;
+		}
+		case 5:
+		{
+			printUserMenu();
+		}
+
+	}
+}
+
+void printUserMenu()
+{
+	system("cls");
+
+	RegistrationSystem* registration;
+	LoginSystem* login;
+
+	string* name = new string, * password = new string;
+	printMenu();
+
+	switch (choice1)
+	{
+		case 0:
+		{
+			inputLoginAndRegisterData(*name, *password);
+			registration = new RegistrationSystem(*name, *password);
+
+			delete registration;
+			printUserMenu();
+			break;
+		}
+		case 1:
+		{
+			inputLoginAndRegisterData(*name, *password);
+			login = new LoginSystem(*name, *password);
+
+			if (login->checkLoginData())
+			{
+				delete login;
+				printPlayerMenu();
+			}
+			else {
+				delete login;
+				printUserMenu();
+			}
+			
+			break;
+		}
+		case 2:
+		{
+			exit(1);
+		}
+		
 	}
 }

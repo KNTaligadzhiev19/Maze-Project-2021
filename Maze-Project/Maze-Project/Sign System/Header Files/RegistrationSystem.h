@@ -13,6 +13,7 @@ private:
 	ifstream individualDataIn;
 
 public:
+
 	RegistrationSystem(string name, string password);
 
 	void pushDataIntoIndividualFile(string name, string password);

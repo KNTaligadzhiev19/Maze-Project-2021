@@ -152,6 +152,8 @@ void MazeGenerationAlgorithm::startGame()
 
 		if ((finalPointX == positionX) && (finalPointY == positionY))
 		{
+			cout << endl << endl << "Congratulations! Press Enter to continue: ";
+			cin.get();
 			break;
 		}
 
@@ -286,8 +288,5 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 
 	currentCell[finalPointY][finalPointX].symb = ENDSYMB;
 
-	system("cls");
-
-	startGame();
 
 }
