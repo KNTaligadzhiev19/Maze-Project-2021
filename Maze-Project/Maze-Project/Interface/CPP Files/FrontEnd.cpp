@@ -201,7 +201,23 @@ void printPlayerMenu()
 			printPlayerMenu();
 			break;
 		}
-		
+		case 3:
+		{
+			//Unavailable
+			break;
+		}
+		case 4:
+		{
+			system("cls");
+			printRules();
+			cin.get();
+			printPlayerMenu();
+			break;
+		}
+		case 5:
+		{
+			printUserMenu();
+		}
 
 	}
 }
