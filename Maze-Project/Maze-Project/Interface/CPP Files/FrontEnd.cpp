@@ -143,7 +143,7 @@ int choice2;
 
 void printGameMenu() 
 {
-	vector<string> options = { " Easy Level ", " Medium Level " , " Hard Level ", " Stats ", " Rules ", " Quit " };
+	vector<string> options = { " Easy Level ", " Medium Level " , " Hard Level ", " Rules ", " Quit " };
 
 	vector<int> ident = { 22,23,22, 19,19,18,10,9,10, 13,13,14 };
 	vector<int> ident2 = { 10, 9, 10, 12, 12, 12,9, 8, 9, 12, 12, 13 };
@@ -218,18 +218,13 @@ void printPlayerMenu()
 		}
 		case 3:
 		{
-			//Unavailable
-			break;
-		}
-		case 4:
-		{
 			system("cls");
 			printRules();
 			cin.get();
 			printPlayerMenu();
 			break;
 		}
-		case 5:
+		case 4:
 		{
 			printUserMenu();
 		}
@@ -244,7 +239,7 @@ void printUserMenu()
 	RegistrationSystem* registration;
 	LoginSystem* login;
 
-	string* name = new string, * password = new string;
+	string* name = new string, * password = new string,* statsName=new string;
 	printMenu();
 
 	switch (choice1)
@@ -263,6 +258,7 @@ void printUserMenu()
 		case 1:
 		{
 			inputLoginAndRegisterData(*name, *password);
+			*statsName = *name;
 			login = new LoginSystem(*name, *password);
 
 			if (login->checkLoginData())

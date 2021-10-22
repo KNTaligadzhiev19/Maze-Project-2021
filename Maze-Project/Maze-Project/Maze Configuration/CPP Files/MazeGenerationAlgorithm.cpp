@@ -51,6 +51,8 @@ void MazeGenerationAlgorithm::initializeCell()
 
 void MazeGenerationAlgorithm::startGame()
 {
+	int moves = 0;
+
 	const int size = HARD_SIZE - chooseSize(level);
 	int positionX = 0, positionY = 0;
 	int finalPointX = 0, finalPointY = 0;
@@ -102,12 +104,14 @@ void MazeGenerationAlgorithm::startGame()
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
 				positionY--;
+				moves++;
 			}
 			else if (currentCell[positionX][positionY - 1].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionY++;
+				moves++;
 			}
 			break;
 		case ARROW_DOWN: case 's': case 'S':
@@ -115,12 +119,14 @@ void MazeGenerationAlgorithm::startGame()
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
 				positionX++;
+				moves++;
 			}
 			else if (currentCell[positionX + 1][positionY].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionX--;
+				moves++;
 			}
 			break;
 		case ARROW_RIGHT: case 'd': case 'D':
@@ -128,12 +134,14 @@ void MazeGenerationAlgorithm::startGame()
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
 				positionY++;
+				moves++;
 			}
 			else if (currentCell[positionX][positionY + 1].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionY--;
+				moves++;
 			}
 			break;
 		case ARROW_UP: case 'w': case 'W':
@@ -141,19 +149,21 @@ void MazeGenerationAlgorithm::startGame()
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
 				positionX--;
+				moves++;
 			}
 			else if (currentCell[positionX - 1][positionY].symb == ENDSYMB)
 			{
 				swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionX++;
+				moves++;
 			}
 			break;
 		}
 
 		if ((finalPointX == positionX) && (finalPointY == positionY))
 		{
-			cout << endl << endl << "Congratulations! Press Enter to continue: ";
+			cout << endl << endl << "Congratulations! Moves: "<<moves<< endl<<"Press Enter to continue: ";
 			cin.get();
 			break;
 		}
