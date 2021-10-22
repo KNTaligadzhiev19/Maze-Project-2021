@@ -27,6 +27,7 @@ void inputLoginAndRegisterData(string& name, string& password)
 		}
 
 		cout << inputSign;
+		name += inputSign;
 
 		if (inputSign == ENTER) 
 		{
@@ -35,9 +36,20 @@ void inputLoginAndRegisterData(string& name, string& password)
 		i++;
 	}
 	
-	cout << "\nEnter a password: "; getline(cin, password);
+	cout << "\nEnter a password: ";
 	
-	
+	for (int i = 0;;)
+	{
+		char inputSign = _getch();
+		password += inputSign;
+
+		cout << "*";
+
+		if (inputSign == ENTER)
+		{
+			break;
+		}
+	}
 
 }
 
