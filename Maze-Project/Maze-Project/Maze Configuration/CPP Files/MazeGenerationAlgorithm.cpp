@@ -12,11 +12,8 @@ int MazeGenerationAlgorithm::chooseSize(int level)
 	{
 		return 4;
 	}
-	else if (level == 3)
-	{
-		return 0;
-	}
 
+	return 0;
 }
 
 void MazeGenerationAlgorithm::initializeCell()

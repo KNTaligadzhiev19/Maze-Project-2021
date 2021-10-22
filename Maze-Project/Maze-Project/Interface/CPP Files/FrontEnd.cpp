@@ -145,8 +145,8 @@ void printGameMenu()
 {
 	vector<string> options = { " Easy Level ", " Medium Level " , " Hard Level ", " Rules ", " Quit " };
 
-	vector<int> ident = { 22,23,22, 19,19,18,10,9,10, 13,13,14 };
-	vector<int> ident2 = { 10, 9, 10, 12, 12, 12,9, 8, 9, 12, 12, 13 };
+	vector<int> ident = { 22,23,22, 19,18,10,9,10, 13,14 };
+	vector<int> ident2 = { 10, 9, 10, 12, 12,9, 8, 9, 12, 13 };
 
 	int position = 0;
 
@@ -158,10 +158,10 @@ void printGameMenu()
 		{
 			if (position == i)
 			{
-				cout << setw(33) << char(179) << setw(ident2[i]) << char(175) << options[i] << char(174) << setw(ident2[i + 6]) << char(179) << endl;
+				cout << setw(33) << char(179) << setw(ident2[i]) << char(175) << options[i] << char(174) << setw(ident2[i + 5]) << char(179) << endl;
 			}
 			else {
-				cout << setw(33) << char(179) << setw(ident[i]) << options[i] << setw(ident[i + 6]) << char(179) << endl;
+				cout << setw(33) << char(179) << setw(ident[i]) << options[i] << setw(ident[i + 5]) << char(179) << endl;
 			}
 		}
 		cout << setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << endl;
