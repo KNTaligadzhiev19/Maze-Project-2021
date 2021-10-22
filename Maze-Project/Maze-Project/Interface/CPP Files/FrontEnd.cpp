@@ -245,7 +245,31 @@ void printUserMenu()
 			printUserMenu();
 			break;
 		}
-		
+		case 1:
+		{
+			inputLoginAndRegisterData(*name, *password);
+			login = new LoginSystem(*name, *password);
+
+			if (login->checkLoginData())
+			{
+				delete login;
+				delete name;
+				delete password;
+				printPlayerMenu();
+			}
+			else {
+				delete login;
+				delete name;
+				delete password;
+				printUserMenu();
+			}
+			
+			break;
+		}
+		case 2:
+		{
+			exit(1);
+		}
 		
 	}
 }
