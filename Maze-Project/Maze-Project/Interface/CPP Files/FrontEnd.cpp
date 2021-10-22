@@ -44,22 +44,32 @@ void inputLoginAndRegisterData(string& name, string& password)
 		}
 
 		cout << inputSign;
-		name += inputSign;
+		
 
 		if (inputSign == ENTER) 
 		{
 			break;
 		}
+		name += inputSign;
 		i++;
 	}
-	cout << setw(33) << colLine << "  Enter a name: "<<name<<endl;
+
+	
+	cout << setw(33) << colLine << "  Enter a name: " << name;
+	cout << setw(16 - name.size()) << colLine << endl;
+	
 	cout << setw(33) << angle[0] << printRowLine(rowLine, 30) << angle[1] << endl;
 	cout << setw(33) << colLine << "  Enter a password: ";
 	
 	for (int i = 0;;)
 	{
 		char inputSign = _getch();
-		
+		password += inputSign;
+		cout << "*";
+		if (inputSign == ENTER)
+		{
+			break;
+		}
 	}
 
 }
