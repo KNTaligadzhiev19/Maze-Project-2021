@@ -14,17 +14,22 @@ using namespace std;
 void inputLoginAndRegisterData(string& name, string& password)
 {
 	system("cls");
-	char passSymbol;
+	char inputSign;
 	cout << "Enter a name: ";
-	for (int i = 0;;) {
-		char passSymbol = _getch();
-		if (i == 0 && passSymbol > 90) {
-			cout << char(passSymbol - 32);
+
+	for (int i = 0;;)
+	{
+		char inputSign = _getch();
+
+		if (i == 0 && inputSign > 90) 
+		{
+			inputSign = char(inputSign - 32);
 		}
-		else {
-			cout << passSymbol;
-		}
-		if (passSymbol == ENTER) {
+
+		cout << inputSign;
+
+		if (inputSign == ENTER) 
+		{
 			break;
 		}
 		i++;
