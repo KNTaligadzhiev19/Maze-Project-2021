@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <stdio.h>  
+#include <time.h> 
 #include "Interface/Header Files/FrontEnd.h"
 
 

@@ -8,14 +8,26 @@
 #include <iomanip>
 #include <vector>
 #include <conio.h>
+
 using namespace std;
 
 void inputLoginAndRegisterData(string& name, string& password)
 {
 	system("cls");
-
-	cout << "Enter a name: "; getline(cin, name);
-	cout << "Enter a password: "; getline(cin, password);
+	char passSymbol;
+	cout << "Enter a name: ";
+	for (int i = 0;;) {
+		char passSymbol = _getch();
+		name += passSymbol;
+		cout << "*";
+		if (passSymbol == ENTER) {
+			break;
+		}
+	}
+	
+	cout << "\nEnter a password: "; getline(cin, password);
+	
+	
 
 }
 
