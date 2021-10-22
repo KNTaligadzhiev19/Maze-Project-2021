@@ -181,45 +181,7 @@ void printPlayerMenu()
 			printPlayerMenu();
 			break;
 		}
-		case 1:
-		{
-			MediumLevelMaze* mediumMaze = new MediumLevelMaze;
-			system("cls");
-			mediumMaze->startGame();
-
-			delete mediumMaze;
-			printPlayerMenu();
-			break;
-		}
-		case 2:
-		{
-			HardLevelMaze* hardMaze = new HardLevelMaze;
-			system("cls");
-			hardMaze->startGame();
-
-			delete hardMaze;
-			printPlayerMenu();
-			break;
-		}
-		case 3:
-		{
-			//Unavailable
-			break;
-		}
-		case 4:
-		{
-			system("cls");
-			printRules();
-			cin.get();
-			printPlayerMenu();
-			break;
-		}
-		case 5:
-		{
-			printUserMenu();
-		}
-
-	}
+		
 }
 
 void printUserMenu()
