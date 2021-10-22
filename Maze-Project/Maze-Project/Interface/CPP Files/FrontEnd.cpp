@@ -18,11 +18,16 @@ void inputLoginAndRegisterData(string& name, string& password)
 	cout << "Enter a name: ";
 	for (int i = 0;;) {
 		char passSymbol = _getch();
-		name += passSymbol;
-		cout << "*";
+		if (i == 0 && passSymbol > 90) {
+			cout << char(passSymbol - 32);
+		}
+		else {
+			cout << passSymbol;
+		}
 		if (passSymbol == ENTER) {
 			break;
 		}
+		i++;
 	}
 	
 	cout << "\nEnter a password: "; getline(cin, password);
