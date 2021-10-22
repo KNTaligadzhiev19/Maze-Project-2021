@@ -240,6 +240,8 @@ void printUserMenu()
 			registration = new RegistrationSystem(*name, *password);
 
 			delete registration;
+			delete name;
+			delete password;
 			printUserMenu();
 			break;
 		}
@@ -251,10 +253,15 @@ void printUserMenu()
 			if (login->checkLoginData())
 			{
 				delete login;
+				delete name;
+				delete password;
 				printPlayerMenu();
 			}
 			else {
 				delete login;
+				delete login;
+				delete name;
+				delete password;
 				printUserMenu();
 			}
 			
