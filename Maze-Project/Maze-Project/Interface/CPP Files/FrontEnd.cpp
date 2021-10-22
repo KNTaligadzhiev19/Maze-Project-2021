@@ -31,30 +31,25 @@ string printRowLine(char sign, int size)
 void inputLoginAndRegisterData(string& name, string& password)
 {
 	system("cls");
-	char rowLine = char(196), colLine = char(179);
 
 	cout << "\n\n" << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
 	cout << setw(33) << char(COLUMN_LINE) << setw(24) << "W E L C O M E !" << setw(8) << char(COLUMN_LINE) << endl;
 	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
 	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
 	cout << setw(33) << char(COLUMN_LINE) << "  Enter a name: ";
-	
+
 	getline(cin, name);
 
-	
 	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
 	cout << setw(33) << char(COLUMN_LINE) << "  Enter a password: ";
-	
-	getline(cin, password);
 
+	getline(cin, password);
 }
 
 
 
 void printRules()
 {
-	char rowLine = char(196), colLine = char(179);
-
 	cout << "\n\n" << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
 	cout << setw(33) << char(COLUMN_LINE) << setw(20) << "R U L E S" << setw(12) << char(COLUMN_LINE) << endl;
 	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
