@@ -1,19 +1,18 @@
 #pragma once
 #include <string>
 #include <fstream>
-using namespace std;
 
 class LoginSystem
 {
 private:
-	string name;
-	string password;
+	std::string name;
+	std::string password;
 
-	ofstream individualDataOut;
-	ifstream individualDataIn;
+	std::ofstream individualDataOut;
+	std::ifstream individualDataIn;
 public:
 
-	LoginSystem(string name, string password);
+	LoginSystem(std::string name, std::string password);
 
 	bool checkLoginData();
 };

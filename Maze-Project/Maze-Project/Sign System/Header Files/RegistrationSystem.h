@@ -1,21 +1,20 @@
 #pragma once
 #include <string>
 #include <fstream>
-using namespace std;
 
 class RegistrationSystem
 {
 private:
-	string name;
-	string password;
+	std::string name;
+	std::string password;
 
-	ofstream individualDataOut;
-	ifstream individualDataIn;
+	std::ofstream individualDataOut;
+	std::ifstream individualDataIn;
 
 public:
 
-	RegistrationSystem(string name, string password);
+	RegistrationSystem(std::string name, std::string password);
 
-	void pushDataIntoIndividualFile(string name, string password);
+	void initializeDataIntoIndividualFile(std::string name, std::string password);
 };
 

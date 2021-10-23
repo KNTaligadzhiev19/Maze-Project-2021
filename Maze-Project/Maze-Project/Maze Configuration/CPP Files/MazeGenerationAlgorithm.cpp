@@ -59,39 +59,39 @@ void MazeGenerationAlgorithm::startGame()
 
 		for (int i = 0; i < (size * 3) + 4; i++)
 		{
-			cout << char(GRIDSYMB);
+			std::cout << char(GRIDSYMB);
 		}
 
 		for (int i = 0; i < size; i++)
 		{
-			cout << endl;
-			cout << char(GRIDSYMB) << char(GRIDSYMB);
+			std::cout << std::endl;
+			std::cout << char(GRIDSYMB) << char(GRIDSYMB);
 			for (int j = 0; j < size; j++)
 			{
 				if (currentCell[i][j].symb == BEGINSYMB)
 				{
 					positionX = i;
 					positionY = j;
-					cout << " " << currentCell[i][j].symb << " ";
+					std::cout << " " << currentCell[i][j].symb << " ";
 				}
 				else if (currentCell[i][j].symb == ENDSYMB)
 				{
 					finalPointX = i;
 					finalPointY = j;
-					cout << " " << currentCell[i][j].symb << " ";
+					std::cout << " " << currentCell[i][j].symb << " ";
 				}
 				else
 				{
-					cout << currentCell[i][j].symb << currentCell[i][j].symb << currentCell[i][j].symb;
+					std::cout << currentCell[i][j].symb << currentCell[i][j].symb << currentCell[i][j].symb;
 				}
 			}
-			cout << char(GRIDSYMB) << char(GRIDSYMB);
+			std::cout << char(GRIDSYMB) << char(GRIDSYMB);
 		}
 
-		cout << endl;
+		std::cout << std::endl;
 		for (int i = 0; i < (size * 3) + 4; i++)
 		{
-			cout << char(GRIDSYMB);
+			std::cout << char(GRIDSYMB);
 		}
 
 		switch (_getch())
@@ -99,13 +99,13 @@ void MazeGenerationAlgorithm::startGame()
 		case ARROW_LEFT: case 'a': case 'A':
 			if (currentCell[positionX][positionY - 1].symb == ' ')
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
 				positionY--;
 				moves++;
 			}
 			else if (currentCell[positionX][positionY - 1].symb == ENDSYMB)
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX][positionY - 1]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionY++;
 				moves++;
@@ -114,13 +114,13 @@ void MazeGenerationAlgorithm::startGame()
 		case ARROW_DOWN: case 's': case 'S':
 			if (currentCell[positionX + 1][positionY].symb == ' ')
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
 				positionX++;
 				moves++;
 			}
 			else if (currentCell[positionX + 1][positionY].symb == ENDSYMB)
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX + 1][positionY]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionX--;
 				moves++;
@@ -129,13 +129,13 @@ void MazeGenerationAlgorithm::startGame()
 		case ARROW_RIGHT: case 'd': case 'D':
 			if (currentCell[positionX][positionY + 1].symb == ' ')
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
 				positionY++;
 				moves++;
 			}
 			else if (currentCell[positionX][positionY + 1].symb == ENDSYMB)
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX][positionY + 1]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionY--;
 				moves++;
@@ -144,13 +144,13 @@ void MazeGenerationAlgorithm::startGame()
 		case ARROW_UP: case 'w': case 'W':
 			if (currentCell[positionX - 1][positionY].symb == ' ')
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
 				positionX--;
 				moves++;
 			}
 			else if (currentCell[positionX - 1][positionY].symb == ENDSYMB)
 			{
-				swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
+				std::swap(currentCell[positionX][positionY], currentCell[positionX - 1][positionY]);
 				currentCell[positionX][positionY].symb = ' ';
 				positionX++;
 				moves++;
@@ -160,8 +160,8 @@ void MazeGenerationAlgorithm::startGame()
 
 		if ((finalPointX == positionX) && (finalPointY == positionY))
 		{
-			cout << endl << endl << "Congratulations! Moves: "<<moves<< endl<<"Press Enter to continue: ";
-			cin.get();
+			std::cout << std::endl << std::endl << "Congratulations! Moves: "<<moves<< std::endl<<"Press Enter to continue: ";
+			std::cin.get();
 			break;
 		}
 
@@ -184,7 +184,7 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 
 	int totalCells = ((size - 1) / 2) * ((size - 1) / 2);
 
-	vector<int> xTrack, yTrack;
+	std::vector<int> xTrack, yTrack;
 
 	currentCell[randomYCordinate][randomXCordinate].symb = BEGINSYMB;
 	currentCell[randomYCordinate][randomXCordinate].isVisited = true;

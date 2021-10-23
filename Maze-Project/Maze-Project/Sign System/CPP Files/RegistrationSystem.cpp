@@ -1,19 +1,19 @@
 #include "../Header Files/RegistrationSystem.h"
 
-RegistrationSystem::RegistrationSystem(string name, string password)
+RegistrationSystem::RegistrationSystem(std::string name, std::string password)
 {
 	this->name = name;
 	this->password = password;
 
-	pushDataIntoIndividualFile(this->name, this->password);
+	initializeDataIntoIndividualFile(this->name, this->password);
 }
 
-void RegistrationSystem::pushDataIntoIndividualFile(string name, string password)
+void RegistrationSystem::initializeDataIntoIndividualFile(std::string name, std::string password)
 {
-	individualDataOut.open("Individual Data.txt", ios::out | ios::app);
+	individualDataOut.open("Individual Data.txt", std::ios::out | std::ios::app);
 	if (individualDataOut.is_open())
 	{
-		individualDataOut << name << " " << password << endl;
+		individualDataOut << name << " " << password << std::endl;
 	}
 
 	individualDataOut.close();

@@ -2,7 +2,6 @@
 #include <vector>
 #include <iostream>
 #include "../../Interface/Header Files/FrontEnd.h"
-using namespace std;
 
 #define HARD_SIZE 28
 

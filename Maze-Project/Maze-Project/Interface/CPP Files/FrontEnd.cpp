@@ -8,8 +8,6 @@
 #include <iomanip>
 #include <conio.h>
 
-using namespace std;
-
 #define LEFT_UP_ANGLE 218
 #define RIGHT_UP_ANGLE 191
 #define LEFT_DOWN_ANGLE 192
@@ -17,9 +15,9 @@ using namespace std;
 #define ROW_LINE 196
 #define COLUMN_LINE 179
 
-string printRowLine(char sign, int size)
+std::string printRowLine(char sign, int size)
 {
-	string wholeLine = "";
+	std::string wholeLine = "";
 	for (int i = 0; i <= size; i++)
 	{
 		wholeLine += sign;
@@ -27,52 +25,52 @@ string printRowLine(char sign, int size)
 	return wholeLine;
 }
 
-void inputLoginAndRegisterData(string& name, string& password)
+void inputLoginAndRegisterData(std::string &name, std::string &password)
 {
 	system("cls");
 
-	cout << "\n\n" << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(24) << "W E L C O M E !" << setw(8) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
-	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << "  Enter a name: ";
+	std::cout << "\n\n" << std::setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(24) << "W E L C O M E !" << std::setw(8) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << std::endl;
+	std::cout << std::setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << "  Enter a name: ";
 
-	getline(cin, name);
+	std::getline(std::cin, name);
 
-	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << "  Enter a password: ";
+	std::cout << std::setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << "  Enter a password: ";
 
-	getline(cin, password);
+	std::getline(std::cin, password);
 }
 
 
 
 void printRules()
 {
-	cout << "\n\n" << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(20) << "R U L E S" << setw(12) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
+	std::cout << "\n\n" << std::setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(20) << "R U L E S" << std::setw(12) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << std::endl;
 
-	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(26) << "X  -  Your Position" << setw(6) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(22) << "Y  -  Your Goal" << setw(10) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(195) << printRowLine(char(ROW_LINE), 30) << char(180) << endl;
+	std::cout << std::setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(26) << "X  -  Your Position" << std::setw(6) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(22) << "Y  -  Your Goal" << std::setw(10) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(195) << printRowLine(char(ROW_LINE), 30) << char(180) << std::endl;
 
-	cout << setw(33) << char(COLUMN_LINE) << setw(20) << "W  -  Move Up" << setw(12) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(22) << "A  -  Move Left" << setw(10) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(22) << "S  -  Move Down" << setw(10) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(23) << "D  -  Move Right" << setw(9) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(195) << char(ROW_LINE) << char(ROW_LINE) << char(ROW_LINE);
-	cout << setw(26) << char(ROW_LINE) << char(ROW_LINE) << char(ROW_LINE) << char(180) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(25) << "You can use Arrows" << setw(7) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(20) << "W  -  Move Up" << std::setw(12) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(22) << "A  -  Move Left" << std::setw(10) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(22) << "S  -  Move Down" << std::setw(10) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(23) << "D  -  Move Right" << std::setw(9) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(195) << char(ROW_LINE) << char(ROW_LINE) << char(ROW_LINE);
+	std::cout << std::setw(26) << char(ROW_LINE) << char(ROW_LINE) << char(ROW_LINE) << char(180) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(25) << "You can use Arrows" << std::setw(7) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << std::endl;
 
-	cout << setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << endl;
-	cout << setw(33) << char(COLUMN_LINE) << setw(23) << "ESC - Leave Game" << setw(9) << char(COLUMN_LINE) << endl;
-	cout << setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << endl;
+	std::cout << std::setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << std::endl;
+	std::cout << std::setw(33) << char(COLUMN_LINE) << std::setw(23) << "ESC - Leave Game" << std::setw(9) << char(COLUMN_LINE) << std::endl;
+	std::cout << std::setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << std::endl;
 }
 
-int returnChoice(char choice, int& position, vector<string>& options)
+int returnChoice(char choice, int& position, std::vector<std::string>& options)
 {
 
 	switch (choice)
@@ -102,27 +100,27 @@ int choice1 = 0;
 
 void printMenu()
 {
-	vector<string> options = { " S I G N  U P ", " S I G N  I N " , " Q U I T " };
-	vector<int> ident = { 22,22,19, 10,10,13 };
-	vector<int> ident2 = { 8, 8, 10, 9, 9, 12 };
+	std::vector<std::string> options = { " S I G N  U P ", " S I G N  I N " , " Q U I T " };
+	std::vector<int> ident = { 22,22,19, 10,10,13 };
+	std::vector<int> ident2 = { 8, 8, 10, 9, 9, 12 };
 	int position = 0;
 
 	while (true)
 	{
 
 		system("cls");
-		cout << "\n\n\n\n\n\n" << setw(33) << char(218) << printRowLine(char(196), 30) << char(191) << endl;
+		std::cout << "\n\n\n\n\n\n" << std::setw(33) << char(218) << printRowLine(char(196), 30) << char(191) << std::endl;
 		for (int i = 0; i < options.size(); i++)
 		{
 			if (position == i)
 			{
-				cout << setw(33) << char(179) << setw(ident2[i]) << char(175) << options[i] << char(174) << setw(ident2[i + 3]) << char(179) << endl;
+				std::cout << std::setw(33) << char(179) << std::setw(ident2[i]) << char(175) << options[i] << char(174) << std::setw(ident2[i + 3]) << char(179) << std::endl;
 			}
 			else {
-				cout << setw(33) << char(179) << setw(ident[i]) << options[i] << setw(ident[i + 3]) << char(179) << endl;
+				std::cout << std::setw(33) << char(179) << std::setw(ident[i]) << options[i] << std::setw(ident[i + 3]) << char(179) << std::endl;
 			}
 		}
-		cout << setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << endl;
+		std::cout << std::setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << std::endl;
 
 		char input = _getch();
 
@@ -143,28 +141,28 @@ int choice2;
 
 void printGameMenu() 
 {
-	vector<string> options = { " Easy Level ", " Medium Level " , " Hard Level ", " Rules ", " Quit " };
+	std::vector<std::string> options = { " Easy Level ", " Medium Level " , " Hard Level ", " Rules ", " Quit " };
 
-	vector<int> ident = { 22,23,22, 19,18,10,9,10, 13,14 };
-	vector<int> ident2 = { 10, 9, 10, 12, 12,9, 8, 9, 12, 13 };
+	std::vector<int> ident = { 22,23,22, 19,18,10,9,10, 13,14 };
+	std::vector<int> ident2 = { 10, 9, 10, 12, 12,9, 8, 9, 12, 13 };
 
 	int position = 0;
 
 	while (true)
 	{
 		system("cls");
-		cout << "\n\n\n\n\n\n" << setw(33) << char(218) << printRowLine(char(196), 30) << char(191) << endl;
+		std::cout << "\n\n\n\n\n\n" << std::setw(33) << char(218) << printRowLine(char(196), 30) << char(191) << std::endl;
 		for (int i = 0; i < options.size(); i++)
 		{
 			if (position == i)
 			{
-				cout << setw(33) << char(179) << setw(ident2[i]) << char(175) << options[i] << char(174) << setw(ident2[i + 5]) << char(179) << endl;
+				std::cout << std::setw(33) << char(179) << std::setw(ident2[i]) << char(175) << options[i] << char(174) << std::setw(ident2[i + 5]) << char(179) << std::endl;
 			}
 			else {
-				cout << setw(33) << char(179) << setw(ident[i]) << options[i] << setw(ident[i + 5]) << char(179) << endl;
+				std::cout << std::setw(33) << char(179) << std::setw(ident[i]) << options[i] << std::setw(ident[i + 5]) << char(179) << std::endl;
 			}
 		}
-		cout << setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << endl;
+		std::cout << std::setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << std::endl;
 
 		char input = _getch();
 
@@ -220,7 +218,7 @@ void printPlayerMenu()
 		{
 			system("cls");
 			printRules();
-			cin.get();
+			std::cin.get();
 			printPlayerMenu();
 			break;
 		}
@@ -239,7 +237,7 @@ void printUserMenu()
 	RegistrationSystem* registration;
 	LoginSystem* login;
 
-	string* name = new string, * password = new string,* statsName=new string;
+	std::string* name = new std::string, * password = new std::string,* statsName=new std::string;
 	printMenu();
 
 	switch (choice1)

@@ -1,7 +1,6 @@
 #pragma once
 #include <windows.h>
 #include <string>
-using namespace std;
 
 enum KeyBinds {
 	ENTER = 13,
@@ -11,7 +10,7 @@ enum KeyBinds {
 	ARROW_DOWN = 80,
 };
 
-void inputLoginAndRegisterData(string& name, string& password);
+void inputLoginAndRegisterData(std::string& name, std::string& password);
 
 void printRules();
 
