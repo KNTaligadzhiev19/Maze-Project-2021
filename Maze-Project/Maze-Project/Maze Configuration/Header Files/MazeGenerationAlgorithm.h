@@ -20,6 +20,7 @@ protected:
 		ENDSYMB = char(233),
 	};
 
+	//Structure for each Cell
 	struct Cell
 	{
 		bool isVisited;
@@ -32,6 +33,7 @@ protected:
 		char symb;
 	};
 
+	//Integer as a counter for setting what difficulty of level player will play
 	int level = 0;
 
 public:

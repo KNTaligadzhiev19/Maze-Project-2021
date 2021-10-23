@@ -2,6 +2,7 @@
 
 EasyLevelMaze::EasyLevelMaze()
 {
+	//Set diffictuly to level 1
 	level = 1;
 
 	initializeCell();

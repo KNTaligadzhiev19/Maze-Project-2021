@@ -2,6 +2,7 @@
 
 HardLevelMaze::HardLevelMaze()
 {
+	//Set diffictuly to level 3
 	level = 3;
 
 	initializeCell();

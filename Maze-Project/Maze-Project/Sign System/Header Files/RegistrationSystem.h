@@ -15,6 +15,7 @@ public:
 
 	RegistrationSystem(std::string name, std::string password);
 
+	//Pushing user data into a file
 	void initializeDataIntoIndividualFile(std::string name, std::string password);
 };
 

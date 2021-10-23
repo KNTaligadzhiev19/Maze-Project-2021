@@ -14,6 +14,7 @@ public:
 
 	LoginSystem(std::string name, std::string password);
 
+	//Checking for correct data
 	bool checkLoginData();
 };
 

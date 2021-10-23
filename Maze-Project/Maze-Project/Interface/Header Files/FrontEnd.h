@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <string>
 
+//Key Binds for entering data in a menu
 enum KeyBinds {
 	ENTER = 13,
 	ARROW_LEFT = 75,

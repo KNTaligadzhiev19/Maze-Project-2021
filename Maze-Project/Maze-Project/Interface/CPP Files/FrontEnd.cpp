@@ -43,8 +43,6 @@ void inputLoginAndRegisterData(std::string &name, std::string &password)
 	std::getline(std::cin, password);
 }
 
-
-
 void printRules()
 {
 	std::cout << "\n\n" << std::setw(33) << char(LEFT_UP_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_UP_ANGLE) << std::endl;
@@ -70,6 +68,7 @@ void printRules()
 	std::cout << std::setw(33) << char(LEFT_DOWN_ANGLE) << printRowLine(char(ROW_LINE), 30) << char(RIGHT_DOWN_ANGLE) << std::endl;
 }
 
+//Function for moving around a menu
 int returnChoice(char choice, int& position, std::vector<std::string>& options)
 {
 
@@ -122,6 +121,7 @@ void printMenu()
 		}
 		std::cout << std::setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << std::endl;
 
+		//_getch() accepts a character
 		char input = _getch();
 
 		if (input != ENTER)
@@ -164,6 +164,7 @@ void printGameMenu()
 		}
 		std::cout << std::setw(33) << char(192) << printRowLine(char(196), 30) << char(217) << std::endl;
 
+		//_getch() accepts a character
 		char input = _getch();
 
 		if (input != ENTER)
@@ -184,6 +185,7 @@ void printPlayerMenu()
 
 	switch (choice2)
 	{
+		//Case for easy level maze
 		case 0:
 		{
 			EasyLevelMaze* easyMaze = new EasyLevelMaze;
@@ -194,6 +196,7 @@ void printPlayerMenu()
 			printPlayerMenu();
 			break;
 		}
+		//Case for medium level maze
 		case 1:
 		{
 			MediumLevelMaze* mediumMaze = new MediumLevelMaze;
@@ -204,6 +207,7 @@ void printPlayerMenu()
 			printPlayerMenu();
 			break;
 		}
+		//Case for hard level maze
 		case 2:
 		{
 			HardLevelMaze* hardMaze = new HardLevelMaze;
@@ -214,6 +218,7 @@ void printPlayerMenu()
 			printPlayerMenu();
 			break;
 		}
+		//Case for print rules
 		case 3:
 		{
 			system("cls");
@@ -222,6 +227,7 @@ void printPlayerMenu()
 			printPlayerMenu();
 			break;
 		}
+		//Case for sign out
 		case 4:
 		{
 			printUserMenu();
@@ -242,6 +248,7 @@ void printUserMenu()
 
 	switch (choice1)
 	{
+		//Case for registrating a user
 		case 0:
 		{
 			inputLoginAndRegisterData(*name, *password);
@@ -253,12 +260,14 @@ void printUserMenu()
 			printUserMenu();
 			break;
 		}
+		//Case for loogin as a user
 		case 1:
 		{
 			inputLoginAndRegisterData(*name, *password);
 			*statsName = *name;
 			login = new LoginSystem(*name, *password);
 
+			//Checking for correct data
 			if (login->checkLoginData())
 			{
 				delete login;
@@ -266,6 +275,7 @@ void printUserMenu()
 				delete password;
 				printPlayerMenu();
 			}
+			//Otherwise
 			else {
 				delete login;
 				delete name;

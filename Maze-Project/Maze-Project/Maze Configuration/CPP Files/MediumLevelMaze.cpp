@@ -2,6 +2,7 @@
 
 MediumLevelMaze::MediumLevelMaze()
 {
+	//Set diffictuly to level 2
 	level = 2;
 
 	initializeCell();

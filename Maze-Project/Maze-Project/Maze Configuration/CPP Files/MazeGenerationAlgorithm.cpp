@@ -2,6 +2,7 @@
 #include <time.h>
 #include <conio.h>
 
+//Setting difficulty function
 int MazeGenerationAlgorithm::chooseSize(int level)
 {
 	if (level == 1)
@@ -171,6 +172,7 @@ void MazeGenerationAlgorithm::startGame()
 
 void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& finalPointX, int& finalPointY)
 {
+	//Setting a size for a maze
 	const int size = HARD_SIZE - chooseSize(level);
 
 	int randomNumber;

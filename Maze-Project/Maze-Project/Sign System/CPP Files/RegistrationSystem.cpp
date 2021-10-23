@@ -8,6 +8,7 @@ RegistrationSystem::RegistrationSystem(std::string name, std::string password)
 	initializeDataIntoIndividualFile(this->name, this->password);
 }
 
+//Pushing user data into a file
 void RegistrationSystem::initializeDataIntoIndividualFile(std::string name, std::string password)
 {
 	individualDataOut.open("Individual Data.txt", std::ios::out | std::ios::app);

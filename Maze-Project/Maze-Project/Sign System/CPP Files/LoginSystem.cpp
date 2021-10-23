@@ -6,6 +6,7 @@ LoginSystem::LoginSystem(std::string name, std::string password)
 	this->password = password;
 }
 
+//Checking if data is correct or else
 bool LoginSystem::checkLoginData()
 {
 	individualDataIn.open("Individual Data.txt", std::ios::in | std::ios::app);
