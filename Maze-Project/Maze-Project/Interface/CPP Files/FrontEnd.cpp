@@ -85,7 +85,7 @@ int returnChoice(char choice, int& position, std::vector<std::string>& options)
 		position--;
 		if (position == -1)
 		{
-			position = options.size() - 1;
+			position = int(options.size() - 1);
 		}
 		break;
 	case ENTER:
