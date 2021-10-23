@@ -186,7 +186,7 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 
 	int totalCells = ((size - 1) / 2) * ((size - 1) / 2);
 
-	std::vector<int> xTrack, yTrack;
+	std::vector<int> xTrack, yTrack; //Used for having the reverse path
 
 	currentCell[randomYCordinate][randomXCordinate].symb = BEGINSYMB;
 	currentCell[randomYCordinate][randomXCordinate].isVisited = true;
@@ -198,7 +198,7 @@ void MazeGenerationAlgorithm::generateMaze(int& positionX, int& positionY, int& 
 			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].leftWall == true) && (currentCell[randomYCordinate][randomXCordinate - 2].rightWall == true)) ||
 			((currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].rightWall == true) && (currentCell[randomYCordinate][randomXCordinate + 2].leftWall == true)))
 		{
-			randomNumber = (rand() % 4) + 1;
+			randomNumber = (rand() % 4) + 1; //Random wall to be removed
 
 			if ((randomNumber == 1) && randomYCordinate > 1)
 			{
