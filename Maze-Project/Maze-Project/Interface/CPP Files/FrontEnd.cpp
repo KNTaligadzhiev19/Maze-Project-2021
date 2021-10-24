@@ -280,6 +280,7 @@ void printUserMenu()
 				delete login;
 				delete name;
 				delete password;
+				//Error function to be called (cin.get());
 				printUserMenu();
 			}
 			
