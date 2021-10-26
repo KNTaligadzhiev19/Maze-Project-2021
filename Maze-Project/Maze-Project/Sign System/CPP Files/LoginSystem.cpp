@@ -32,3 +32,10 @@ bool LoginSystem::checkLoginData()
 
 	return false;
 }
+
+void LoginSystem::printErrorMessage()
+{
+	system("cls");
+	printf("Please Enter a valid data!\n");
+	printf("Press Enter to continue: ");
+}

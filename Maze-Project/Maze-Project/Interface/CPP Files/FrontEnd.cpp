@@ -4,6 +4,7 @@
 #include "../../Maze Configuration/Header Files/HardLevelMaze.h"
 #include "../../Sign System/Header Files/RegistrationSystem.h"
 #include "../../Sign System/Header Files/LoginSystem.h"
+#include "../../Logs/Header Files/Log.h"
 #include <iostream>
 #include <iomanip>
 #include <conio.h>
@@ -239,7 +240,6 @@ void printPlayerMenu()
 void printUserMenu()
 {
 	system("cls");
-
 	RegistrationSystem* registration;
 	LoginSystem* login;
 
@@ -277,10 +277,11 @@ void printUserMenu()
 			}
 			//Otherwise
 			else {
+				login->printErrorMessage();
 				delete login;
 				delete name;
 				delete password;
-				//Error function to be called (cin.get());
+				std::cin.get();
 				printUserMenu();
 			}
 			

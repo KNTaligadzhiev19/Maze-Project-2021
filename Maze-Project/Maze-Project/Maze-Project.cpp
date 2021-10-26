@@ -1,6 +1,7 @@
 ﻿#include <iostream>   
 #include <time.h> 
 #include "Interface/Header Files/FrontEnd.h"
+#include "Logs/Header Files/Log.h"
 
 int main()
 {
@@ -8,4 +9,5 @@ int main()
 	srand((unsigned int)time(0));
 
 	printUserMenu();
+
 }

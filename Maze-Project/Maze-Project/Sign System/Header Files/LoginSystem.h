@@ -16,5 +16,7 @@ public:
 
 	//Checking for correct data
 	bool checkLoginData();
+
+	void printErrorMessage();
 };
 
