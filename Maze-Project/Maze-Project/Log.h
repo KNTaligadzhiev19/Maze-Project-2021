@@ -15,8 +15,8 @@ public:
 
 	std::string getCurrentStatus(int status);
 
-	Log();
+	Log(int status);
 
-	~Log();
+	//~Log();
 };
 
