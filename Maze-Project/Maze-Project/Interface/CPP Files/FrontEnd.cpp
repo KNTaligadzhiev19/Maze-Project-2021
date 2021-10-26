@@ -4,7 +4,6 @@
 #include "../../Maze Configuration/Header Files/HardLevelMaze.h"
 #include "../../Sign System/Header Files/RegistrationSystem.h"
 #include "../../Sign System/Header Files/LoginSystem.h"
-#include "../../Logs/Header Files/Log.h"
 #include <iostream>
 #include <iomanip>
 #include <conio.h>

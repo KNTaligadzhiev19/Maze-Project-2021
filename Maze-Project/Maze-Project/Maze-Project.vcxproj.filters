@@ -39,9 +39,6 @@
     <ClCompile Include="Sign System\CPP Files\LoginSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logs\CPP Files\Log.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\Header Files\FrontEnd.h">
@@ -63,9 +60,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sign System\Header Files\RegistrationSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Logs\Header Files\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

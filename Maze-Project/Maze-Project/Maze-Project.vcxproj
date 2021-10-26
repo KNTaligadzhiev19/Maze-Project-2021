@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Interface\CPP Files\FrontEnd.cpp" />
-    <ClCompile Include="Logs\CPP Files\Log.cpp" />
     <ClCompile Include="Maze Configuration\CPP Files\EasyLevelMaze.cpp" />
     <ClCompile Include="Maze Configuration\CPP Files\HardLevelMaze.cpp" />
     <ClCompile Include="Maze Configuration\CPP Files\MazeGenerationAlgorithm.cpp" />
@@ -151,7 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\Header Files\FrontEnd.h" />
-    <ClInclude Include="Logs\Header Files\Log.h" />
     <ClInclude Include="Maze Configuration\Header Files\EasyLevelMaze.h" />
     <ClInclude Include="Maze Configuration\Header Files\HardLevelMaze.h" />
     <ClInclude Include="Maze Configuration\Header Files\MazeGenerationAlgorithm.h" />
