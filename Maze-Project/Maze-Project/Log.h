@@ -13,10 +13,10 @@ private:
 public:
 	void getCurrentTime();
 
-	std::string getCurrentStatus(int status);
+	void getCurrentStatus(int status);
 
 	Log(int status);
 
-	//~Log();
+	~Log();
 };
 
