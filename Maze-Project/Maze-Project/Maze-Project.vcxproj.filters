@@ -39,7 +39,7 @@
     <ClCompile Include="Sign System\CPP Files\LoginSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logger\CPP Files\Logger.cpp">
+    <ClCompile Include="Sign System\CPP Files\SHA256.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,7 +65,7 @@
     <ClInclude Include="Sign System\Header Files\RegistrationSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logger\Header Files\Logger.h">
+    <ClInclude Include="Sign System\Header Files\SHA256.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

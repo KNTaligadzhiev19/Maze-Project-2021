@@ -1,4 +1,5 @@
 #include "../Header Files/RegistrationSystem.h"
+#include "../../Sign System/Header Files/SHA256.h"
 #include <iostream>
 
 RegistrationSystem::RegistrationSystem(std::string name, std::string password)
@@ -30,6 +31,9 @@ void RegistrationSystem::printErrorMessage()
 //Pushing user data into a file
 void RegistrationSystem::initializeDataIntoIndividualFile(std::string name, std::string password)
 {
+	//Hashing the password
+	password = sha256(password);
+
 	individualDataOut.open("Individual Data.txt", std::ios::out | std::ios::app);
 	if (individualDataOut.is_open())
 	{

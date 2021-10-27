@@ -4,6 +4,7 @@
 #include "../../Maze Configuration/Header Files/HardLevelMaze.h"
 #include "../../Sign System/Header Files/RegistrationSystem.h"
 #include "../../Sign System/Header Files/LoginSystem.h"
+#include "../../Sign System/Header Files/SHA256.h"
 #include <iostream>
 #include <iomanip>
 #include <conio.h>
@@ -242,7 +243,7 @@ void printUserMenu()
 	RegistrationSystem* registration;
 	LoginSystem* login;
 
-	std::string* name = new std::string, * password = new std::string,* statsName=new std::string;
+	std::string* name = new std::string, * password = new std::string;
 	printMenu();
 
 	switch (choice1)
@@ -263,7 +264,9 @@ void printUserMenu()
 		case 1:
 		{
 			inputLoginAndRegisterData(*name, *password);
-			*statsName = *name;
+			//Hashing the password
+			*password = sha256(*password);
+
 			login = new LoginSystem(*name, *password);
 
 			//Checking for correct data
