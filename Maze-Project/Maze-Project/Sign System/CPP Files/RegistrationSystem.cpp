@@ -21,10 +21,10 @@ bool RegistrationSystem::checkIfUsernameOrPasswordAreEmpty(sf::String name, sf::
 	return true;
 }
 
-
+// Pushing user data into a file
 void RegistrationSystem::initializeDataIntoIndividualFile(sf::String name, sf::String password, bool& userMenuEventClick, bool& loginAndRegisterEventClick, int& status)
 {
-	
+	// Hashing the password
 	if (!password.isEmpty())
 		password = sha256(password);
 
