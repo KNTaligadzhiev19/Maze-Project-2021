@@ -1,5 +1,5 @@
 #include "../Header Files/RegistrationSystem.h"
-#include "SHA256.h"
+#include "../Header Files/SHA256.h"
 #include <iostream>
 
 RegistrationSystem::RegistrationSystem(sf::String name, sf::String password, bool& userMenuEventClick, bool& loginAndRegisterEventClick, int& status)
