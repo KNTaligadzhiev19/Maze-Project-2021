@@ -449,3 +449,20 @@ void onClickRulesTable(sf::RenderWindow& window, sf::Event& event1)
 		}
 	}
 }
+
+void printCongratsMenu(sf::RenderWindow& window)
+{
+	sf::Texture t1, t2;
+
+	t1.loadFromFile("CongratulationsMessage.png");
+	t2.loadFromFile("Continue.png");
+	sf::Sprite Congrats(t1);
+	sf::Sprite Continue(t2);
+
+	window.clear(sf::Color(0, 128, 128));
+
+	Congrats.setPosition(60, 100);
+	window.draw(Congrats);
+	Continue.setPosition(230, 600);
+	window.draw(Continue);
+}
