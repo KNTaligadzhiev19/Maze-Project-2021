@@ -134,7 +134,8 @@ footer {
     position: absolute;
     margin-top: 140px;
     margin-left: 60px;
-    padding: 10px 30px;
+    padding: 15px 30px;
     border-radius: 10px;
+    font-size: 19px;
     cursor: pointer;
 }
