@@ -22,6 +22,12 @@ namespace checkValues {
 	int modeChoice = 0;
 	bool inGame = false;
 
+	sf::String loginEmail;
+	sf::String loginPassword;
+
+	sf::String registerEmail;
+	sf::String registerPassword;
+
 	EasyLevelMaze* easyMaze = NULL;
 	MediumLevelMaze* mediumMaze = NULL;
 	HardLevelMaze* hardMaze = NULL;
@@ -31,9 +37,9 @@ void printMenu(sf::RenderWindow& window)
 {
 	sf::Texture t1, t2, t3;
 
-	t1.loadFromFile("Login.png");
-	t2.loadFromFile("Register.png");
-	t3.loadFromFile("Logo.png");
+	t1.loadFromFile("Images and Fonts/Login.png");
+	t2.loadFromFile("Images and Fonts/Register.png");
+	t3.loadFromFile("Images and Fonts/Logo.png");
 
 	sf::Sprite Login(t1);
 	sf::Sprite Register(t2);
@@ -48,24 +54,18 @@ void printMenu(sf::RenderWindow& window)
 	window.draw(Register);
 }
 
-sf::String loginEmail;
-sf::String loginPassword;
-
-sf::String registerEmail;
-sf::String registerPassword;
-
 void printLoginAndRegisterMenu(sf::RenderWindow& window)
 {
 
 	sf::Text loginText, passwordText;
 	sf::Texture t1, t2, t3, t4, t5, t6;
 	sf::Font myFont;
-	myFont.loadFromFile("arial.ttf");
+	myFont.loadFromFile("Images and Fonts/arial.ttf");
 
-	t1.loadFromFile("Submit.png");
-	t2.loadFromFile("Password.png");
-	t3.loadFromFile("Email.png");
-	t5.loadFromFile("WhiteSection.png");
+	t1.loadFromFile("Images and Fonts/Submit.png");
+	t2.loadFromFile("Images and Fonts/Password.png");
+	t3.loadFromFile("Images and Fonts/Email.png");
+	t5.loadFromFile("Images and Fonts/WhiteSection.png");
 	loginText.setFont(myFont);
 	loginText.setCharacterSize(25);
 	loginText.setPosition(290, 340);
@@ -77,18 +77,18 @@ void printLoginAndRegisterMenu(sf::RenderWindow& window)
 
 	if (checkValues::logOrReg)
 	{
-		t6.loadFromFile("LoginTitle.png");
-		t4.loadFromFile("LoginBack.png");
-		loginText.setString(loginEmail);
-		passwordText.setString(loginPassword);
+		t6.loadFromFile("Images and Fonts/LoginTitle.png");
+		t4.loadFromFile("Images and Fonts/LoginBack.png");
+		loginText.setString(checkValues::loginEmail);
+		passwordText.setString(checkValues::loginPassword);
 	}
 
 	else
 	{
-		t6.loadFromFile("RegisterTitle.png");
-		t4.loadFromFile("RegisterBack.png");
-		loginText.setString(registerEmail);
-		passwordText.setString(registerPassword);
+		t6.loadFromFile("Images and Fonts/RegisterTitle.png");
+		t4.loadFromFile("Images and Fonts/RegisterBack.png");
+		loginText.setString(checkValues::registerEmail);
+		passwordText.setString(checkValues::registerPassword);
 	}
 
 	sf::Sprite Submit(t1);
@@ -129,12 +129,12 @@ void printPlayerMenu(sf::RenderWindow& window)
 
 	sf::Texture t1, t2, t3, t4, t5, t6;
 
-	t1.loadFromFile("EasyLevel.png");
-	t2.loadFromFile("MediumLevel.png");
-	t3.loadFromFile("HardLevel.png");
-	t4.loadFromFile("Logo.png");
-	t5.loadFromFile("Back.png");
-	t6.loadFromFile("Rules.png");
+	t1.loadFromFile("Images and Fonts/EasyLevel.png");
+	t2.loadFromFile("Images and Fonts/MediumLevel.png");
+	t3.loadFromFile("Images and Fonts/HardLevel.png");
+	t4.loadFromFile("Images and Fonts/Logo.png");
+	t5.loadFromFile("Images and Fonts/Back.png");
+	t6.loadFromFile("Images and Fonts/Rules.png");
 
 	sf::Sprite Easy(t1);
 	sf::Sprite Medium(t2);
@@ -218,16 +218,16 @@ void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
 			{
 				if (checkValues::logOrReg)
 				{
-					loginPassword = sha256(loginPassword);
-					LoginSystem* login = new LoginSystem(loginEmail, loginPassword);
+					checkValues::loginPassword = sha256(checkValues::loginPassword);
+					LoginSystem* login = new LoginSystem(checkValues::loginEmail, checkValues::loginPassword);
 
 					if (login->checkLoginData())
 					{
 						delete login;
-						loginEmail = "";
-						loginPassword = "";
-						registerEmail = "";
-						registerPassword = "";
+						checkValues::loginEmail = "";
+						checkValues::loginPassword = "";
+						checkValues::registerEmail = "";
+						checkValues::registerPassword = "";
 						checkValues::checkIn = true;
 						checkValues::status = 4;
 						checkValues::userMenuEventClick = false;
@@ -235,17 +235,17 @@ void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
 					}
 					else {
 						delete login;
-						loginPassword = "";
+						checkValues::loginPassword = "";
 						window.clear(sf::Color(0, 128, 128));
 					}
 				}
 				
 				else
 				{
-					RegistrationSystem* register1 = new RegistrationSystem(registerEmail, registerPassword, checkValues::userMenuEventClick, checkValues::loginAndRegisterEventClick, checkValues::status);
+					RegistrationSystem* register1 = new RegistrationSystem(checkValues::registerEmail, checkValues::registerPassword, checkValues::userMenuEventClick, checkValues::loginAndRegisterEventClick, checkValues::status);
 					delete register1;
-					registerEmail = "";
-					registerPassword = "";
+					checkValues::registerEmail = "";
+					checkValues::registerPassword = "";
 					window.clear(sf::Color(0, 128, 128));
 				}
 
@@ -265,16 +265,16 @@ void inputLoginData(sf::RenderWindow& window, sf::Event& event1)
 	{
 		if (event1.type == sf::Event::TextEntered)
 		{
-			if (event1.text.unicode == '\b' && loginEmail.getSize() > 0)
+			if (event1.text.unicode == '\b' && checkValues::loginEmail.getSize() > 0)
 			{
-				loginEmail.erase(loginEmail.getSize() - 1, 1);
+				checkValues::loginEmail.erase(checkValues::loginEmail.getSize() - 1, 1);
 			}
-			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && loginEmail.getSize() <= 21)
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && checkValues::loginEmail.getSize() <= 21)
 			{
-				loginEmail += static_cast<char>(event1.text.unicode);
-				if (loginEmail.getSize() >= 2 && loginEmail[loginEmail.getSize() - 1] == loginEmail[loginEmail.getSize() - 2])
+				checkValues::loginEmail += static_cast<char>(event1.text.unicode);
+				if (checkValues::loginEmail.getSize() >= 2 && checkValues::loginEmail[checkValues::loginEmail.getSize() - 1] == checkValues::loginEmail[checkValues::loginEmail.getSize() - 2])
 				{
-					loginEmail.erase(loginEmail.getSize() - 1, 1);
+					checkValues::loginEmail.erase(checkValues::loginEmail.getSize() - 1, 1);
 				}
 
 			}
@@ -286,16 +286,16 @@ void inputLoginData(sf::RenderWindow& window, sf::Event& event1)
 	{
 		if (event1.type == sf::Event::TextEntered)
 		{
-			if (event1.text.unicode == '\b' && loginPassword.getSize() > 0)
+			if (event1.text.unicode == '\b' && checkValues::loginPassword.getSize() > 0)
 			{
-				loginPassword.erase(loginPassword.getSize() - 1, 1);
+				checkValues::loginPassword.erase(checkValues::loginPassword.getSize() - 1, 1);
 			}
-			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && loginPassword.getSize() <= 18)
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && checkValues::loginPassword.getSize() <= 18)
 			{
-				loginPassword += static_cast<char>(event1.text.unicode);
-				if (loginPassword.getSize() >= 2 && loginPassword[loginPassword.getSize() - 1] == loginPassword[loginPassword.getSize() - 2])
+				checkValues::loginPassword += static_cast<char>(event1.text.unicode);
+				if (checkValues::loginPassword.getSize() >= 2 && checkValues::loginPassword[checkValues::loginPassword.getSize() - 1] == checkValues::loginPassword[checkValues::loginPassword.getSize() - 2])
 				{
-					loginPassword.erase(loginPassword.getSize() - 1, 1);
+					checkValues::loginPassword.erase(checkValues::loginPassword.getSize() - 1, 1);
 				}
 
 			}
@@ -311,16 +311,16 @@ void inputRegisterData(sf::RenderWindow& window, sf::Event& event1)
 	{
 		if (event1.type == sf::Event::TextEntered)
 		{
-			if (event1.text.unicode == '\b' && registerEmail.getSize() > 0)
+			if (event1.text.unicode == '\b' && checkValues::registerEmail.getSize() > 0)
 			{
-				registerEmail.erase(registerEmail.getSize() - 1, 1);
+				checkValues::registerEmail.erase(checkValues::registerEmail.getSize() - 1, 1);
 			}
-			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && registerEmail.getSize() <= 21)
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && checkValues::registerEmail.getSize() <= 21)
 			{
-				registerEmail += static_cast<char>(event1.text.unicode);
-				if (registerEmail.getSize() >= 2 && registerEmail[registerEmail.getSize() - 1] == registerEmail[registerEmail.getSize() - 2])
+				checkValues::registerEmail += static_cast<char>(event1.text.unicode);
+				if (checkValues::registerEmail.getSize() >= 2 && checkValues::registerEmail[checkValues::registerEmail.getSize() - 1] == checkValues::registerEmail[checkValues::registerEmail.getSize() - 2])
 				{
-					registerEmail.erase(registerEmail.getSize() - 1, 1);
+					checkValues::registerEmail.erase(checkValues::registerEmail.getSize() - 1, 1);
 				}
 
 			}
@@ -332,16 +332,16 @@ void inputRegisterData(sf::RenderWindow& window, sf::Event& event1)
 	{
 		if (event1.type == sf::Event::TextEntered)
 		{
-			if (event1.text.unicode == '\b' && registerPassword.getSize() > 0)
+			if (event1.text.unicode == '\b' && checkValues::registerPassword.getSize() > 0)
 			{
-				registerPassword.erase(registerPassword.getSize() - 1, 1);
+				checkValues::registerPassword.erase(checkValues::registerPassword.getSize() - 1, 1);
 			}
-			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && registerPassword.getSize() <= 18)
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && checkValues::registerPassword.getSize() <= 18)
 			{
-				registerPassword += static_cast<char>(event1.text.unicode);
-				if (registerPassword.getSize() >= 2 && registerPassword[registerPassword.getSize() - 1] == registerPassword[registerPassword.getSize() - 2])
+				checkValues::registerPassword += static_cast<char>(event1.text.unicode);
+				if (checkValues::registerPassword.getSize() >= 2 && checkValues::registerPassword[checkValues::registerPassword.getSize() - 1] == checkValues::registerPassword[checkValues::registerPassword.getSize() - 2])
 				{
-					registerPassword.erase(registerPassword.getSize() - 1, 1);
+					checkValues::registerPassword.erase(checkValues::registerPassword.getSize() - 1, 1);
 				}
 
 			}
@@ -419,7 +419,7 @@ void printRulesTable(sf::RenderWindow& window)
 	window.clear(sf::Color(0, 128, 128));
 
 	sf::Texture t1;
-	t1.loadFromFile("RulesTable.png");
+	t1.loadFromFile("Images and Fonts/RulesTable.png");
 
 	sf::Sprite Rules(t1);
 
@@ -454,8 +454,8 @@ void printCongratsMenu(sf::RenderWindow& window)
 {
 	sf::Texture t1, t2;
 
-	t1.loadFromFile("CongratulationsMessage.png");
-	t2.loadFromFile("Continue.png");
+	t1.loadFromFile("Images and Fonts/CongratulationsMessage.png");
+	t2.loadFromFile("Images and Fonts/Continue.png");
 	sf::Sprite Congrats(t1);
 	sf::Sprite Continue(t2);
 
