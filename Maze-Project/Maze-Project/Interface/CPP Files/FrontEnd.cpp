@@ -47,3 +47,78 @@ void printMenu(sf::RenderWindow& window)
 	Register.setPosition(300, 500);
 	window.draw(Register);
 }
+
+sf::String loginEmail;
+sf::String loginPassword;
+
+sf::String registerEmail;
+sf::String registerPassword;
+
+void printLoginAndRegisterMenu(sf::RenderWindow& window)
+{
+
+	sf::Text loginText, passwordText;
+	sf::Texture t1, t2, t3, t4, t5, t6;
+	sf::Font myFont;
+	myFont.loadFromFile("arial.ttf");
+
+	t1.loadFromFile("Submit.png");
+	t2.loadFromFile("Password.png");
+	t3.loadFromFile("Email.png");
+	t5.loadFromFile("WhiteSection.png");
+	loginText.setFont(myFont);
+	loginText.setCharacterSize(25);
+	loginText.setPosition(290, 340);
+	loginText.setFillColor(sf::Color::Black);
+	passwordText.setFont(myFont);
+	passwordText.setCharacterSize(25);
+	passwordText.setPosition(333, 439);
+	passwordText.setFillColor(sf::Color::Black);
+
+	if (checkValues::logOrReg)
+	{
+		t6.loadFromFile("LoginTitle.png");
+		t4.loadFromFile("LoginBack.png");
+		loginText.setString(loginEmail);
+		passwordText.setString(loginPassword);
+	}
+
+	else
+	{
+		t6.loadFromFile("RegisterTitle.png");
+		t4.loadFromFile("RegisterBack.png");
+		loginText.setString(registerEmail);
+		passwordText.setString(registerPassword);
+	}
+
+	sf::Sprite Submit(t1);
+	sf::Sprite Password(t2);
+	sf::Sprite Email(t3);
+	sf::Sprite Back(t4);
+	sf::Sprite Section(t5);
+	sf::Sprite LoginTitle(t6);
+
+	window.clear(sf::Color(0, 128, 128));
+	Section.setPosition(120, 20);
+	window.draw(Section);
+	if (checkValues::logOrReg)
+	{
+		Back.setPosition(180, 190);
+		window.draw(Back);
+	}
+	else
+	{
+		Back.setPosition(187, 200);
+		window.draw(Back);
+	}
+	Email.setPosition(188, 320);
+	window.draw(Email);
+	Password.setPosition(188, 420);
+	window.draw(Password);
+	Submit.setPosition(188, 535);
+	window.draw(Submit);
+	LoginTitle.setPosition(270, 100);
+	window.draw(LoginTitle);
+	window.draw(loginText);
+	window.draw(passwordText);
+}
