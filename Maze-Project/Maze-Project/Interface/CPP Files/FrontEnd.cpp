@@ -466,3 +466,26 @@ void printCongratsMenu(sf::RenderWindow& window)
 	Continue.setPosition(230, 600);
 	window.draw(Continue);
 }
+
+void onClickCongratsMenu(sf::RenderWindow& window, sf::Event& event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 239 && sf::Mouse::getPosition(window).x <= 571) && (sf::Mouse::getPosition(window).y >= 609 && sf::Mouse::getPosition(window).y <= 685))
+			{
+				checkValues::status = 4;
+				checkValues::inGame = false;
+				checkValues::inCongratsTable = false;
+				checkValues::checkIn = true;
+			}
+		}
+
+	}
+}
