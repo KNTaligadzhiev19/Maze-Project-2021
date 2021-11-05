@@ -7,6 +7,7 @@
 #include "../../Maze Configuration/Header Files/MediumLevelMaze.h"
 #include "../../Maze Configuration/Header Files/HardLevelMaze.h"
 
+//Storing the check values which are used for controlling the temp of the program
 namespace checkValues {
 	int status = 1;
 	bool userMenuEventClick = true;
