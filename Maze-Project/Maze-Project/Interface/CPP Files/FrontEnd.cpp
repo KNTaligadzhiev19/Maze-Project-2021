@@ -156,3 +156,30 @@ void printPlayerMenu(sf::RenderWindow& window)
 	Hard.setPosition(205, 560);
 	window.draw(Hard);
 }
+
+void onClickUserMenu(sf::RenderWindow& window, sf::Event& event1)
+{
+
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 303 && sf::Mouse::getPosition(window).x <= 501) && (sf::Mouse::getPosition(window).y >= 392 && sf::Mouse::getPosition(window).y <= 456))
+			{
+				checkValues::status = 2;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = true;
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 303 && sf::Mouse::getPosition(window).x <= 501) && (sf::Mouse::getPosition(window).y >= 504 && sf::Mouse::getPosition(window).y <= 568))
+			{
+				checkValues::status = 3;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = true;
+			}
+		}
+	}
+}
