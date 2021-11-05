@@ -352,3 +352,68 @@ void inputRegisterData(sf::RenderWindow& window, sf::Event& event1)
 
 	}
 }
+
+void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			//Back
+			if ((sf::Mouse::getPosition(window).x >= 30 && sf::Mouse::getPosition(window).x <= 90) && (sf::Mouse::getPosition(window).y >= 14 && sf::Mouse::getPosition(window).y <= 75))
+			{
+				checkValues::status = 1;
+				checkValues::userMenuEventClick = true;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+			}
+			//Rules
+			else if ((sf::Mouse::getPosition(window).x >= 702 && sf::Mouse::getPosition(window).x <= 751) && (sf::Mouse::getPosition(window).y >= 17 && sf::Mouse::getPosition(window).y <= 74))
+			{
+				checkValues::status = 5;
+				checkValues::printableRulesTable = true;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+			}
+			//Easy Level Maze
+			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585) && (sf::Mouse::getPosition(window).y >= 318 && sf::Mouse::getPosition(window).y <= 422))
+			{
+				checkValues::modeChoice = 1;
+				checkValues::status = 6;
+				checkValues::printableRulesTable = false;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+				checkValues::inGame = true;
+			}
+			//Medium Level Maze
+			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585) && (sf::Mouse::getPosition(window).y >= 446 && sf::Mouse::getPosition(window).y <= 550))
+			{
+				checkValues::modeChoice = 2;
+				checkValues::status = 7;
+				checkValues::printableRulesTable = false;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+				checkValues::inGame = true;
+			}
+			//Hard Level Maze
+			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585) && (sf::Mouse::getPosition(window).y >= 571 && sf::Mouse::getPosition(window).y <= 673))
+			{
+				checkValues::modeChoice = 3;
+				checkValues::status = 8;
+				checkValues::printableRulesTable = false;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+				checkValues::inGame = true;
+			}
+		}
+	}
+}
