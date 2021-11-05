@@ -489,3 +489,126 @@ void onClickCongratsMenu(sf::RenderWindow& window, sf::Event& event1)
 
 	}
 }
+
+void setDataValue()
+{
+	sf::RenderWindow window(sf::VideoMode(800, 800), "The Runners - Maze");
+
+	while (window.isOpen())
+	{
+		sf::Event event1;
+
+		if (checkValues::userMenuEventClick)
+		{
+			onClickUserMenu(window, event1);
+		}
+
+		if (checkValues::loginAndRegisterEventClick)
+		{
+			onClickLoginAndRegister(window, event1);
+		}
+
+		if (checkValues::checkIn)
+		{
+			onClickPlayerMenu(window, event1);
+			if (checkValues::modeChoice == 1)
+			{
+				checkValues::easyMaze = new EasyLevelMaze;
+			}
+			else if (checkValues::modeChoice == 2)
+			{
+				checkValues::mediumMaze = new MediumLevelMaze;
+			}
+			else if (checkValues::modeChoice == 3)
+			{
+				checkValues::hardMaze = new HardLevelMaze;
+			}
+		}
+
+		if (checkValues::printableRulesTable)
+		{
+			onClickRulesTable(window, event1);
+		}
+
+		if (checkValues::inGame)
+		{
+			if (checkValues::modeChoice == 1)
+			{
+				checkValues::easyMaze->moveOnClick(window, event1, checkValues::status, checkValues::inGame, checkValues::inCongratsTable, checkValues::modeChoice);
+			}
+			else if (checkValues::modeChoice == 2)
+			{
+				checkValues::mediumMaze->moveOnClick(window, event1, checkValues::status, checkValues::inGame, checkValues::inCongratsTable, checkValues::modeChoice);
+			}
+			else if (checkValues::modeChoice == 3)
+			{
+				checkValues::hardMaze->moveOnClick(window, event1, checkValues::status, checkValues::inGame, checkValues::inCongratsTable, checkValues::modeChoice);
+			}
+		}
+
+		if (checkValues::inCongratsTable)
+		{
+			onClickCongratsMenu(window, event1);
+			if (checkValues::modeChoice == 1)
+			{
+				delete checkValues::easyMaze;
+			}
+			else if (checkValues::modeChoice == 2)
+			{
+				delete checkValues::mediumMaze;
+			}
+			else if (checkValues::modeChoice == 3)
+			{
+				delete checkValues::hardMaze;
+			}
+		}
+
+		switch (checkValues::status)
+		{
+		case 1:
+			window.clear(sf::Color(0, 128, 128));
+			printMenu(window);
+			break;
+		case 2:
+			checkValues::logOrReg = true;
+			window.clear(sf::Color(0, 128, 128));
+			printLoginAndRegisterMenu(window);
+			inputLoginData(window, event1);
+			break;
+		case 3:
+			
+			checkValues::logOrReg = false;
+			window.clear(sf::Color(0, 128, 128));
+			printLoginAndRegisterMenu(window);
+			inputRegisterData(window, event1);
+			break;
+		case 4:
+			printPlayerMenu(window);
+			break;
+		case 5:
+			printRulesTable(window);
+			break;
+		case 6:
+			
+			window.clear(sf::Color(0, 128, 128));
+			checkValues::easyMaze->printMaze(window);
+			break;
+		case 7:
+			
+			window.clear(sf::Color(0, 128, 128));
+			checkValues::mediumMaze->printMaze(window);
+			break;
+		case 8:
+			
+			window.clear(sf::Color(0, 128, 128));
+			checkValues::hardMaze->printMaze(window);
+			break;
+		case 9:
+			
+			printCongratsMenu(window);
+			break;
+		}
+
+		window.display();
+	}
+}
