@@ -122,3 +122,37 @@ void printLoginAndRegisterMenu(sf::RenderWindow& window)
 	window.draw(loginText);
 	window.draw(passwordText);
 }
+
+void printPlayerMenu(sf::RenderWindow& window)
+{
+	window.clear(sf::Color(0, 128, 128));
+
+	sf::Texture t1, t2, t3, t4, t5, t6;
+
+	t1.loadFromFile("EasyLevel.png");
+	t2.loadFromFile("MediumLevel.png");
+	t3.loadFromFile("HardLevel.png");
+	t4.loadFromFile("Logo.png");
+	t5.loadFromFile("Back.png");
+	t6.loadFromFile("Rules.png");
+
+	sf::Sprite Easy(t1);
+	sf::Sprite Medium(t2);
+	sf::Sprite Hard(t3);
+	sf::Sprite Logo(t4);
+	sf::Sprite GoBack(t5);
+	sf::Sprite Rules(t6);
+
+	GoBack.setPosition(30, 15);
+	window.draw(GoBack);
+	Rules.setPosition(700, 15);
+	window.draw(Rules);
+	Logo.setPosition(200, 50);
+	window.draw(Logo);
+	Easy.setPosition(200, 310);
+	window.draw(Easy);
+	Medium.setPosition(205, 435);
+	window.draw(Medium);
+	Hard.setPosition(205, 560);
+	window.draw(Hard);
+}
