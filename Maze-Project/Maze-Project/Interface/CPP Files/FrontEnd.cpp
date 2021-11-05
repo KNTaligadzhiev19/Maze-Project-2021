@@ -260,3 +260,49 @@ void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
 		}
 	}
 }
+
+void inputLoginData(sf::RenderWindow& window, sf::Event& event1)
+{
+
+	if (checkValues::emailCheck)
+	{
+		if (event1.type == sf::Event::TextEntered)
+		{
+			if (event1.text.unicode == '\b' && loginEmail.getSize() > 0)
+			{
+				loginEmail.erase(loginEmail.getSize() - 1, 1);
+			}
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && loginEmail.getSize() <= 21)
+			{
+				loginEmail += static_cast<char>(event1.text.unicode);
+				if (loginEmail.getSize() >= 2 && loginEmail[loginEmail.getSize() - 1] == loginEmail[loginEmail.getSize() - 2])
+				{
+					loginEmail.erase(loginEmail.getSize() - 1, 1);
+				}
+
+			}
+		}
+
+	}
+
+	if (checkValues::passwordCheck)
+	{
+		if (event1.type == sf::Event::TextEntered)
+		{
+			if (event1.text.unicode == '\b' && loginPassword.getSize() > 0)
+			{
+				loginPassword.erase(loginPassword.getSize() - 1, 1);
+			}
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && loginPassword.getSize() <= 18)
+			{
+				loginPassword += static_cast<char>(event1.text.unicode);
+				if (loginPassword.getSize() >= 2 && loginPassword[loginPassword.getSize() - 1] == loginPassword[loginPassword.getSize() - 2])
+				{
+					loginPassword.erase(loginPassword.getSize() - 1, 1);
+				}
+
+			}
+		}
+
+	}
+}
