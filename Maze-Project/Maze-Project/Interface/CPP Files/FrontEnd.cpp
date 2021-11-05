@@ -426,3 +426,26 @@ void printRulesTable(sf::RenderWindow& window)
 	Rules.setPosition(200, 160);
 	window.draw(Rules);
 }
+
+void onClickRulesTable(sf::RenderWindow& window, sf::Event& event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 212 && sf::Mouse::getPosition(window).x <= 611) && (sf::Mouse::getPosition(window).y >= 486 && sf::Mouse::getPosition(window).y <= 547))
+			{
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = true;
+				checkValues::printableRulesTable = false;
+				checkValues::status = 4;
+			}
+		}
+	}
+}
