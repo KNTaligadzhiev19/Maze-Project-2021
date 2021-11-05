@@ -183,3 +183,80 @@ void onClickUserMenu(sf::RenderWindow& window, sf::Event& event1)
 		}
 	}
 }
+
+void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			//Email
+			if ((sf::Mouse::getPosition(window).x >= 194 && sf::Mouse::getPosition(window).x <= 586) && (sf::Mouse::getPosition(window).y >= 329 && sf::Mouse::getPosition(window).y <= 387))
+			{
+				checkValues::emailCheck = true;
+				checkValues::passwordCheck = false;
+			}
+			//Password
+			else if ((sf::Mouse::getPosition(window).x >= 194 && sf::Mouse::getPosition(window).x <= 586) && (sf::Mouse::getPosition(window).y >= 427 && sf::Mouse::getPosition(window).y <= 487))
+			{
+				checkValues::passwordCheck = true;
+				checkValues::emailCheck = false;
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 391 && sf::Mouse::getPosition(window).x <= 583) && (sf::Mouse::getPosition(window).y >= 226 && sf::Mouse::getPosition(window).y <= 283))
+			{
+				checkValues::userMenuEventClick = true;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::status = 1;
+				checkValues::emailCheck = false;
+				checkValues::passwordCheck = false;
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 194 && sf::Mouse::getPosition(window).x <= 584) && (sf::Mouse::getPosition(window).y >= 542 && sf::Mouse::getPosition(window).y <= 599))
+			{
+				//Submit
+				//Log
+				if (checkValues::logOrReg)
+				{
+					loginPassword = sha256(loginPassword);
+					LoginSystem* login = new LoginSystem(loginEmail, loginPassword);
+
+					if (login->checkLoginData())
+					{
+						delete login;
+						loginEmail = "";
+						loginPassword = "";
+						registerEmail = "";
+						registerPassword = "";
+						checkValues::checkIn = true;
+						checkValues::status = 4;
+						checkValues::userMenuEventClick = false;
+						checkValues::loginAndRegisterEventClick = false;
+					}
+					else {
+						delete login;
+						loginPassword = "";
+						window.clear(sf::Color(0, 128, 128));
+					}
+				}
+				//Reg
+				else
+				{
+					RegistrationSystem* register1 = new RegistrationSystem(registerEmail, registerPassword, checkValues::userMenuEventClick, checkValues::loginAndRegisterEventClick, checkValues::status);
+					delete register1;
+					registerEmail = "";
+					registerPassword = "";
+					window.clear(sf::Color(0, 128, 128));
+				}
+
+			}
+			else {
+				checkValues::emailCheck = false;
+				checkValues::passwordCheck = false;
+			}
+		}
+	}
+}
