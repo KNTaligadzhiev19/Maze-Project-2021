@@ -6,7 +6,7 @@ LoginSystem::LoginSystem(sf::String name, sf::String password)
 	this->password = password;
 }
 
-
+// Checking if data is correct or else
 bool LoginSystem::checkLoginData()
 {
 	userDataIn.open("User Data.txt", std::ios::in | std::ios::app);

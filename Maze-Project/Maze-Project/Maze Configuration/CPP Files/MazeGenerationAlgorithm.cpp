@@ -1,5 +1,6 @@
 #include "../Header Files/MazeGenerationAlgorithm.h"
 
+// Set difficulty function
 int MazeGenerationAlgorithm::chooseSize()
 {
 	if (level == 2)
@@ -14,6 +15,7 @@ int MazeGenerationAlgorithm::chooseSize()
 	return 0;
 }
 
+// Set maze pixels
 int MazeGenerationAlgorithm::movePixelSize()
 {
 	if (level == 2)
@@ -85,6 +87,7 @@ void MazeGenerationAlgorithm::initializeArray()
 
 void MazeGenerationAlgorithm::generateMaze()
 {
+	// Setting the size for the maze
 	const int size = HARD_SIZE - chooseSize();
 
 	int randomNumber;
@@ -98,7 +101,7 @@ void MazeGenerationAlgorithm::generateMaze()
 
 	int totalCells = ((size - 1) / 2) * ((size - 1) / 2);
 
-	std::vector<int> xTrack, yTrack;
+	std::vector<int> xTrack, yTrack; // Used for having the reversed path
 
 	currentCell[randomYCordinate][randomXCordinate].symb = BEGINSYMB;
 	currentCell[randomYCordinate][randomXCordinate].isVisited = true;
@@ -110,7 +113,7 @@ void MazeGenerationAlgorithm::generateMaze()
 			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].leftWall == true) && (currentCell[randomYCordinate][randomXCordinate - 2].rightWall == true)) ||
 			((currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].rightWall == true) && (currentCell[randomYCordinate][randomXCordinate + 2].leftWall == true)))
 		{
-			randomNumber = (rand() % 4) + 1;
+			randomNumber = (rand() % 4) + 1; // Random wall to be removed
 
 			if ((randomNumber == 1) && randomYCordinate > 1)
 			{
