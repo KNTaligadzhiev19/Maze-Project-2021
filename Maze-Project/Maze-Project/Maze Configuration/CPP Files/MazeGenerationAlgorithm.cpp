@@ -215,3 +215,42 @@ void MazeGenerationAlgorithm::generateMaze()
 
 	currentCell[finalPointY][finalPointX].symb = ENDSYMB;
 }
+
+void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
+{
+	const int size = HARD_SIZE - chooseSize();
+
+	sf::Sprite Wall(t1);
+	sf::Sprite Current(t2);
+	sf::Sprite Goal(t3);
+	int cordinateX = 0, cordinateY = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		cordinateY = 0;
+		for (int j = 0; j < size; j++)
+		{
+			if (consoleGrid[i][j] == char(GRIDSYMB))
+			{
+				Wall.setPosition(cordinateX, cordinateY);
+				window.draw(Wall);
+			}
+			else if (consoleGrid[i][j] == char(BEGINSYMB))
+			{
+				positionX = i;
+				positionY = j;
+				Current.setPosition(cordinateX, cordinateY);
+				window.draw(Current);
+			}
+			else if (consoleGrid[i][j] == char(ENDSYMB))
+			{
+				finalPointX = i;
+				finalPointY = j;
+				Goal.setPosition(cordinateX, cordinateY);
+				window.draw(Goal);
+			}
+			cordinateY += movePixelSize();
+		}
+		cordinateX += movePixelSize();
+	}
+}
