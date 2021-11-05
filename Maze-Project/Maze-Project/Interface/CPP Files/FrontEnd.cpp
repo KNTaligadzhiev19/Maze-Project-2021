@@ -195,13 +195,12 @@ void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
 
 		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
 		{
-			//Email
 			if ((sf::Mouse::getPosition(window).x >= 194 && sf::Mouse::getPosition(window).x <= 586) && (sf::Mouse::getPosition(window).y >= 329 && sf::Mouse::getPosition(window).y <= 387))
 			{
 				checkValues::emailCheck = true;
 				checkValues::passwordCheck = false;
 			}
-			//Password
+
 			else if ((sf::Mouse::getPosition(window).x >= 194 && sf::Mouse::getPosition(window).x <= 586) && (sf::Mouse::getPosition(window).y >= 427 && sf::Mouse::getPosition(window).y <= 487))
 			{
 				checkValues::passwordCheck = true;
@@ -217,8 +216,6 @@ void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 194 && sf::Mouse::getPosition(window).x <= 584) && (sf::Mouse::getPosition(window).y >= 542 && sf::Mouse::getPosition(window).y <= 599))
 			{
-				//Submit
-				//Log
 				if (checkValues::logOrReg)
 				{
 					loginPassword = sha256(loginPassword);
@@ -242,7 +239,7 @@ void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
 						window.clear(sf::Color(0, 128, 128));
 					}
 				}
-				//Reg
+				
 				else
 				{
 					RegistrationSystem* register1 = new RegistrationSystem(registerEmail, registerPassword, checkValues::userMenuEventClick, checkValues::loginAndRegisterEventClick, checkValues::status);
@@ -364,7 +361,6 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 
 		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
 		{
-			//Back
 			if ((sf::Mouse::getPosition(window).x >= 30 && sf::Mouse::getPosition(window).x <= 90) && (sf::Mouse::getPosition(window).y >= 14 && sf::Mouse::getPosition(window).y <= 75))
 			{
 				checkValues::status = 1;
@@ -372,7 +368,7 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 				checkValues::loginAndRegisterEventClick = false;
 				checkValues::checkIn = false;
 			}
-			//Rules
+			
 			else if ((sf::Mouse::getPosition(window).x >= 702 && sf::Mouse::getPosition(window).x <= 751) && (sf::Mouse::getPosition(window).y >= 17 && sf::Mouse::getPosition(window).y <= 74))
 			{
 				checkValues::status = 5;
@@ -381,7 +377,7 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 				checkValues::loginAndRegisterEventClick = false;
 				checkValues::checkIn = false;
 			}
-			//Easy Level Maze
+			
 			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585) && (sf::Mouse::getPosition(window).y >= 318 && sf::Mouse::getPosition(window).y <= 422))
 			{
 				checkValues::modeChoice = 1;
@@ -392,7 +388,7 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 				checkValues::checkIn = false;
 				checkValues::inGame = true;
 			}
-			//Medium Level Maze
+			
 			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585) && (sf::Mouse::getPosition(window).y >= 446 && sf::Mouse::getPosition(window).y <= 550))
 			{
 				checkValues::modeChoice = 2;
@@ -403,7 +399,7 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 				checkValues::checkIn = false;
 				checkValues::inGame = true;
 			}
-			//Hard Level Maze
+			
 			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585) && (sf::Mouse::getPosition(window).y >= 571 && sf::Mouse::getPosition(window).y <= 673))
 			{
 				checkValues::modeChoice = 3;
@@ -416,4 +412,17 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 			}
 		}
 	}
+}
+
+void printRulesTable(sf::RenderWindow& window)
+{
+	window.clear(sf::Color(0, 128, 128));
+
+	sf::Texture t1;
+	t1.loadFromFile("RulesTable.png");
+
+	sf::Sprite Rules(t1);
+
+	Rules.setPosition(200, 160);
+	window.draw(Rules);
 }
