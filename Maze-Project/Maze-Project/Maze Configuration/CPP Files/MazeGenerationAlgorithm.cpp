@@ -58,3 +58,160 @@ void MazeGenerationAlgorithm::initializeCell()
 		}
 	}
 }
+
+void MazeGenerationAlgorithm::initializeArray()
+{
+	const int size = HARD_SIZE - chooseSize();
+	int positionX = 0, positionY = 0;
+	int finalPointX = 0, finalPointY = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (currentCell[i][j].symb == BEGINSYMB)
+			{
+				consoleGrid[i][j] = currentCell[i][j].symb;
+			}
+			else if (currentCell[i][j].symb == ENDSYMB)
+			{
+				consoleGrid[i][j] = currentCell[i][j].symb;
+			}
+			else
+			{
+				consoleGrid[i][j] = currentCell[i][j].symb;
+			}
+		}
+	}
+}
+
+void MazeGenerationAlgorithm::generateMaze()
+{
+	//Setting a size for a maze
+	const int size = HARD_SIZE - chooseSize();
+
+	int randomNumber;
+	int randomXCordinate = ((2 * rand()) + 1) % (size - 1);
+	int randomYCordinate = ((2 * rand()) + 1) % (size - 1);
+
+	positionX = randomXCordinate;
+	positionY = randomYCordinate;
+
+	int visitedCells = 1;
+
+	int totalCells = ((size - 1) / 2) * ((size - 1) / 2);
+
+	std::vector<int> xTrack, yTrack; //Used for having the reverse path
+
+	currentCell[randomYCordinate][randomXCordinate].symb = BEGINSYMB;
+	currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+
+	while (visitedCells < totalCells)
+	{
+		if (((currentCell[randomYCordinate - 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].topWall == true) && (currentCell[randomYCordinate - 2][randomXCordinate].bottomWall == true)) ||
+			((currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].bottomWall == true) && (currentCell[randomYCordinate + 2][randomXCordinate].topWall == true)) ||
+			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].leftWall == true) && (currentCell[randomYCordinate][randomXCordinate - 2].rightWall == true)) ||
+			((currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].rightWall == true) && (currentCell[randomYCordinate][randomXCordinate + 2].leftWall == true)))
+		{
+			randomNumber = (rand() % 4) + 1; //Random Wall to be removed
+
+			if ((randomNumber == 1) && randomYCordinate > 1)
+			{
+				if (currentCell[randomYCordinate - 2][randomXCordinate].isVisited == false)
+				{
+					currentCell[randomYCordinate - 1][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate - 1][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].topWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomYCordinate -= 2;
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].bottomWall = false;
+					visitedCells++;
+				}
+				else
+					continue;
+			}
+			else if ((randomNumber == 2) && (randomYCordinate < size - 2))
+			{
+				if (currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false)
+				{
+					currentCell[randomYCordinate + 1][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate + 1][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].bottomWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomYCordinate += 2;
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].topWall = false;
+					visitedCells++;
+				}
+				else {
+					continue;
+				}
+			}
+			else if ((randomNumber == 3) && (randomXCordinate > 1))
+			{
+				if (currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false)
+				{
+					currentCell[randomYCordinate][randomXCordinate - 1].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate - 1].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].leftWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomXCordinate -= 2;
+
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].rightWall = false;
+
+					visitedCells++;
+				}
+				else
+					continue;
+			}
+			else if ((randomNumber == 4) && (randomXCordinate < size - 2))
+			{
+				if (currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false)
+				{
+					currentCell[randomYCordinate][randomXCordinate + 1].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate + 1].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].rightWall = false;
+
+					xTrack.push_back(randomXCordinate);
+					yTrack.push_back(randomYCordinate);
+
+					randomXCordinate += 2;
+					currentCell[randomYCordinate][randomXCordinate].isVisited = true;
+					currentCell[randomYCordinate][randomXCordinate].symb = ' ';
+					currentCell[randomYCordinate][randomXCordinate].leftWall = false;
+					visitedCells++;
+				}
+				else
+					continue;
+			};
+		}
+		else {
+
+			randomXCordinate = xTrack.back();
+			xTrack.pop_back();
+
+			randomYCordinate = yTrack.back();
+			yTrack.pop_back();
+
+
+		}
+	}
+	finalPointX = randomXCordinate;
+	finalPointY = randomYCordinate;
+
+	currentCell[finalPointY][finalPointX].symb = ENDSYMB;
+}
