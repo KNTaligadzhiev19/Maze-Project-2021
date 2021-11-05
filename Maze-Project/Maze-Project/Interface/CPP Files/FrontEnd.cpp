@@ -306,3 +306,49 @@ void inputLoginData(sf::RenderWindow& window, sf::Event& event1)
 
 	}
 }
+
+void inputRegisterData(sf::RenderWindow& window, sf::Event& event1)
+{
+
+	if (checkValues::emailCheck)
+	{
+		if (event1.type == sf::Event::TextEntered)
+		{
+			if (event1.text.unicode == '\b' && registerEmail.getSize() > 0)
+			{
+				registerEmail.erase(registerEmail.getSize() - 1, 1);
+			}
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && registerEmail.getSize() <= 21)
+			{
+				registerEmail += static_cast<char>(event1.text.unicode);
+				if (registerEmail.getSize() >= 2 && registerEmail[registerEmail.getSize() - 1] == registerEmail[registerEmail.getSize() - 2])
+				{
+					registerEmail.erase(registerEmail.getSize() - 1, 1);
+				}
+
+			}
+		}
+
+	}
+
+	if (checkValues::passwordCheck)
+	{
+		if (event1.type == sf::Event::TextEntered)
+		{
+			if (event1.text.unicode == '\b' && registerPassword.getSize() > 0)
+			{
+				registerPassword.erase(registerPassword.getSize() - 1, 1);
+			}
+			else if (event1.text.unicode != '\b' && event1.text.unicode < 128 && registerPassword.getSize() <= 18)
+			{
+				registerPassword += static_cast<char>(event1.text.unicode);
+				if (registerPassword.getSize() >= 2 && registerPassword[registerPassword.getSize() - 1] == registerPassword[registerPassword.getSize() - 2])
+				{
+					registerPassword.erase(registerPassword.getSize() - 1, 1);
+				}
+
+			}
+		}
+
+	}
+}
