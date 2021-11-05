@@ -198,23 +198,12 @@ void MazeGenerationAlgorithm::generateMaze()
 		}
 		else {
 
-			if (xTrack.empty() == false)
-			{
-				randomXCordinate = xTrack.back();
-				xTrack.pop_back();
-			}
-			else {
-				exit(1);
-			}
+			randomXCordinate = xTrack.back();
+			xTrack.pop_back();
+
+			randomYCordinate = yTrack.back();
+			yTrack.pop_back();
 			
-			if (yTrack.empty() == false)
-			{
-				randomYCordinate = yTrack.back();
-				yTrack.pop_back();
-			}
-			else {
-				exit(1);
-			}
 		}
 	}
 	finalPointX = randomXCordinate;
