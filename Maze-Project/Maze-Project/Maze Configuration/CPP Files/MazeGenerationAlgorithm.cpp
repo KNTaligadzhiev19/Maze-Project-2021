@@ -254,3 +254,80 @@ void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 		cordinateX += movePixelSize();
 	}
 }
+
+void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& event1, int& check, bool& inGaCurrent, bool& congratsCurrentnu, int& classChoice)
+{
+
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::KeyPressed)
+		{
+			if (event1.key.code == sf::Keyboard::S || event1.key.code == sf::Keyboard::Down)
+			{
+				if (consoleGrid[positionX][positionY + 1] == ENDSYMB)
+				{
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY + 1]);
+					consoleGrid[positionX][positionY] = ' ';
+					positionY--;
+				}
+				else if (consoleGrid[positionX][positionY + 1] == ' ') {
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY + 1]);
+					positionY++;
+				}
+
+			}
+			else if (event1.key.code == sf::Keyboard::W || event1.key.code == sf::Keyboard::Up)
+			{
+				if (consoleGrid[positionX][positionY - 1] == ENDSYMB)
+				{
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY - 1]);
+					consoleGrid[positionX][positionY] = ' ';
+					positionY++;
+				}
+				else if (consoleGrid[positionX][positionY - 1] == ' ') {
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY - 1]);
+					positionY--;
+				}
+			}
+			else if (event1.key.code == sf::Keyboard::D || event1.key.code == sf::Keyboard::Right)
+			{
+				if (consoleGrid[positionX + 1][positionY] == ENDSYMB)
+				{
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX + 1][positionY]);
+					consoleGrid[positionX][positionY] = ' ';
+					positionX--;
+				}
+				else if (consoleGrid[positionX + 1][positionY] == ' ') {
+
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX + 1][positionY]);
+					positionX++;
+				}
+			}
+			else if (event1.key.code == sf::Keyboard::A || event1.key.code == sf::Keyboard::Left)
+			{
+				if (consoleGrid[positionX - 1][positionY] == ENDSYMB)
+				{
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX - 1][positionY]);
+					consoleGrid[positionX][positionY] = ' ';
+					positionX++;
+				}
+				else if (consoleGrid[positionX - 1][positionY] == ' ') {
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX - 1][positionY]);
+					positionX--;
+				}
+			}
+		}
+		else if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if ((finalPointX == positionX) && (finalPointY == positionY))
+		{
+			check = 9;
+			inGaCurrent = false;
+			congratsCurrentnu = true;
+			classChoice = 0;
+		}
+	}
+}
