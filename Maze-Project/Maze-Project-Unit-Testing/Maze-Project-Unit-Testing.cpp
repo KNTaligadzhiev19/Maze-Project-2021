@@ -18,5 +18,14 @@ namespace MazeProjectUnitTesting
 
 			Assert::AreEqual(a, 8);
 		}
+
+		TEST_METHOD(TestingSecondOptionOfFunction_chooseSize)
+		{
+			MazeGenerationAlgorithm test;
+
+			int a = test.chooseSize(1);
+
+			Assert::AreEqual(a, 6);
+		}
 	};
 }
