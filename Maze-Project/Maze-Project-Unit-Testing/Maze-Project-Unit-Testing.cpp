@@ -54,5 +54,14 @@ namespace MazeProjectUnitTesting
 
 			Assert::AreEqual(result, 80);
 		}
+
+		TEST_METHOD(TestingSecondOptionOfFunction_MovePixelsSize)
+		{
+			MazeGenerationAlgorithm testCase;
+
+			int result = testCase.movePixelSize(2);
+
+			Assert::AreEqual(result, 100);
+		}
 	};
 }
