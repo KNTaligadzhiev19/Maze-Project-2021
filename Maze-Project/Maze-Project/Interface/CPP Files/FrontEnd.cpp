@@ -500,6 +500,14 @@ void onClickCongratsMenu(sf::RenderWindow& window, sf::Event& event1)
 	}
 }
 
+//Reloading the program
+void reload()
+{
+	checkValues::status = 4;
+	checkValues::inGame = false;
+	checkValues::checkIn = true;
+}
+
 void setDataValue()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 800), "The Runners - Maze");

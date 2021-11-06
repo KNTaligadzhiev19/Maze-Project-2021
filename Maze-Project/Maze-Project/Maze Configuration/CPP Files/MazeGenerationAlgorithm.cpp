@@ -199,14 +199,21 @@ void MazeGenerationAlgorithm::generateMaze()
 					continue;
 			};
 		}
-		else {
+		else 
+		{
+			if (xTrack.empty() == false && yTrack.empty() == false)
+			{
+				randomXCordinate = xTrack.back();
+				xTrack.pop_back();
 
-			randomXCordinate = xTrack.back();
-			xTrack.pop_back();
-
-			randomYCordinate = yTrack.back();
-			yTrack.pop_back();
-			
+				randomYCordinate = yTrack.back();
+				yTrack.pop_back();
+			}
+			else {
+				//Returning to the previous page
+				reload();
+				break;
+			}
 		}
 	}
 	finalPointX = randomXCordinate;

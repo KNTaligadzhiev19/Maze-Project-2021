@@ -25,4 +25,6 @@ void printCongratsMenu(sf::RenderWindow& window);
 
 void onClickCongratsMenu(sf::RenderWindow& window, sf::Event& event1);
 
+void reload();
+
 void setDataValue();
