@@ -6,9 +6,9 @@ HardLevelMaze::HardLevelMaze()
 	level = 0;
 
 	// Setting the default pictures to print
-	t1.loadFromFile("Images and Fonts/WallHard.png");
-	t2.loadFromFile("Images and Fonts/Bee.png");
-	t3.loadFromFile("Images and Fonts/Honey.png");
+	t1.loadFromFile("Images, Fonts and Music/WallHard.png");
+	t2.loadFromFile("Images, Fonts and Music/Bee.png");
+	t3.loadFromFile("Images, Fonts and Music/Honey.png");
 
 	initializeCell();
 

@@ -1,5 +1,6 @@
 #include "../Header Files/FrontEnd.h"
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 #include "../../Sign System/Header Files/RegistrationSystem.h"
 #include "../../Sign System/Header Files/LoginSystem.h"
 #include "../../Sign System/Header Files/SHA256.h"
@@ -38,9 +39,9 @@ void printMenu(sf::RenderWindow& window)
 {
 	sf::Texture t1, t2, t3;
 
-	t1.loadFromFile("Images and Fonts/Login.png");
-	t2.loadFromFile("Images and Fonts/Register.png");
-	t3.loadFromFile("Images and Fonts/Logo.png");
+	t1.loadFromFile("Images, Fonts and Music/Login.png");
+	t2.loadFromFile("Images, Fonts and Music/Register.png");
+	t3.loadFromFile("Images, Fonts and Music/Logo.png");
 
 	sf::Sprite Login(t1);
 	sf::Sprite Register(t2);
@@ -61,12 +62,12 @@ void printLoginAndRegisterMenu(sf::RenderWindow& window)
 	sf::Text loginText, passwordText;
 	sf::Texture t1, t2, t3, t4, t5, t6;
 	sf::Font myFont;
-	myFont.loadFromFile("Images and Fonts/arial.ttf");
+	myFont.loadFromFile("Images, Fonts and Music/arial.ttf");
 
-	t1.loadFromFile("Images and Fonts/Submit.png");
-	t2.loadFromFile("Images and Fonts/Password.png");
-	t3.loadFromFile("Images and Fonts/Email.png");
-	t5.loadFromFile("Images and Fonts/WhiteSection.png");
+	t1.loadFromFile("Images, Fonts and Music/Submit.png");
+	t2.loadFromFile("Images, Fonts and Music/Password.png");
+	t3.loadFromFile("Images, Fonts and Music/Email.png");
+	t5.loadFromFile("Images, Fonts and Music/WhiteSection.png");
 	loginText.setFont(myFont);
 	loginText.setCharacterSize(25);
 	loginText.setPosition(290, 340);
@@ -78,16 +79,16 @@ void printLoginAndRegisterMenu(sf::RenderWindow& window)
 
 	if (checkValues::logOrReg)
 	{
-		t6.loadFromFile("Images and Fonts/LoginTitle.png");
-		t4.loadFromFile("Images and Fonts/LoginBack.png");
+		t6.loadFromFile("Images, Fonts and Music/LoginTitle.png");
+		t4.loadFromFile("Images, Fonts and Music/LoginBack.png");
 		loginText.setString(checkValues::loginEmail);
 		passwordText.setString(checkValues::loginPassword);
 	}
 
 	else
 	{
-		t6.loadFromFile("Images and Fonts/RegisterTitle.png");
-		t4.loadFromFile("Images and Fonts/RegisterBack.png");
+		t6.loadFromFile("Images, Fonts and Music/RegisterTitle.png");
+		t4.loadFromFile("Images, Fonts and Music/RegisterBack.png");
 		loginText.setString(checkValues::registerEmail);
 		passwordText.setString(checkValues::registerPassword);
 	}
@@ -130,12 +131,12 @@ void printPlayerMenu(sf::RenderWindow& window)
 
 	sf::Texture t1, t2, t3, t4, t5, t6;
 
-	t1.loadFromFile("Images and Fonts/EasyLevel.png");
-	t2.loadFromFile("Images and Fonts/MediumLevel.png");
-	t3.loadFromFile("Images and Fonts/HardLevel.png");
-	t4.loadFromFile("Images and Fonts/Logo.png");
-	t5.loadFromFile("Images and Fonts/Back.png");
-	t6.loadFromFile("Images and Fonts/Rules.png");
+	t1.loadFromFile("Images, Fonts and Music/EasyLevel.png");
+	t2.loadFromFile("Images, Fonts and Music/MediumLevel.png");
+	t3.loadFromFile("Images, Fonts and Music/HardLevel.png");
+	t4.loadFromFile("Images, Fonts and Music/Logo.png");
+	t5.loadFromFile("Images, Fonts and Music/Back.png");
+	t6.loadFromFile("Images, Fonts and Music/Rules.png");
 
 	sf::Sprite Easy(t1);
 	sf::Sprite Medium(t2);
@@ -429,7 +430,7 @@ void printRulesTable(sf::RenderWindow& window)
 	window.clear(sf::Color(0, 128, 128));
 
 	sf::Texture t1;
-	t1.loadFromFile("Images and Fonts/RulesTable.png");
+	t1.loadFromFile("Images, Fonts and Music/RulesTable.png");
 
 	sf::Sprite Rules(t1);
 
@@ -464,8 +465,8 @@ void printCongratsMenu(sf::RenderWindow& window)
 {
 	sf::Texture t1, t2;
 
-	t1.loadFromFile("Images and Fonts/CongratulationsMessage.png");
-	t2.loadFromFile("Images and Fonts/Continue.png");
+	t1.loadFromFile("Images, Fonts and Music/CongratulationsMessage.png");
+	t2.loadFromFile("Images, Fonts and Music/Continue.png");
 	sf::Sprite Congrats(t1);
 	sf::Sprite Continue(t2);
 
@@ -508,9 +509,21 @@ void reload()
 	checkValues::checkIn = true;
 }
 
+//Start background music
+void playMusic(sf::Music &music)
+{
+	music.openFromFile("Images, Fonts and Music/Backgroundsound.ogg");
+	music.setLoop(true);
+	music.setVolume(2);
+	music.play();
+}
+
 void setDataValue()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 800), "The Runners - Maze");
+	sf::Music music;
+	
+	playMusic(music);
 
 	while (window.isOpen())
 	{

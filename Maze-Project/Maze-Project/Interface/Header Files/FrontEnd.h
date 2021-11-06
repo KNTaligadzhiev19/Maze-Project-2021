@@ -27,4 +27,6 @@ void onClickCongratsMenu(sf::RenderWindow& window, sf::Event& event1);
 
 void reload();
 
+void playMusic();
+
 void setDataValue();
