@@ -56,4 +56,3 @@ public:
 
 	void moveOnClick(sf::RenderWindow& window, sf::Event& event1, int& check, bool& inGame, bool& congratsMenu, int& classChoice);
 };
-
