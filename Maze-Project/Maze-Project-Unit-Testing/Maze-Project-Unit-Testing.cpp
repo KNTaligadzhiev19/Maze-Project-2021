@@ -12,20 +12,38 @@ namespace MazeProjectUnitTesting
 		
 		TEST_METHOD(TestingFirstOptionOfFunction_chooseSize)
 		{
-			MazeGenerationAlgorithm test;
+			MazeGenerationAlgorithm testCase;
 
-			int a = test.chooseSize(2);
+			int result = testCase.chooseSize(2);
 
-			Assert::AreEqual(a, 8);
+			Assert::AreEqual(result, 8);
 		}
 
 		TEST_METHOD(TestingSecondOptionOfFunction_chooseSize)
 		{
-			MazeGenerationAlgorithm test;
+			MazeGenerationAlgorithm testCase;
 
-			int a = test.chooseSize(1);
+			int result = testCase.chooseSize(1);
 
-			Assert::AreEqual(a, 6);
+			Assert::AreEqual(result, 6);
+		}
+
+		TEST_METHOD(TestingWithOptionThatNotExist1InFunction_chooseSize)
+		{
+			MazeGenerationAlgorithm testCase;
+
+			int result = testCase.chooseSize(0);
+
+			Assert::AreEqual(result, 0);
+		}
+
+		TEST_METHOD(TestingWithOptionThatNotExist2InFunction_chooseSize)
+		{
+			MazeGenerationAlgorithm testCase;
+
+			int result = testCase.chooseSize(3);
+
+			Assert::AreEqual(result, 0);
 		}
 	};
 }
