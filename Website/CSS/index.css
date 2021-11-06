@@ -80,17 +80,24 @@ a:hover {
     padding: 8px 15px;
 }
 
-.techno {
+.monitor {
     position: absolute;
     width: 39%;
-    margin-top: -160px;
+    margin-top: -10.5%;
     margin-left: 10%;
     z-index: 1;
 }
 
+.screen {
+    z-index: 0;
+    margin-top: -8.85%;
+    width: 38%;
+    margin-left: 10.5%;
+}
+
 .text {
     font-family: 'Comfortaa';
-    margin-left: 100px;
+    margin-left: 10%;
 }
 
 #the {
