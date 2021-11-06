@@ -161,7 +161,6 @@ void printPlayerMenu(sf::RenderWindow& window)
 
 void onClickUserMenu(sf::RenderWindow& window, sf::Event& event1)
 {
-
 	while (window.pollEvent(event1))
 	{
 		if (event1.type == sf::Event::Closed)
@@ -514,7 +513,7 @@ void playMusic(sf::Music &music)
 {
 	music.openFromFile("Images, Fonts and Music/Backgroundsound.ogg");
 	music.setLoop(true);
-	music.setVolume(2);
+	music.setVolume(8);
 	music.play();
 }
 

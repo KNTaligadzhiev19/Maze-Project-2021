@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 void printMenu(sf::RenderWindow& window);
 
@@ -27,6 +28,6 @@ void onClickCongratsMenu(sf::RenderWindow& window, sf::Event& event1);
 
 void reload();
 
-void playMusic();
+void playMusic(sf::Music& music);
 
 void setDataValue();
