@@ -108,10 +108,18 @@ void MazeGenerationAlgorithm::generateMaze()
 
 	while (visitedCells < totalCells)
 	{
-		if (((currentCell[randomYCordinate - 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].topWall == true) && (currentCell[randomYCordinate - 2][randomXCordinate].bottomWall == true)) ||
-			((currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].bottomWall == true) && (currentCell[randomYCordinate + 2][randomXCordinate].topWall == true)) ||
-			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].leftWall == true) && (currentCell[randomYCordinate][randomXCordinate - 2].rightWall == true)) ||
-			((currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false) && (currentCell[randomYCordinate][randomXCordinate].rightWall == true) && (currentCell[randomYCordinate][randomXCordinate + 2].leftWall == true)))
+		if (((currentCell[randomYCordinate - 2][randomXCordinate].isVisited == false) 
+			&& (currentCell[randomYCordinate][randomXCordinate].topWall == true) 
+			&& (currentCell[randomYCordinate - 2][randomXCordinate].bottomWall == true)) ||
+			((currentCell[randomYCordinate + 2][randomXCordinate].isVisited == false) 
+				&& (currentCell[randomYCordinate][randomXCordinate].bottomWall == true) 
+				&& (currentCell[randomYCordinate + 2][randomXCordinate].topWall == true)) ||
+			((currentCell[randomYCordinate][randomXCordinate - 2].isVisited == false) 
+				&& (currentCell[randomYCordinate][randomXCordinate].leftWall == true) 
+				&& (currentCell[randomYCordinate][randomXCordinate - 2].rightWall == true)) ||
+			((currentCell[randomYCordinate][randomXCordinate + 2].isVisited == false) 
+				&& (currentCell[randomYCordinate][randomXCordinate].rightWall == true) 
+				&& (currentCell[randomYCordinate][randomXCordinate + 2].leftWall == true)))
 		{
 			randomNumber = (rand() % 4) + 1; // Random wall to be removed
 
@@ -216,6 +224,7 @@ void MazeGenerationAlgorithm::generateMaze()
 			}
 		}
 	}
+
 	finalPointX = randomXCordinate;
 	finalPointY = randomYCordinate;
 
@@ -261,7 +270,8 @@ void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 	}
 }
 
-void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& event1, int& check, bool& inGaCurrent, bool& congratsCurrentnu, int& classChoice)
+void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& event1, int& check,
+	bool& inGaCurrent, bool& congratsCurrentnu, int& classChoice)
 {
 
 	while (window.pollEvent(event1))

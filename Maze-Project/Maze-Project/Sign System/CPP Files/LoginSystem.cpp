@@ -28,6 +28,7 @@ bool LoginSystem::checkLoginData()
 			}
 		}
 	}
+
 	userDataIn.close();
 
 	return false;

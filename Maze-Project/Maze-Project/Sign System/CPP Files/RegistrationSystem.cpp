@@ -2,7 +2,8 @@
 #include "../Header Files/SHA256.h"
 #include <iostream>
 
-RegistrationSystem::RegistrationSystem(sf::String name, sf::String password, bool& userMenuEventClick, bool& loginAndRegisterEventClick, int& status)
+RegistrationSystem::RegistrationSystem(sf::String name, sf::String password, bool& userMenuEventClick, 
+	bool& loginAndRegisterEventClick, int& status)
 {
 	this->name = name;
 	this->password = password;
@@ -22,7 +23,8 @@ bool RegistrationSystem::checkIfUsernameOrPasswordAreEmpty(sf::String name, sf::
 }
 
 // Pushing user data into a file
-void RegistrationSystem::initializeDataIntoIndividualFile(sf::String name, sf::String password, bool& userMenuEventClick, bool& loginAndRegisterEventClick, int& status)
+void RegistrationSystem::initializeDataIntoIndividualFile(sf::String name, sf::String password, 
+	bool& userMenuEventClick, bool& loginAndRegisterEventClick, int& status)
 {
 	// Hashing the password
 	if (!password.isEmpty())
