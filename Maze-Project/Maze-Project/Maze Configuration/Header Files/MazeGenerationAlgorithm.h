@@ -42,9 +42,9 @@ public:
 
 	char consoleGrid[16][16];
 
-	int chooseSize();
+	int chooseSize(int level);
 
-	int movePixelSize();
+	int movePixelSize(int level);
 
 	void initializeCell();
 

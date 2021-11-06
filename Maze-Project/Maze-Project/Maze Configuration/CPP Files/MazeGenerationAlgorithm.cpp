@@ -1,7 +1,7 @@
 #include "../Header Files/MazeGenerationAlgorithm.h"
 
 // Set difficulty function
-int MazeGenerationAlgorithm::chooseSize()
+int MazeGenerationAlgorithm::chooseSize(int level)
 {
 	if (level == 2)
 	{
@@ -16,7 +16,7 @@ int MazeGenerationAlgorithm::chooseSize()
 }
 
 // Set maze pixels
-int MazeGenerationAlgorithm::movePixelSize()
+int MazeGenerationAlgorithm::movePixelSize(int level)
 {
 	if (level == 2)
 	{
@@ -32,7 +32,7 @@ int MazeGenerationAlgorithm::movePixelSize()
 
 void MazeGenerationAlgorithm::initializeCell()
 {
-	const unsigned int size = HARD_SIZE - chooseSize();
+	const unsigned int size = HARD_SIZE - chooseSize(this->level);
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -61,7 +61,7 @@ void MazeGenerationAlgorithm::initializeCell()
 
 void MazeGenerationAlgorithm::initializeArray()
 {
-	const int size = HARD_SIZE - chooseSize();
+	const int size = HARD_SIZE - chooseSize(this->level);
 	int positionX = 0, positionY = 0;
 	int finalPointX = 0, finalPointY = 0;
 
@@ -88,7 +88,7 @@ void MazeGenerationAlgorithm::initializeArray()
 void MazeGenerationAlgorithm::generateMaze()
 {
 	// Setting the size for the maze
-	const int size = HARD_SIZE - chooseSize();
+	const int size = HARD_SIZE - chooseSize(this->level);
 
 	int randomNumber;
 	int randomXCordinate = ((2 * rand()) + 1) % (size - 1);
@@ -224,7 +224,7 @@ void MazeGenerationAlgorithm::generateMaze()
 
 void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 {
-	const int size = HARD_SIZE - chooseSize();
+	const int size = HARD_SIZE - chooseSize(this->level);
 
 	sf::Sprite Wall(t1);
 	sf::Sprite Current(t2);
@@ -255,9 +255,9 @@ void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 				Goal.setPosition(cordinateX, cordinateY);
 				window.draw(Goal);
 			}
-			cordinateY += movePixelSize();
+			cordinateY += movePixelSize(this->level);
 		}
-		cordinateX += movePixelSize();
+		cordinateX += movePixelSize(this->level);
 	}
 }
 
