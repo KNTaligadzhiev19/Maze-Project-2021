@@ -42,8 +42,10 @@ public:
 
 	char consoleGrid[16][16];
 
+	//Choosing Level
 	int chooseSize(int level);
 
+	//Setting the images pixels for the level
 	int movePixelSize(int level);
 
 	void initializeCell();

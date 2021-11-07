@@ -219,7 +219,7 @@ void MazeGenerationAlgorithm::generateMaze()
 			}
 			else {
 				//Returning to the previous page
-				//reload();
+				reload();
 				break;
 			}
 		}

@@ -7,6 +7,7 @@
 #include "../../Maze Configuration/Header Files/EasyLevelMaze.h"
 #include "../../Maze Configuration/Header Files/MediumLevelMaze.h"
 #include "../../Maze Configuration/Header Files/HardLevelMaze.h"
+#include <iostream>
 
 //Storing the check values which are used for controlling the temp of the program
 namespace checkValues 
@@ -449,7 +450,7 @@ void printRulesTable(sf::RenderWindow& window)
 
 	sf::Sprite Rules(t1);
 
-	Rules.setPosition(200, 160);
+	Rules.setPosition(170, 120);
 	window.draw(Rules);
 }
 
@@ -464,8 +465,8 @@ void onClickRulesTable(sf::RenderWindow& window, sf::Event& event1)
 
 		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
 		{
-			if ((sf::Mouse::getPosition(window).x >= 212 && sf::Mouse::getPosition(window).x <= 611) 
-				&& (sf::Mouse::getPosition(window).y >= 486 && sf::Mouse::getPosition(window).y <= 547))
+			if ((sf::Mouse::getPosition(window).x >= 175 && sf::Mouse::getPosition(window).x <= 642) 
+				&& (sf::Mouse::getPosition(window).y >= 496 && sf::Mouse::getPosition(window).y <= 570))
 			{
 				checkValues::userMenuEventClick = false;
 				checkValues::loginAndRegisterEventClick = false;
@@ -531,7 +532,7 @@ void playMusic(sf::Music &music)
 {
 	music.openFromFile("Images, Fonts and Music/Backgroundsound.ogg");
 	music.setLoop(true);
-	music.setVolume(8);
+	music.setVolume(5);
 	music.play();
 }
 

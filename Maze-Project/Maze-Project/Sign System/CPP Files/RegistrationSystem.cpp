@@ -16,7 +16,7 @@ bool RegistrationSystem::checkIfUsernameOrPasswordAreEmpty(sf::String name, sf::
 	std::string name1 = name.toAnsiString();
 	std::string password1 = password.toAnsiString();
 
-	if (name1.empty() || password1.empty())
+	if ((name1.empty() || password1.empty()) || (name1.size()<=5 ||password1.size()<=5))
 		return false;
 
 	return true;
