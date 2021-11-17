@@ -1,7 +1,7 @@
 #pragma once
 #include "../../Interface/Header Files/FrontEnd.h"
 
-#define HARD_SIZE 16
+#define HARD_SIZE 20
 
 class MazeGenerationAlgorithm
 {
@@ -38,9 +38,9 @@ protected:
 
 public:
 
-	Cell currentCell[16][16];
+	Cell currentCell[20][20];
 
-	char consoleGrid[16][16];
+	char consoleGrid[20][20];
 
 	//Choosing Level
 	int chooseSize(int level);

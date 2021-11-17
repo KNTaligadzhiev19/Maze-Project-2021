@@ -5,11 +5,11 @@ int MazeGenerationAlgorithm::chooseSize(int level)
 {
 	if (level == 2)
 	{
-		return 8;
+		return 10;
 	}
 	else if (level == 1)
 	{
-		return 6;
+		return 4;
 	}
 
 	return 0;
@@ -20,14 +20,14 @@ int MazeGenerationAlgorithm::movePixelSize(int level)
 {
 	if (level == 2)
 	{
-		return 100;
+		return 80;
 	}
 	else if (level == 1)
 	{
-		return 80;
+		return 50;
 	}
 
-	return 50;
+	return 40;
 }
 
 void MazeGenerationAlgorithm::initializeCell()
