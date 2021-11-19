@@ -1,4 +1,5 @@
 #include "../Header Files/MazeGenerationAlgorithm.h"
+#include <iostream>
 
 // Set difficulty function
 int MazeGenerationAlgorithm::chooseSize(int level)
@@ -80,6 +81,21 @@ void MazeGenerationAlgorithm::initializeArray()
 			else
 			{
 				consoleGrid[i][j] = currentCell[i][j].symb;
+			}
+		}
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (consoleGrid[i][j]==' ')
+			{
+				int currentChance = rand() % this->chance;
+				if (currentChance == 7)
+				{
+					consoleGrid[i][j] = (char)COIN;
+				}
 			}
 		}
 	}
@@ -238,6 +254,8 @@ void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 	sf::Sprite Wall(t1);
 	sf::Sprite Current(t2);
 	sf::Sprite Goal(t3);
+	sf::Sprite Coin1(t4);
+
 	int cordinateX = 0, cordinateY = 0;
 
 	for (int i = 0; i < size; i++)
@@ -264,6 +282,11 @@ void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 				Goal.setPosition(cordinateX, cordinateY);
 				window.draw(Goal);
 			}
+			else if (consoleGrid[i][j] == char(COIN))
+			{
+				Coin1.setPosition(cordinateX, cordinateY);
+				window.draw(Coin1);
+			}
 			cordinateY += movePixelSize(this->level);
 		}
 		cordinateX += movePixelSize(this->level);
@@ -273,6 +296,9 @@ void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& event1, int& check,
 	bool& inGaCurrent, bool& congratsCurrentnu, int& classChoice)
 {
+	safeCoinData();
+
+	statusDataOut.open("Status User Data.txt", std::ios::out | std::ios::trunc);
 
 	while (window.pollEvent(event1))
 	{
@@ -285,6 +311,13 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY + 1]);
 					consoleGrid[positionX][positionY] = ' ';
 					positionY--;
+				}
+				else if (consoleGrid[positionX][positionY + 1] == COIN)
+				{
+					consoleGrid[positionX][positionY + 1] = ' ';
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY + 1]);
+					positionY++;
+					coins++;
 				}
 				else if (consoleGrid[positionX][positionY + 1] == ' ') {
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY + 1]);
@@ -300,6 +333,13 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 					consoleGrid[positionX][positionY] = ' ';
 					positionY++;
 				}
+				else if (consoleGrid[positionX][positionY - 1] == COIN)
+				{
+					consoleGrid[positionX][positionY - 1] = ' ';
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY - 1]);
+					positionY++;
+					coins++;
+				}
 				else if (consoleGrid[positionX][positionY - 1] == ' ') {
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY - 1]);
 					positionY--;
@@ -312,6 +352,13 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX + 1][positionY]);
 					consoleGrid[positionX][positionY] = ' ';
 					positionX--;
+				}
+				else if (consoleGrid[positionX + 1][positionY] == COIN)
+				{
+					consoleGrid[positionX + 1][positionY] = ' ';
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX + 1][positionY]);
+					positionX--;
+					coins++;
 				}
 				else if (consoleGrid[positionX + 1][positionY] == ' ') {
 
@@ -326,6 +373,13 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX - 1][positionY]);
 					consoleGrid[positionX][positionY] = ' ';
 					positionX++;
+				}
+				else if (consoleGrid[positionX - 1][positionY] == COIN)
+				{
+					consoleGrid[positionX - 1][positionY] = ' ';
+					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX - 1][positionY]);
+					positionX++;
+					coins++;
 				}
 				else if (consoleGrid[positionX - 1][positionY] == ' ') {
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX - 1][positionY]);
@@ -346,4 +400,8 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 			classChoice = 0;
 		}
 	}
+
+	statusDataOut << "Coins: " << coins;
+
+	statusDataOut.close();
 }

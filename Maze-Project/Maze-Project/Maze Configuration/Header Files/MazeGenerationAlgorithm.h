@@ -1,9 +1,10 @@
 #pragma once
 #include "../../Interface/Header Files/FrontEnd.h"
+#include "Shop.h"
 
 #define HARD_SIZE 20
 
-class MazeGenerationAlgorithm
+class MazeGenerationAlgorithm : public Shop
 {
 protected:
 	int positionX = 0, positionY = 0, finalPointX = 0, finalPointY = 0;
@@ -16,6 +17,7 @@ protected:
 		GRIDSYMB = 177,
 		BEGINSYMB = char(234),
 		ENDSYMB = char(233),
+		COIN = 42,
 	};
 
 	// Structure for each cell
@@ -34,7 +36,13 @@ protected:
 	//Integer as a counter for setting what difficulty of level player will play
 	int level = 0;
 
-	sf::Texture t1, t2, t3;
+	//Integer for storing the chance for coin
+	int chance = 0;
+
+	//Integer for storing the chance for gem
+	int chance2 = 0;
+
+	sf::Texture t1, t2, t3,t4,t5;
 
 public:
 

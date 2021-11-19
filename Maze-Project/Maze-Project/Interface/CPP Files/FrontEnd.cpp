@@ -25,6 +25,10 @@ namespace checkValues
 	bool inCongratsTable = false;
 	int modeChoice = 0;
 	bool inGame = false;
+	bool inShop = false;
+	bool inPlayerSymb = false;
+	bool inGoalSymb = false;
+	bool inBackground = false;
 
 	sf::String loginEmail;
 	sf::String loginPassword;
@@ -437,6 +441,18 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 				checkValues::checkIn = false;
 				checkValues::inGame = true;
 			}
+			else if ((sf::Mouse::getPosition(window).x >= 734 && sf::Mouse::getPosition(window).x <= 800)
+				&& (sf::Mouse::getPosition(window).y >= 731 && sf::Mouse::getPosition(window).y <= 800)) // Shop
+			{
+				checkValues::status = 10;
+				checkValues::printableRulesTable = false;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+				checkValues::inGame = false;
+				checkValues::inShop = true;
+			}
+
 		}
 	}
 }
@@ -518,6 +534,262 @@ void onClickCongratsMenu(sf::RenderWindow& window, sf::Event& event1)
 
 	}
 }
+
+void printShopMenu(sf::RenderWindow &window)
+{
+	window.clear(sf::Color(0, 128, 128));
+
+	sf::Texture t1, t2, t3, t4, t5;
+
+	t1.loadFromFile("Images, Fonts and Music/EasyLevel.png");
+	t2.loadFromFile("Images, Fonts and Music/MediumLevel.png");
+	t3.loadFromFile("Images, Fonts and Music/HardLevel.png");
+	t4.loadFromFile("Images, Fonts and Music/Logo.png");
+	t5.loadFromFile("Images, Fonts and Music/Back.png");
+
+	sf::Sprite Easy(t1);
+	sf::Sprite Medium(t2);
+	sf::Sprite Hard(t3);
+	sf::Sprite Logo(t4);
+	sf::Sprite GoBack(t5);
+
+	GoBack.setPosition(30, 15);
+	window.draw(GoBack);
+	Logo.setPosition(200, 50);
+	window.draw(Logo);
+	Easy.setPosition(200, 310);
+	window.draw(Easy);
+	Medium.setPosition(205, 435);
+	window.draw(Medium);
+	Hard.setPosition(205, 560);
+	window.draw(Hard);
+}
+
+void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 30 && sf::Mouse::getPosition(window).x <= 90)
+				&& (sf::Mouse::getPosition(window).y >= 14 && sf::Mouse::getPosition(window).y <= 75)) // Back
+			{
+				checkValues::status = 4;
+				checkValues::checkIn = true;
+				checkValues::inShop = false;
+			}
+
+			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585)
+				&& (sf::Mouse::getPosition(window).y >= 318 && sf::Mouse::getPosition(window).y <= 422)) // Easy level maze
+			{
+				checkValues::status = 11;
+				checkValues::printableRulesTable = false;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+				checkValues::inGame = false;
+				checkValues::inShop = false;
+				checkValues::inPlayerSymb = true;
+			}
+
+			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585)
+				&& (sf::Mouse::getPosition(window).y >= 446 && sf::Mouse::getPosition(window).y <= 550)) // Medium level maze
+			{
+				checkValues::status = 12;
+				checkValues::printableRulesTable = false;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+				checkValues::inGame = false;
+				checkValues::inShop = false;
+				checkValues::inGoalSymb = true;
+			}
+
+			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585)
+				&& (sf::Mouse::getPosition(window).y >= 571 && sf::Mouse::getPosition(window).y <= 673)) // Hard level maze
+			{
+				checkValues::status = 13;
+				checkValues::printableRulesTable = false;
+				checkValues::userMenuEventClick = false;
+				checkValues::loginAndRegisterEventClick = false;
+				checkValues::checkIn = false;
+				checkValues::inGame = false;
+				checkValues::inShop = false;
+				checkValues::inBackground = true;
+			}
+
+		}
+	}
+}
+
+void printPlayerSymbolMenu(sf::RenderWindow &window)
+{
+	window.clear(sf::Color(0, 128, 128));
+
+	sf::Texture t1, t2;
+
+	t1.loadFromFile("Images, Fonts and Music/Bee.png");
+	t2.loadFromFile("Images, Fonts and Music/Back.png");
+
+	sf::Sprite symb(t1);
+	sf::Sprite GoBack(t2);
+
+	GoBack.setPosition(30, 15);
+	window.draw(GoBack);
+	symb.setPosition(200, 150);
+	window.draw(symb);
+	symb.setPosition(600, 150);
+	window.draw(symb);
+	symb.setPosition(200, 300);
+	window.draw(symb);
+	symb.setPosition(600, 300);
+	window.draw(symb);
+	symb.setPosition(200, 450);
+	window.draw(symb);
+	symb.setPosition(600, 450);
+	window.draw(symb);
+	symb.setPosition(200, 600);
+	window.draw(symb);
+	symb.setPosition(600, 600);
+	window.draw(symb);
+}
+
+void onClickPlayerSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 32 && sf::Mouse::getPosition(window).x <= 90)
+				&& (sf::Mouse::getPosition(window).y >= 18 && sf::Mouse::getPosition(window).y <= 75)) // Back
+			{
+				checkValues::status = 10;
+				checkValues::inShop = true;
+				checkValues::inPlayerSymb = false;
+			}
+		}
+	}
+}
+
+void printGoalSymbolMenu(sf::RenderWindow& window)
+{
+	window.clear(sf::Color(0, 128, 128));
+
+	sf::Texture t1, t2;
+
+	t1.loadFromFile("Images, Fonts and Music/Bee.png");
+	t2.loadFromFile("Images, Fonts and Music/Back.png");
+
+	sf::Sprite symb(t1);
+	sf::Sprite GoBack(t2);
+
+	GoBack.setPosition(30, 15);
+	window.draw(GoBack);
+	symb.setPosition(200, 150);
+	window.draw(symb);
+	symb.setPosition(600, 150);
+	window.draw(symb);
+	symb.setPosition(200, 300);
+	window.draw(symb);
+	symb.setPosition(600, 300);
+	window.draw(symb);
+	symb.setPosition(200, 450);
+	window.draw(symb);
+	symb.setPosition(600, 450);
+	window.draw(symb);
+	symb.setPosition(200, 600);
+	window.draw(symb);
+	symb.setPosition(600, 600);
+	window.draw(symb);
+}
+
+void onClickGoalSymbolMenu(sf::RenderWindow& window,sf::Event &event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 32 && sf::Mouse::getPosition(window).x <= 90)
+				&& (sf::Mouse::getPosition(window).y >= 18 && sf::Mouse::getPosition(window).y <= 75)) // Back
+			{
+				checkValues::status = 10;
+				checkValues::inShop = true;
+				checkValues::inGoalSymb = false;
+			}
+		}
+	}
+}
+
+
+void printBackgroundMenu(sf::RenderWindow& window)
+{
+	window.clear(sf::Color(0, 128, 128));
+
+	sf::Texture t1, t2;
+
+	t1.loadFromFile("Images, Fonts and Music/Bee.png");
+	t2.loadFromFile("Images, Fonts and Music/Back.png");
+
+	sf::Sprite symb(t1);
+	sf::Sprite GoBack(t2);
+
+	GoBack.setPosition(30, 15);
+	window.draw(GoBack);
+	symb.setPosition(200, 150);
+	window.draw(symb);
+	symb.setPosition(600, 150);
+	window.draw(symb);
+	symb.setPosition(200, 300);
+	window.draw(symb);
+	symb.setPosition(600, 300);
+	window.draw(symb);
+	symb.setPosition(200, 450);
+	window.draw(symb);
+	symb.setPosition(600, 450);
+	window.draw(symb);
+	symb.setPosition(200, 600);
+	window.draw(symb);
+	symb.setPosition(600, 600);
+	window.draw(symb);
+}
+
+void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event &event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 32 && sf::Mouse::getPosition(window).x <= 90)
+				&& (sf::Mouse::getPosition(window).y >= 18 && sf::Mouse::getPosition(window).y <= 75)) // Back
+			{
+				checkValues::status = 10;
+				checkValues::inShop = true;
+				checkValues::inBackground = false;
+			}
+		}
+	}
+}
+
 
 //Reloading the program
 void reload()
@@ -615,6 +887,26 @@ void setDataValue()
 			}
 		}
 
+		if(checkValues::inShop)
+		{
+			onClickShopMenu(window,event1);
+		}
+
+		if (checkValues::inPlayerSymb)
+		{
+			onClickPlayerSymbolMenu(window, event1);
+		}
+
+		if (checkValues::inGoalSymb)
+		{
+			onClickGoalSymbolMenu(window, event1);
+		}
+
+		if (checkValues::inBackground)
+		{
+			onClickBackgroundMenu(window, event1);
+		}
+
 		switch (checkValues::status)
 		{
 		case 1:
@@ -653,6 +945,18 @@ void setDataValue()
 			break;
 		case 9: // After finishing the maze
 			printCongratsMenu(window);
+			break;
+		case 10:
+			printShopMenu(window);
+			break;
+		case 11:
+			printPlayerSymbolMenu(window);
+			break;
+		case 12:
+			printGoalSymbolMenu(window);
+			break;
+		case 13:
+			printBackgroundMenu(window);
 			break;
 		}
 

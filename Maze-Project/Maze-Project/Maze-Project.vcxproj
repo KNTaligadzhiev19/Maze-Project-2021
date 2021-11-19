@@ -119,7 +119,7 @@
       <AdditionalIncludeDirectories>C:\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -147,6 +147,7 @@
     <ClCompile Include="Maze Configuration\CPP Files\HardLevelMaze.cpp" />
     <ClCompile Include="Maze Configuration\CPP Files\MazeGenerationAlgorithm.cpp" />
     <ClCompile Include="Maze Configuration\CPP Files\MediumLevelMaze.cpp" />
+    <ClCompile Include="Maze Configuration\CPP Files\Shop.cpp" />
     <ClCompile Include="Maze-Project.cpp" />
     <ClCompile Include="Sign System\CPP Files\LoginSystem.cpp" />
     <ClCompile Include="Sign System\CPP Files\RegistrationSystem.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Maze Configuration\Header Files\HardLevelMaze.h" />
     <ClInclude Include="Maze Configuration\Header Files\MazeGenerationAlgorithm.h" />
     <ClInclude Include="Maze Configuration\Header Files\MediumLevelMaze.h" />
+    <ClInclude Include="Maze Configuration\Header Files\Shop.h" />
     <ClInclude Include="Sign System\Header Files\LoginSystem.h" />
     <ClInclude Include="Sign System\Header Files\RegistrationSystem.h" />
     <ClInclude Include="Sign System\Header Files\SHA256.h" />

@@ -42,6 +42,9 @@
     <ClCompile Include="Sign System\CPP Files\LoginSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Maze Configuration\CPP Files\Shop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\Header Files\FrontEnd.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sign System\Header Files\RegistrationSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Maze Configuration\Header Files\Shop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
