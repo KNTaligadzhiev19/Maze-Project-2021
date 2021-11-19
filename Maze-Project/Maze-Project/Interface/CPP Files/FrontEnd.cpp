@@ -138,7 +138,7 @@ void printPlayerMenu(sf::RenderWindow& window)
 {
 	window.clear(sf::Color(0, 128, 128));
 
-	sf::Texture t1, t2, t3, t4, t5, t6;
+	sf::Texture t1, t2, t3, t4, t5, t6, t7;
 
 	t1.loadFromFile("Images, Fonts and Music/EasyLevel.png");
 	t2.loadFromFile("Images, Fonts and Music/MediumLevel.png");
@@ -146,6 +146,7 @@ void printPlayerMenu(sf::RenderWindow& window)
 	t4.loadFromFile("Images, Fonts and Music/Logo.png");
 	t5.loadFromFile("Images, Fonts and Music/Back.png");
 	t6.loadFromFile("Images, Fonts and Music/Rules.png");
+	t7.loadFromFile("Images, Fonts and Music/Shop.png");
 
 	sf::Sprite Easy(t1);
 	sf::Sprite Medium(t2);
@@ -153,6 +154,7 @@ void printPlayerMenu(sf::RenderWindow& window)
 	sf::Sprite Logo(t4);
 	sf::Sprite GoBack(t5);
 	sf::Sprite Rules(t6);
+	sf::Sprite Shop(t7);
 
 	GoBack.setPosition(30, 15);
 	window.draw(GoBack);
@@ -166,6 +168,8 @@ void printPlayerMenu(sf::RenderWindow& window)
 	window.draw(Medium);
 	Hard.setPosition(205, 560);
 	window.draw(Hard);
+	Shop.setPosition(705, 710);
+	window.draw(Shop);
 }
 
 void onClickUserMenu(sf::RenderWindow& window, sf::Event& event1)
@@ -441,8 +445,8 @@ void onClickPlayerMenu(sf::RenderWindow& window, sf::Event& event1)
 				checkValues::checkIn = false;
 				checkValues::inGame = true;
 			}
-			else if ((sf::Mouse::getPosition(window).x >= 734 && sf::Mouse::getPosition(window).x <= 800)
-				&& (sf::Mouse::getPosition(window).y >= 731 && sf::Mouse::getPosition(window).y <= 800)) // Shop
+			else if ((sf::Mouse::getPosition(window).x >= 708 && sf::Mouse::getPosition(window).x <= 766)
+				&& (sf::Mouse::getPosition(window).y >= 711 && sf::Mouse::getPosition(window).y <= 770)) // Shop
 			{
 				checkValues::status = 10;
 				checkValues::printableRulesTable = false;
@@ -541,15 +545,15 @@ void printShopMenu(sf::RenderWindow &window)
 
 	sf::Texture t1, t2, t3, t4, t5;
 
-	t1.loadFromFile("Images, Fonts and Music/EasyLevel.png");
-	t2.loadFromFile("Images, Fonts and Music/MediumLevel.png");
-	t3.loadFromFile("Images, Fonts and Music/HardLevel.png");
+	t1.loadFromFile("Images, Fonts and Music/StartFigure.png");
+	t2.loadFromFile("Images, Fonts and Music/EndFigure.png");
+	t3.loadFromFile("Images, Fonts and Music/Background.png");
 	t4.loadFromFile("Images, Fonts and Music/Logo.png");
 	t5.loadFromFile("Images, Fonts and Music/Back.png");
 
-	sf::Sprite Easy(t1);
-	sf::Sprite Medium(t2);
-	sf::Sprite Hard(t3);
+	sf::Sprite StartFigure(t1);
+	sf::Sprite EndFigure(t2);
+	sf::Sprite Background(t3);
 	sf::Sprite Logo(t4);
 	sf::Sprite GoBack(t5);
 
@@ -557,12 +561,12 @@ void printShopMenu(sf::RenderWindow &window)
 	window.draw(GoBack);
 	Logo.setPosition(200, 50);
 	window.draw(Logo);
-	Easy.setPosition(200, 310);
-	window.draw(Easy);
-	Medium.setPosition(205, 435);
-	window.draw(Medium);
-	Hard.setPosition(205, 560);
-	window.draw(Hard);
+	StartFigure.setPosition(210, 315);
+	window.draw(StartFigure);
+	EndFigure.setPosition(210, 440);
+	window.draw(EndFigure);
+	Background.setPosition(210, 565);
+	window.draw(Background);
 }
 
 void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
@@ -584,8 +588,8 @@ void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
 				checkValues::inShop = false;
 			}
 
-			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585)
-				&& (sf::Mouse::getPosition(window).y >= 318 && sf::Mouse::getPosition(window).y <= 422)) // Easy level maze
+			else if ((sf::Mouse::getPosition(window).x >= 221 && sf::Mouse::getPosition(window).x <= 573)
+				&& (sf::Mouse::getPosition(window).y >= 326 && sf::Mouse::getPosition(window).y <= 405)) // Start Figure
 			{
 				checkValues::status = 11;
 				checkValues::printableRulesTable = false;
@@ -597,8 +601,8 @@ void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
 				checkValues::inPlayerSymb = true;
 			}
 
-			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585)
-				&& (sf::Mouse::getPosition(window).y >= 446 && sf::Mouse::getPosition(window).y <= 550)) // Medium level maze
+			else if ((sf::Mouse::getPosition(window).x >= 221 && sf::Mouse::getPosition(window).x <= 573)
+				&& (sf::Mouse::getPosition(window).y >= 449 && sf::Mouse::getPosition(window).y <= 528)) // End Figure
 			{
 				checkValues::status = 12;
 				checkValues::printableRulesTable = false;
@@ -610,8 +614,8 @@ void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
 				checkValues::inGoalSymb = true;
 			}
 
-			else if ((sf::Mouse::getPosition(window).x >= 210 && sf::Mouse::getPosition(window).x <= 585)
-				&& (sf::Mouse::getPosition(window).y >= 571 && sf::Mouse::getPosition(window).y <= 673)) // Hard level maze
+			else if ((sf::Mouse::getPosition(window).x >= 221 && sf::Mouse::getPosition(window).x <= 573)
+				&& (sf::Mouse::getPosition(window).y >= 575 && sf::Mouse::getPosition(window).y <= 658)) // Background
 			{
 				checkValues::status = 13;
 				checkValues::printableRulesTable = false;
