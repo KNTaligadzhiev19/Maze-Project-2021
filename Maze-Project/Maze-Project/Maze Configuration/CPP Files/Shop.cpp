@@ -72,7 +72,7 @@ void Shop::levelSetter()
 	background.level = this->level;
 }
 
-void Shop::Symbols::chooseSymb()
+void Shop::Symbols::setSymb()
 {
 	switch (this->level)
 	{
@@ -174,7 +174,7 @@ void Shop::Symbols::chooseSymb()
 	}
 }
 
-void Shop::Background::chooseBackground()
+void Shop::Background::setBackground()
 {
 	switch (this->level)
 	{

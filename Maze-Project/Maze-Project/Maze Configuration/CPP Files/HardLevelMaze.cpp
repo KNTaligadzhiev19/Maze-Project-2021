@@ -15,8 +15,8 @@ HardLevelMaze::HardLevelMaze()
 	levelSetter();
 
 	// Setting the default pictures to print
-	symbol.chooseSymb();
-	background.chooseBackground();
+	symbol.setSymb();
+	background.setBackground();
 
 	initializeCell();
 

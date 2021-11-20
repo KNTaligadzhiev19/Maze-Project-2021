@@ -31,7 +31,7 @@ public:
 
 		void safeSymbolStatusData();
 
-		void chooseSymb();
+		void setSymb();
 	};
 
 	void levelSetter();
@@ -49,7 +49,7 @@ public:
 
 		void safeBackgroundStatusData();
 
-		void chooseBackground();
+		void setBackground();
 	};
 
 	Background background;
