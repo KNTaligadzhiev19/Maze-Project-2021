@@ -1,0 +1,7 @@
+COLORS
+theme0 - 31aae7 (rgb: 49, 170, 231)
+theme1 - d1d0cf  (rgb: 209, 208, 207)
+theme2 - d4bfb7  (rgb: 212, 191, 183)
+theme3 - aa8b6d  (rgb: 170, 139, 109)
+theme4 - cac3be  (rgb: 202, 195, 190)
+theme5 - 48433d  (rgb: 72, 67, 61)
