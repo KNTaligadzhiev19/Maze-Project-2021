@@ -7,16 +7,11 @@
 class Shop
 {
 protected:
+
 	std::ifstream statusDataIn;
 	std::ofstream statusDataOut;
 
 	int coins=0;
-	
-	int symbolStatus=1;
-
-	int backgroundStatus=1;
-
-	sf::Texture t1, t2, t3, t4;
 
 	//Integer as a counter for setting what difficulty of level player will play
 	int level = 0;
@@ -25,20 +20,38 @@ public:
 
 	void safeCoinData();
 
-	void safeSymbolStatusData();
+	class Symbols 
+	{
+		public:
+		std::ifstream statusDataIn;
+		std::ofstream statusDataOut;
+		sf::Texture  t2, t3,t4;
+		int symbolStatus = 1;
+		int level = 0;
 
-	void safeBackgroundStatusData();
+		void safeSymbolStatusData();
 
-	void chooseSymb();
-
-	//void chooseBackground();
-
-	class Symbols {
-
+		void chooseSymb();
 	};
 
-	class Background {
+	void levelSetter();
 
+	Symbols symbol;
+
+	class Background 
+	{
+		public:
+		int backgroundStatus = 1;
+		std::ifstream statusDataIn;
+		std::ofstream statusDataOut;
+		sf::Texture t1;
+		int level = 0;
+
+		void safeBackgroundStatusData();
+
+		void chooseBackground();
 	};
+
+	Background background;
 };
 

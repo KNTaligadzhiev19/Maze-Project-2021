@@ -251,10 +251,10 @@ void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 {
 	const int size = HARD_SIZE - chooseSize(this->level);
 
-	sf::Sprite Wall(t1);
-	sf::Sprite Current(t2);
-	sf::Sprite Goal(t3);
-	sf::Sprite Coin1(t4);
+	sf::Sprite Wall(background.t1);
+	sf::Sprite Current(symbol.t2);
+	sf::Sprite Goal(symbol.t3);
+	sf::Sprite Coin1(symbol.t4);
 
 	int cordinateX = 0, cordinateY = 0;
 
@@ -402,8 +402,8 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 	}
 
 	statusDataOut << "Coins: " << coins << std::endl;
-	statusDataOut << "Symbol: " << symbolStatus << std::endl;
-	statusDataOut << "Background: " << backgroundStatus << std::endl;
+	statusDataOut << "Symbol: " << symbol.symbolStatus << std::endl;
+	statusDataOut << "Background: " << background.backgroundStatus << std::endl;
 
 	statusDataOut.close();
 }

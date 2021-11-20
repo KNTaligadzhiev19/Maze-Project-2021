@@ -9,11 +9,14 @@ MediumLevelMaze::MediumLevelMaze()
 	chance = 40;
 
 	//Save status for symbol and background
-	safeSymbolStatusData();
-	safeBackgroundStatusData();
+	symbol.safeSymbolStatusData();
+	background.safeBackgroundStatusData();
+
+	levelSetter();
 
 	// Setting the default pictures to print
-	chooseSymb();
+	symbol.chooseSymb();
+	background.chooseBackground();
 
 	initializeCell();
 
