@@ -33,16 +33,11 @@ protected:
 		char symb;
 	};
 
-	//Integer as a counter for setting what difficulty of level player will play
-	int level = 0;
-
 	//Integer for storing the chance for coin
 	int chance = 0;
 
 	//Integer for storing the chance for gem
 	int chance2 = 0;
-
-	sf::Texture t1, t2, t3,t4,t5;
 
 public:
 

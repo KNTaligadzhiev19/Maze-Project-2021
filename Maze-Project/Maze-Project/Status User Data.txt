@@ -1,1 +1,3 @@
-Coins: 18
+Coins: 26
+Symbol: 3
+Background: 0

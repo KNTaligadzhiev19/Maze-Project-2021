@@ -401,7 +401,9 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 		}
 	}
 
-	statusDataOut << "Coins: " << coins;
+	statusDataOut << "Coins: " << coins << std::endl;
+	statusDataOut << "Symbol: " << symbolStatus << std::endl;
+	statusDataOut << "Background: " << backgroundStatus << std::endl;
 
 	statusDataOut.close();
 }

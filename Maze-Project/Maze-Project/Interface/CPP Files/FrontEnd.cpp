@@ -26,8 +26,7 @@ namespace checkValues
 	int modeChoice = 0;
 	bool inGame = false;
 	bool inShop = false;
-	bool inPlayerSymb = false;
-	bool inGoalSymb = false;
+	bool inSymb = false;
 	bool inBackground = false;
 
 	sf::String loginEmail;
@@ -543,16 +542,14 @@ void printShopMenu(sf::RenderWindow &window)
 {
 	window.clear(sf::Color(0, 128, 128));
 
-	sf::Texture t1, t2, t3, t4, t5;
+	sf::Texture t1, t3, t4, t5;
 
-	t1.loadFromFile("Images, Fonts and Music/StartFigure.png");
-	t2.loadFromFile("Images, Fonts and Music/EndFigure.png");
+	t1.loadFromFile("Images, Fonts and Music/Symbols.png");
 	t3.loadFromFile("Images, Fonts and Music/Background.png");
 	t4.loadFromFile("Images, Fonts and Music/Logo.png");
 	t5.loadFromFile("Images, Fonts and Music/Back.png");
 
-	sf::Sprite StartFigure(t1);
-	sf::Sprite EndFigure(t2);
+	sf::Sprite Symbols(t1);
 	sf::Sprite Background(t3);
 	sf::Sprite Logo(t4);
 	sf::Sprite GoBack(t5);
@@ -561,11 +558,9 @@ void printShopMenu(sf::RenderWindow &window)
 	window.draw(GoBack);
 	Logo.setPosition(200, 50);
 	window.draw(Logo);
-	StartFigure.setPosition(210, 315);
-	window.draw(StartFigure);
-	EndFigure.setPosition(210, 440);
-	window.draw(EndFigure);
-	Background.setPosition(210, 565);
+	Symbols.setPosition(210, 350);
+	window.draw(Symbols);
+	Background.setPosition(207, 500);
 	window.draw(Background);
 }
 
@@ -588,8 +583,8 @@ void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
 				checkValues::inShop = false;
 			}
 
-			else if ((sf::Mouse::getPosition(window).x >= 221 && sf::Mouse::getPosition(window).x <= 573)
-				&& (sf::Mouse::getPosition(window).y >= 326 && sf::Mouse::getPosition(window).y <= 405)) // Start Figure
+			else if ((sf::Mouse::getPosition(window).x >= 215 && sf::Mouse::getPosition(window).x <= 594)
+				&& (sf::Mouse::getPosition(window).y >= 335 && sf::Mouse::getPosition(window).y <= 442)) // Symbols
 			{
 				checkValues::status = 11;
 				checkValues::printableRulesTable = false;
@@ -598,26 +593,12 @@ void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
 				checkValues::checkIn = false;
 				checkValues::inGame = false;
 				checkValues::inShop = false;
-				checkValues::inPlayerSymb = true;
+				checkValues::inSymb = true;
 			}
-
-			else if ((sf::Mouse::getPosition(window).x >= 221 && sf::Mouse::getPosition(window).x <= 573)
-				&& (sf::Mouse::getPosition(window).y >= 449 && sf::Mouse::getPosition(window).y <= 528)) // End Figure
+			else if ((sf::Mouse::getPosition(window).x >= 213 && sf::Mouse::getPosition(window).x <= 597)
+				&& (sf::Mouse::getPosition(window).y >= 510 && sf::Mouse::getPosition(window).y <= 601)) // Background
 			{
 				checkValues::status = 12;
-				checkValues::printableRulesTable = false;
-				checkValues::userMenuEventClick = false;
-				checkValues::loginAndRegisterEventClick = false;
-				checkValues::checkIn = false;
-				checkValues::inGame = false;
-				checkValues::inShop = false;
-				checkValues::inGoalSymb = true;
-			}
-
-			else if ((sf::Mouse::getPosition(window).x >= 221 && sf::Mouse::getPosition(window).x <= 573)
-				&& (sf::Mouse::getPosition(window).y >= 575 && sf::Mouse::getPosition(window).y <= 658)) // Background
-			{
-				checkValues::status = 13;
 				checkValues::printableRulesTable = false;
 				checkValues::userMenuEventClick = false;
 				checkValues::loginAndRegisterEventClick = false;
@@ -631,39 +612,46 @@ void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
 	}
 }
 
-void printPlayerSymbolMenu(sf::RenderWindow &window)
+void printSymbolMenu(sf::RenderWindow &window)
 {
 	window.clear(sf::Color(0, 128, 128));
 
-	sf::Texture t1, t2;
+	sf::Texture t1, t2,t3,t4;
 
 	t1.loadFromFile("Images, Fonts and Music/Bee.png");
 	t2.loadFromFile("Images, Fonts and Music/Back.png");
+	t3.loadFromFile("Images, Fonts and Music/Select.png");
+	t4.loadFromFile("Images, Fonts and Music/Selected.png");
 
-	sf::Sprite symb(t1);
+	sf::Sprite Symbol(t1);
 	sf::Sprite GoBack(t2);
+	sf::Sprite Select(t3);
+	sf::Sprite Selected(t4);
 
 	GoBack.setPosition(30, 15);
 	window.draw(GoBack);
-	symb.setPosition(200, 150);
-	window.draw(symb);
-	symb.setPosition(600, 150);
-	window.draw(symb);
-	symb.setPosition(200, 300);
-	window.draw(symb);
-	symb.setPosition(600, 300);
-	window.draw(symb);
-	symb.setPosition(200, 450);
-	window.draw(symb);
-	symb.setPosition(600, 450);
-	window.draw(symb);
-	symb.setPosition(200, 600);
-	window.draw(symb);
-	symb.setPosition(600, 600);
-	window.draw(symb);
+	Symbol.setPosition(200, 150);
+	window.draw(Symbol);
+	Select.setPosition(200, 200);
+	window.draw(Select);
+
+	//Symbol.setPosition(600, 150);
+	//window.draw(Symbol);
+	//Symbol.setPosition(200, 300);
+	//window.draw(Symbol);
+	//Symbol.setPosition(600, 300);
+	//window.draw(Symbol);
+	//Symbol.setPosition(200, 450);
+	//window.draw(Symbol);
+	//Symbol.setPosition(600, 450);
+	//window.draw(Symbol);
+	//Symbol.setPosition(200, 600);
+	//window.draw(Symbol);
+	//Symbol.setPosition(600, 600);
+	//window.draw(Symbol);
 }
 
-void onClickPlayerSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
+void onClickSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
 {
 	while (window.pollEvent(event1))
 	{
@@ -679,66 +667,11 @@ void onClickPlayerSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
 			{
 				checkValues::status = 10;
 				checkValues::inShop = true;
-				checkValues::inPlayerSymb = false;
+				checkValues::inSymb = false;
 			}
 		}
 	}
 }
-
-void printGoalSymbolMenu(sf::RenderWindow& window)
-{
-	window.clear(sf::Color(0, 128, 128));
-
-	sf::Texture t1, t2;
-
-	t1.loadFromFile("Images, Fonts and Music/Bee.png");
-	t2.loadFromFile("Images, Fonts and Music/Back.png");
-
-	sf::Sprite symb(t1);
-	sf::Sprite GoBack(t2);
-
-	GoBack.setPosition(30, 15);
-	window.draw(GoBack);
-	symb.setPosition(200, 150);
-	window.draw(symb);
-	symb.setPosition(600, 150);
-	window.draw(symb);
-	symb.setPosition(200, 300);
-	window.draw(symb);
-	symb.setPosition(600, 300);
-	window.draw(symb);
-	symb.setPosition(200, 450);
-	window.draw(symb);
-	symb.setPosition(600, 450);
-	window.draw(symb);
-	symb.setPosition(200, 600);
-	window.draw(symb);
-	symb.setPosition(600, 600);
-	window.draw(symb);
-}
-
-void onClickGoalSymbolMenu(sf::RenderWindow& window,sf::Event &event1)
-{
-	while (window.pollEvent(event1))
-	{
-		if (event1.type == sf::Event::Closed)
-		{
-			window.close();
-		}
-
-		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
-		{
-			if ((sf::Mouse::getPosition(window).x >= 32 && sf::Mouse::getPosition(window).x <= 90)
-				&& (sf::Mouse::getPosition(window).y >= 18 && sf::Mouse::getPosition(window).y <= 75)) // Back
-			{
-				checkValues::status = 10;
-				checkValues::inShop = true;
-				checkValues::inGoalSymb = false;
-			}
-		}
-	}
-}
-
 
 void printBackgroundMenu(sf::RenderWindow& window)
 {
@@ -896,16 +829,10 @@ void setDataValue()
 			onClickShopMenu(window,event1);
 		}
 
-		if (checkValues::inPlayerSymb)
+		if (checkValues::inSymb)
 		{
-			onClickPlayerSymbolMenu(window, event1);
+			onClickSymbolMenu(window, event1);
 		}
-
-		if (checkValues::inGoalSymb)
-		{
-			onClickGoalSymbolMenu(window, event1);
-		}
-
 		if (checkValues::inBackground)
 		{
 			onClickBackgroundMenu(window, event1);
@@ -954,12 +881,9 @@ void setDataValue()
 			printShopMenu(window);
 			break;
 		case 11:
-			printPlayerSymbolMenu(window);
+			printSymbolMenu(window);
 			break;
 		case 12:
-			printGoalSymbolMenu(window);
-			break;
-		case 13:
 			printBackgroundMenu(window);
 			break;
 		}
