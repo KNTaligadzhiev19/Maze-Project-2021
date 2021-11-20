@@ -28,9 +28,11 @@ namespace checkValues
 	bool inShop = false;
 	bool inSymb = false;
 	bool inBackground = false;
+	bool savedFigures[8];
 
 	sf::String loginEmail;
 	sf::String loginPassword;
+	sf::String loginEmailSafe;
 
 	sf::String registerEmail;
 	sf::String registerPassword;
@@ -243,6 +245,7 @@ void onClickLoginAndRegister(sf::RenderWindow& window, sf::Event& event1)
 					if (login->checkLoginData())
 					{
 						delete login;
+						checkValues::loginEmailSafe = checkValues::loginEmail;
 						checkValues::loginEmail = "";
 						checkValues::loginPassword = "";
 						checkValues::registerEmail = "";
@@ -621,19 +624,54 @@ void printSymbolMenu(sf::RenderWindow &window)
 	t1.loadFromFile("Images, Fonts and Music/Bee.png");
 	t2.loadFromFile("Images, Fonts and Music/Back.png");
 	t3.loadFromFile("Images, Fonts and Music/Select.png");
-	t4.loadFromFile("Images, Fonts and Music/Selected.png");
+	t4.loadFromFile("Images, Fonts and Music/Buy.png");
 
 	sf::Sprite Symbol(t1);
 	sf::Sprite GoBack(t2);
 	sf::Sprite Select(t3);
-	sf::Sprite Selected(t4);
+	sf::Sprite Buy(t4);
+
+	std::string text,text1;
+	std::ifstream dataIn;
+	int counter = 0;
+	dataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+	while (getline(dataIn, text))
+	{
+		if (text.find(checkValues::loginEmailSafe) != std::string::npos)
+		{
+			while (getline(dataIn, text1))
+			{
+				if (text1 != "Buy" || text1 != "Bought")
+				{
+					break;
+				}
+				if (text1 == "Buy")
+				{
+					checkValues::savedFigures[counter] = false;
+				}
+				else if (text1 == "Bought")
+				{
+					checkValues::savedFigures[counter] = true;
+				}
+				counter++;
+			}
+		}
+	}
 
 	GoBack.setPosition(30, 15);
 	window.draw(GoBack);
 	Symbol.setPosition(200, 150);
 	window.draw(Symbol);
-	Select.setPosition(200, 200);
-	window.draw(Select);
+	if (checkValues::savedFigures[0])
+	{
+		Select.setPosition(200, 200);
+		window.draw(Select);
+	}
+	else {
+		Buy.setPosition(200, 200);
+		window.draw(Buy);
+	}
+	
 
 	//Symbol.setPosition(600, 150);
 	//window.draw(Symbol);
@@ -649,6 +687,8 @@ void printSymbolMenu(sf::RenderWindow &window)
 	//window.draw(Symbol);
 	//Symbol.setPosition(600, 600);
 	//window.draw(Symbol);
+
+	dataIn.close();
 }
 
 void onClickSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
