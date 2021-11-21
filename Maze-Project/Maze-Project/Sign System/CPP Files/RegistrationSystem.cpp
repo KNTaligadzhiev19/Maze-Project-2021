@@ -55,6 +55,11 @@ void RegistrationSystem::initializeDataIntoIndividualFile(sf::String name, sf::S
 	{
 		figures << "Buy" << std::endl;
 	}
+	figures << "Bought" << std::endl;
+	for (int i = 1; i <= 5; i++)
+	{
+		figures << "Buy" << std::endl;
+	}
 
 	figures.close();
 	userDataOut.close();

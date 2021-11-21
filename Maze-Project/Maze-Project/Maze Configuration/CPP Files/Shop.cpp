@@ -64,7 +64,7 @@ void Shop::Symbols::safeSymbolStatusData()
 
 void Shop::Background::safeBackgroundStatusData()
 {
-	statusDataIn.open("Status User Data.txt", std::ios::in | std::ios::app);
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
 
 	sf::String email = returnSafeEmail();
 
@@ -247,6 +247,8 @@ void Shop::Symbols::setSymb()
 
 void Shop::Background::setBackground()
 {
+	sf::RenderWindow window;
+
 	switch (this->level)
 	{
 		//Easy Level
@@ -254,23 +256,22 @@ void Shop::Background::setBackground()
 		switch (this->backgroundStatus)
 		{
 		case 1:
-			t1.loadFromFile("Images, Fonts and Music/WallEasy.png");
+			t1.loadFromFile("Images, Fonts and Music/wall0Easy.png");
 			break;
 		case 2:
-			t1.loadFromFile("Images, Fonts and Music/WallEasy.png");
+			t1.loadFromFile("Images, Fonts and Music/wall3Easy.png");
 			break;
 		case 3:
-			t1.loadFromFile("Images, Fonts and Music/WallEasy.png");
+			t1.loadFromFile("Images, Fonts and Music/wall1Easy.png");
 			break;
 		case 4:
+			t1.loadFromFile("Images, Fonts and Music/wall4Easy.png");
 			break;
 		case 5:
+			t1.loadFromFile("Images, Fonts and Music/wall2Easy.png");
 			break;
 		case 6:
-			break;
-		case 7:
-			break;
-		case 8:
+			t1.loadFromFile("Images, Fonts and Music/wall5Easy.png");
 			break;
 		}
 		break;
@@ -280,23 +281,22 @@ void Shop::Background::setBackground()
 		switch (this->backgroundStatus)
 		{
 		case 1:
-			t1.loadFromFile("Images, Fonts and Music/WallHard.png");
+			t1.loadFromFile("Images, Fonts and Music/wall0Hard.png");
 			break;
 		case 2:
-			t1.loadFromFile("Images, Fonts and Music/WallHard.png");
+			t1.loadFromFile("Images, Fonts and Music/wall3Hard.png");
 			break;
 		case 3:
-			t1.loadFromFile("Images, Fonts and Music/WallHard.png");
+			t1.loadFromFile("Images, Fonts and Music/wall1Hard.png");
 			break;
 		case 4:
+			t1.loadFromFile("Images, Fonts and Music/wall4Hard.png");
 			break;
 		case 5:
+			t1.loadFromFile("Images, Fonts and Music/wall2Hard.png");
 			break;
 		case 6:
-			break;
-		case 7:
-			break;
-		case 8:
+			t1.loadFromFile("Images, Fonts and Music/wall5Hard.png");
 			break;
 		}
 		break;
@@ -306,25 +306,49 @@ void Shop::Background::setBackground()
 		switch (this->backgroundStatus)
 		{
 		case 1:
-			t1.loadFromFile("Images, Fonts and Music/WallMedium.png");
+			t1.loadFromFile("Images, Fonts and Music/wall0Medium.png");
 			break;
 		case 2:
-			t1.loadFromFile("Images, Fonts and Music/WallMedium.png");
+			t1.loadFromFile("Images, Fonts and Music/wall3Medium.png");
 			break;
 		case 3:
-			t1.loadFromFile("Images, Fonts and Music/WallMedium.png");
+			t1.loadFromFile("Images, Fonts and Music/wall1Medium.png");
 			break;
 		case 4:
+			t1.loadFromFile("Images, Fonts and Music/wall4Medium.png");
 			break;
 		case 5:
+			t1.loadFromFile("Images, Fonts and Music/wall2Medium.png");
 			break;
 		case 6:
-			break;
-		case 7:
-			break;
-		case 8:
+			t1.loadFromFile("Images, Fonts and Music/wall5Medium.png");
 			break;
 		}
+		break;
+	}
+}
+
+void Shop::Background::setColor(sf::RenderWindow& window)
+{
+	switch (this->backgroundStatus)
+	{
+	case 1:
+		window.clear(sf::Color(49, 170, 231));
+		break;
+	case 2:
+		window.clear(sf::Color(170, 139, 109));
+		break;
+	case 3:
+		window.clear(sf::Color(202, 195, 190));
+		break;
+	case 4:
+		window.clear(sf::Color(202, 195, 190));
+		break;
+	case 5:
+		window.clear(sf::Color(212, 191, 183));
+		break;
+	case 6:
+		window.clear(sf::Color(72, 67, 61));
 		break;
 	}
 }

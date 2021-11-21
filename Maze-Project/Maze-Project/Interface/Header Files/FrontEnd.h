@@ -55,7 +55,7 @@ void printBackgroundMenu(sf::RenderWindow& window);
 
 void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event& event1);
 
-int getBackgroundStatus();
+void getBackgroundStatus();
 
 //Reloading the player menu
 void reload();

@@ -10,6 +10,7 @@ EasyLevelMaze::EasyLevelMaze()
 
 	//Save what pawn the player will play with
 	getSymbolStatus();
+	getBackgroundStatus();
 
 	//Save status for symbol and background
 	symbol.safeSymbolStatusData();

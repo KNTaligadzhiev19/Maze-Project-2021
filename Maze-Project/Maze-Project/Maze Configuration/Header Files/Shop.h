@@ -50,6 +50,8 @@ public:
 		void safeBackgroundStatusData();
 
 		void setBackground();
+
+		void setColor(sf::RenderWindow& window);
 	};
 
 	Background background;

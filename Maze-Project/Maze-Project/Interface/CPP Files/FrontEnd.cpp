@@ -29,9 +29,10 @@ namespace checkValues
 	bool inSymb = false;
 	bool inBackground = false;
 	bool savedFigures[8] = { true,false,false,false,false,false,false,false };
+	bool savedFigures1[6] = { true,false,false,false,false,false };
 	int coins;
 	int symbolStatus=1;
-	int backgroundStatus;
+	int backgroundStatus=1;
 
 	sf::String loginEmail;
 	sf::String loginPassword;
@@ -1034,6 +1035,38 @@ void printBackgroundMenu(sf::RenderWindow& window)
 
 	sf::Sprite arr[6] = { theme0,theme1,theme2,theme3,theme4,theme5 };
 
+	std::string text, text1;
+	std::ifstream dataIn;
+	std::vector<std::string> v1;
+	int counter = 0;
+	dataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
+	while (getline(dataIn, text))
+	{
+		v1.push_back(text);
+	}
+
+	for (size_t i = 0; i < v1.size(); i++)
+	{
+		if (v1.at(i) == checkValues::loginEmailSafe)
+		{
+			i += 12;
+			for (size_t j = i; j < i + 6; j++)
+			{
+				if (v1.at(j) == "Buy")
+				{
+					checkValues::savedFigures1[counter] = false;
+					counter++;
+				}
+				else if (v1.at(j) == "Bought")
+				{
+					checkValues::savedFigures1[counter] = true;
+					counter++;
+				}
+			}
+		}
+	}
+
 	GoBack.setPosition(30, 15);
 	window.draw(GoBack);
 	window.draw(textCoin);
@@ -1059,7 +1092,7 @@ void printBackgroundMenu(sf::RenderWindow& window)
 		}
 		arr[i].setPosition(cordinateX2, cordinateY2);
 		window.draw(arr[i]);
-		if (checkValues::savedFigures[i])
+		if (checkValues::savedFigures1[i])
 		{
 			Select.setPosition(cordinateX1, cordinateY1);
 			window.draw(Select);
@@ -1080,7 +1113,10 @@ void printBackgroundMenu(sf::RenderWindow& window)
 		}
 	}
 	
+	dataIn.close();
 }
+
+
 
 void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event &event1)
 {
@@ -1103,35 +1139,125 @@ void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event &event1)
 			else if ((sf::Mouse::getPosition(window).x >= 140 && sf::Mouse::getPosition(window).x <= 279)
 				&& (sf::Mouse::getPosition(window).y >= 220 && sf::Mouse::getPosition(window).y <= 265))//Theme 1
 			{
-
+				if (checkValues::savedFigures1[0])
+				{
+					checkValues::backgroundStatus = 1;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
 				&& (sf::Mouse::getPosition(window).y >= 220 && sf::Mouse::getPosition(window).y <= 265))//Theme 2
 			{
-
+				if (checkValues::savedFigures1[1])
+				{
+					checkValues::backgroundStatus = 2;
+				}
+				else {
+					if (checkValues::coins >= 120)
+					{
+						checkValues::coins -= 120;
+						rewriteFileAfterBuying(13);
+					}
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 140 && sf::Mouse::getPosition(window).x <= 279)
 				&& (sf::Mouse::getPosition(window).y >= 440 && sf::Mouse::getPosition(window).y <= 486))//Theme 3
 			{
-
+				if (checkValues::savedFigures1[2])
+				{
+					checkValues::backgroundStatus = 3;
+				}
+				else {
+					if (checkValues::coins >= 150)
+					{
+						checkValues::coins -= 150;
+						rewriteFileAfterBuying(14);
+					}
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
 				&& (sf::Mouse::getPosition(window).y >= 440 && sf::Mouse::getPosition(window).y <= 486))//Theme 4
 			{
-
+				if (checkValues::savedFigures1[3])
+				{
+					checkValues::backgroundStatus = 4;
+				}
+				else {
+					if (checkValues::coins >= 150)
+					{
+						checkValues::coins -= 150;
+						rewriteFileAfterBuying(15);
+					}
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 140 && sf::Mouse::getPosition(window).x <= 279)
 				&& (sf::Mouse::getPosition(window).y >= 660 && sf::Mouse::getPosition(window).y <= 705))//Theme 5
 			{
-
+				if (checkValues::savedFigures1[4])
+				{
+					checkValues::backgroundStatus = 5;
+				}
+				else {
+					if (checkValues::coins >= 160)
+					{
+						checkValues::coins -= 160;
+						rewriteFileAfterBuying(16);
+					}	
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
 				&& (sf::Mouse::getPosition(window).y >= 660 && sf::Mouse::getPosition(window).y <= 705))//Theme 6
 			{
-
+				if (checkValues::savedFigures1[5])
+				{
+					checkValues::backgroundStatus = 6;
+				}
+				else {
+					if (checkValues::coins >= 160)
+					{
+						checkValues::coins -= 160;
+						rewriteFileAfterBuying(17);
+					}
+				}
 			}
 		}
 	}
+}
+
+void getBackgroundStatus()
+{
+	std::ifstream statusDataIn;
+	std::ofstream statusDataOut;
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
+	std::vector<std::string> v1;
+
+	if (statusDataIn.is_open())
+	{
+		std::string text;
+
+		while (getline(statusDataIn, text))
+		{
+			v1.push_back(text);
+		}
+
+		for (size_t i = 0; i < v1.size(); i++)
+		{
+			if (v1.at(i) == checkValues::loginEmailSafe)
+			{
+				v1.at(i + 3) = "Background: " + std::to_string(checkValues::backgroundStatus);
+			}
+		}
+	}
+
+	statusDataOut.open("Owned Figures.txt", std::ios::out | std::ios::trunc);
+
+	for (std::string i : v1)
+	{
+		statusDataOut << i << std::endl;
+	}
+
+	statusDataIn.close();
+	statusDataOut.close();
 }
 
 //Reloading the program
@@ -1165,6 +1291,7 @@ void setDataValue()
 		if (checkValues::userMenuEventClick)
 		{
 			checkValues::symbolStatus = 1;
+			checkValues::backgroundStatus = 1;
 			onClickUserMenu(window, event1);
 		}
 
