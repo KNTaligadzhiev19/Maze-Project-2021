@@ -1,6 +1,6 @@
 mario123
-Coins: 84
-Symbol: 8
+Coins: 86
+Symbol: 1
 Background: 1
 Bought
 Bought

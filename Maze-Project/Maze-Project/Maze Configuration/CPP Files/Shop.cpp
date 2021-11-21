@@ -83,7 +83,7 @@ void Shop::Background::safeBackgroundStatusData()
 		{
 			if (v1.at(i) == email)
 			{
-				v1.at(i + 3).erase(v1.at(i + 3).find("Symbol:"), 12);
+				v1.at(i + 3).erase(v1.at(i + 3).find("Background:"), 12);
 				backgroundStatus = std::stoi(v1.at(i + 3));
 			}
 		}

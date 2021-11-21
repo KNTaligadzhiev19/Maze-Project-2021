@@ -249,6 +249,7 @@ void MazeGenerationAlgorithm::generateMaze()
 
 void MazeGenerationAlgorithm::printMaze(sf::RenderWindow& window)
 {
+	window.clear(sf::Color(49, 170, 231));
 	const int size = HARD_SIZE - chooseSize(this->level);
 
 	sf::Sprite Wall(background.t1);

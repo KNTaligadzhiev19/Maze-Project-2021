@@ -1001,32 +1001,85 @@ void printBackgroundMenu(sf::RenderWindow& window)
 {
 	window.clear(sf::Color(0, 128, 128));
 
-	sf::Texture t1, t2;
+	sf::Texture t1, t2,t3,t4,t5,t6,t7,t8,t9,t10;
 
-	t1.loadFromFile("Images, Fonts and Music/Bee.png");
-	t2.loadFromFile("Images, Fonts and Music/Back.png");
+	t1.loadFromFile("Images, Fonts and Music/Back.png");
+	t2.loadFromFile("Images, Fonts and Music/theme0.png");
+	t3.loadFromFile("Images, Fonts and Music/theme3.png");
+	t4.loadFromFile("Images, Fonts and Music/theme1.png");
+	t5.loadFromFile("Images, Fonts and Music/theme4.png");
+	t6.loadFromFile("Images, Fonts and Music/theme2.png");
+	t7.loadFromFile("Images, Fonts and Music/theme5.png");
+	t8.loadFromFile("Images, Fonts and Music/Select.png");
+	t9.loadFromFile("Images, Fonts and Music/Buy.png");
+	t10.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 
-	sf::Sprite symb(t1);
-	sf::Sprite GoBack(t2);
+	sf::Sprite GoBack(t1);
+	sf::Sprite theme0(t2);
+	sf::Sprite theme1(t3);
+	sf::Sprite theme2(t4);
+	sf::Sprite theme3(t5);
+	sf::Sprite theme4(t6);
+	sf::Sprite theme5(t7);
+	sf::Sprite Select(t8);
+	sf::Sprite Buy(t9);
+	sf::Sprite Coint(t10);
+	sf::Font font;
+	font.loadFromFile("Images, Fonts and Music/arial.ttf");
+	sf::Text textCoin;
+	textCoin.setFont(font);
+	textCoin.setCharacterSize(24);
+	textCoin.setPosition(710, 15);
+	textCoin.setString(std::to_string(checkValues::coins));
+
+	sf::Sprite arr[6] = { theme0,theme1,theme2,theme3,theme4,theme5 };
 
 	GoBack.setPosition(30, 15);
 	window.draw(GoBack);
-	symb.setPosition(200, 150);
-	window.draw(symb);
-	symb.setPosition(600, 150);
-	window.draw(symb);
-	symb.setPosition(200, 300);
-	window.draw(symb);
-	symb.setPosition(600, 300);
-	window.draw(symb);
-	symb.setPosition(200, 450);
-	window.draw(symb);
-	symb.setPosition(600, 450);
-	window.draw(symb);
-	symb.setPosition(200, 600);
-	window.draw(symb);
-	symb.setPosition(600, 600);
-	window.draw(symb);
+	window.draw(textCoin);
+	Coint.setPosition(750, 10);
+	window.draw(Coint);
+
+	int cordinateX1 = 140, cordinateY1 = 220;
+	int cordinateX2 = 155, cordinateY2;
+	
+	for (size_t i = 0; i < 6; i++)
+	{
+		switch (i)
+		{
+		case 0: case 1:
+			cordinateY2 = 90;
+			break;
+		case 2: case 3:
+			cordinateY2 = 310;
+			break;
+		case 4: case 5:
+			cordinateY2 = 530;
+			break;
+		}
+		arr[i].setPosition(cordinateX2, cordinateY2);
+		window.draw(arr[i]);
+		if (checkValues::savedFigures[i])
+		{
+			Select.setPosition(cordinateX1, cordinateY1);
+			window.draw(Select);
+		}
+		else {
+			Buy.setPosition(cordinateX1, cordinateY1);
+			window.draw(Buy);
+		}
+		if (i % 2 != 0)
+		{
+			cordinateY1 += 220;
+			cordinateX1 = 140;
+			cordinateX2 = 155;
+		}
+		else {
+			cordinateX1 += 400;
+			cordinateX2 += 400;
+		}
+	}
+	
 }
 
 void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event &event1)
@@ -1047,15 +1100,39 @@ void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event &event1)
 				checkValues::inShop = true;
 				checkValues::inBackground = false;
 			}
+			else if ((sf::Mouse::getPosition(window).x >= 140 && sf::Mouse::getPosition(window).x <= 279)
+				&& (sf::Mouse::getPosition(window).y >= 220 && sf::Mouse::getPosition(window).y <= 265))//Theme 1
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
+				&& (sf::Mouse::getPosition(window).y >= 220 && sf::Mouse::getPosition(window).y <= 265))//Theme 2
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 140 && sf::Mouse::getPosition(window).x <= 279)
+				&& (sf::Mouse::getPosition(window).y >= 440 && sf::Mouse::getPosition(window).y <= 486))//Theme 3
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
+				&& (sf::Mouse::getPosition(window).y >= 440 && sf::Mouse::getPosition(window).y <= 486))//Theme 4
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 140 && sf::Mouse::getPosition(window).x <= 279)
+				&& (sf::Mouse::getPosition(window).y >= 660 && sf::Mouse::getPosition(window).y <= 705))//Theme 5
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
+				&& (sf::Mouse::getPosition(window).y >= 660 && sf::Mouse::getPosition(window).y <= 705))//Theme 6
+			{
+
+			}
 		}
 	}
 }
-
-int getBackgroundStatus()
-{
-	return checkValues::backgroundStatus;
-}
-
 
 //Reloading the program
 void reload()
