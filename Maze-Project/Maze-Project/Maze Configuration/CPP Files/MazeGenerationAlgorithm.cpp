@@ -298,7 +298,7 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 {
 	safeCoinData();
 
-	statusDataOut.open("Status User Data.txt", std::ios::out | std::ios::trunc);
+	statusDataOut.open("Owned Figures.txt", std::ios::out | std::ios::app);
 
 	while (window.pollEvent(event1))
 	{
@@ -401,9 +401,35 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 		}
 	}
 
-	statusDataOut << "Coins: " << coins << std::endl;
-	statusDataOut << "Symbol: " << symbol.symbolStatus << std::endl;
-	statusDataOut << "Background: " << background.backgroundStatus << std::endl;
+	saveCoinData2(coins);
 
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
+	std::vector<std::string> v1;
+	std::string text3,text4;
+	sf::String email = returnSafeEmail();
+
+	while (getline(statusDataIn, text3))
+	{
+		v1.push_back(text3);
+	}
+
+	for (size_t i = 0; i < v1.size(); i++)
+	{
+		if (v1.at(i) == email)
+		{
+			v1.at(i + 1) = "Coins: " + std::to_string(coins);
+		}
+	}
+
+	statusDataOut.close();
+	statusDataOut.open("Owned Figures.txt", std::ios::out | std::ios::trunc);
+
+	for (std::string i : v1)
+	{
+		statusDataOut << i << std::endl;
+	}
+
+	statusDataIn.close();
 	statusDataOut.close();
 }

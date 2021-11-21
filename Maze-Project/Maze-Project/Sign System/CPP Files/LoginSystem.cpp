@@ -1,4 +1,5 @@
 #include "../Header Files/LoginSystem.h"
+#include "../../Interface/Header Files/FrontEnd.h"
 
 LoginSystem::LoginSystem(sf::String name, sf::String password)
 {
@@ -23,6 +24,7 @@ bool LoginSystem::checkLoginData()
 
 				if (text == password)
 				{
+					saveCoinData(name);
 					return true;
 				}
 			}

@@ -28,7 +28,8 @@ namespace checkValues
 	bool inShop = false;
 	bool inSymb = false;
 	bool inBackground = false;
-	bool savedFigures[8];
+	std::vector<bool> savedFigures;
+	int coins;
 
 	sf::String loginEmail;
 	sf::String loginPassword;
@@ -61,6 +62,11 @@ void printMenu(sf::RenderWindow& window)
 	window.draw(Login);
 	Register.setPosition(300, 500);
 	window.draw(Register);
+}
+
+sf::String returnSafeEmail()
+{
+	return checkValues::loginEmailSafe;
 }
 
 void printLoginAndRegisterMenu(sf::RenderWindow& window)
@@ -615,80 +621,157 @@ void onClickShopMenu(sf::RenderWindow &window, sf::Event &event1)
 	}
 }
 
+void saveCoinData2(int coins)
+{
+	checkValues::coins = coins;
+}
+
 void printSymbolMenu(sf::RenderWindow &window)
 {
 	window.clear(sf::Color(0, 128, 128));
 
-	sf::Texture t1, t2,t3,t4;
+	sf::Texture t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13;
 
-	t1.loadFromFile("Images, Fonts and Music/Bee.png");
 	t2.loadFromFile("Images, Fonts and Music/Back.png");
 	t3.loadFromFile("Images, Fonts and Music/Select.png");
 	t4.loadFromFile("Images, Fonts and Music/Buy.png");
+	t5.loadFromFile("Images, Fonts and Music/rabbit-carrot-free.png");
+	t6.loadFromFile("Images, Fonts and Music/hodgehog-apple-50-coins.png");
+	t7.loadFromFile("Images, Fonts and Music/bee-honey-100-coins.png");
+	t8.loadFromFile("Images, Fonts and Music/anelid-apple-house-100-coins.png");
+	t9.loadFromFile("Images, Fonts and Music/frog-fly-120-coins.png");
+	t10.loadFromFile("Images, Fonts and Music/squirrel-acorn-120-coins.png");
+	t11.loadFromFile("Images, Fonts and Music/duck-corn-130-coins.png");
+	t12.loadFromFile("Images, Fonts and Music/mouse-cheese-150-coins.png");
+	t13.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 
-	sf::Sprite Symbol(t1);
 	sf::Sprite GoBack(t2);
 	sf::Sprite Select(t3);
 	sf::Sprite Buy(t4);
+	sf::Sprite Rabbit(t5);
+	sf::Sprite Hedgehog(t6);
+	sf::Sprite Bee(t7);
+	sf::Sprite Anelid(t8);
+	sf::Sprite Frog(t9);
+	sf::Sprite Squirrel(t10);
+	sf::Sprite Duck(t11);
+	sf::Sprite Mouse(t12);
+	sf::Sprite Coint(t13);
+	sf::Font font;
+	font.loadFromFile("Images, Fonts and Music/arial.ttf");
+	sf::Text textCoin;
+	textCoin.setFont(font);
+	textCoin.setCharacterSize(24);
+	textCoin.setPosition(710,15);
+	textCoin.setString(std::to_string(checkValues::coins));
+
+	sf::Sprite arr[8] = { Rabbit,Hedgehog,Bee,Anelid,Frog,Squirrel,Duck,Mouse };
 
 	std::string text,text1;
 	std::ifstream dataIn;
+	std::vector<std::string> v1;
 	int counter = 0;
 	dataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
 	while (getline(dataIn, text))
 	{
-		if (text.find(checkValues::loginEmailSafe) != std::string::npos)
+		v1.push_back(text);
+	}
+
+	for (size_t i = 0; i < v1.size(); i++)
+	{
+		if (v1.at(i) == checkValues::loginEmailSafe)
 		{
-			while (getline(dataIn, text1))
+			i += 4;
+			for (size_t j = i; j < i + 8; j++)
 			{
-				if (text1 != "Buy" || text1 != "Bought")
+				if (v1.at(j) == "Buy")
 				{
-					break;
+					checkValues::savedFigures.push_back(false);
 				}
-				if (text1 == "Buy")
+				else if (v1.at(j) == "Bought")
 				{
-					checkValues::savedFigures[counter] = false;
+					checkValues::savedFigures.push_back(true);
 				}
-				else if (text1 == "Bought")
-				{
-					checkValues::savedFigures[counter] = true;
-				}
-				counter++;
 			}
 		}
 	}
 
 	GoBack.setPosition(30, 15);
 	window.draw(GoBack);
-	Symbol.setPosition(200, 150);
-	window.draw(Symbol);
-	if (checkValues::savedFigures[0])
-	{
-		Select.setPosition(200, 200);
-		window.draw(Select);
-	}
-	else {
-		Buy.setPosition(200, 200);
-		window.draw(Buy);
-	}
-	
+	window.draw(textCoin);
+	Coint.setPosition(750, 10);
+	window.draw(Coint);
 
-	//Symbol.setPosition(600, 150);
-	//window.draw(Symbol);
-	//Symbol.setPosition(200, 300);
-	//window.draw(Symbol);
-	//Symbol.setPosition(600, 300);
-	//window.draw(Symbol);
-	//Symbol.setPosition(200, 450);
-	//window.draw(Symbol);
-	//Symbol.setPosition(600, 450);
-	//window.draw(Symbol);
-	//Symbol.setPosition(200, 600);
-	//window.draw(Symbol);
-	//Symbol.setPosition(600, 600);
-	//window.draw(Symbol);
+	int cordinateX1 = 140, cordinateY1 = 175;
+	int cordinateX2 = 155, cordinateY2;
+	
+	for (size_t i = 0; i < 8; i++)
+	{
+		switch (i)
+		{
+		case 0: case 1:
+			cordinateY2 = 55;
+			break;
+		case 2: case 3:
+			cordinateY2 = 230;
+			break;
+		case 4: case 5:
+			cordinateY2 = 405;
+			break;
+		case 6: case 7:
+			cordinateY2 = 580;
+			break;
+		}
+		arr[i].setPosition(cordinateX2, cordinateY2);
+		window.draw(arr[i]);
+		if (checkValues::savedFigures[i])
+		{
+			Select.setPosition(cordinateX1, cordinateY1);
+			window.draw(Select);
+		}
+		else {
+			Buy.setPosition(cordinateX1, cordinateY1);
+			window.draw(Buy);
+		}
+		if (i % 2 != 0)
+		{
+			cordinateY1 += 175;
+			cordinateX1 = 140;
+			cordinateX2 = 155;
+		}
+		else {
+			cordinateX1 += 400;
+			cordinateX2 += 400;
+		}
+		
+	}
 
 	dataIn.close();
+}
+
+void saveCoinData(std::string email)
+{
+	std::vector<std::string> v1;
+	std::string text3, text4;
+	std::ifstream statusDataIn;
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
+	while (getline(statusDataIn, text3))
+	{
+		v1.push_back(text3);
+	}
+
+	for (size_t i = 0; i < v1.size(); i++)
+	{
+		if (v1.at(i) == email)
+		{
+			v1.at(i + 1).erase(v1.at(i + 1).find("Coins:"), 7);
+			checkValues::coins = std::stoi(v1.at(i + 1));
+		}
+	}
+
+	statusDataIn.close();
 }
 
 void onClickSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
@@ -708,6 +791,46 @@ void onClickSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
 				checkValues::status = 10;
 				checkValues::inShop = true;
 				checkValues::inSymb = false;
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
+				&& (sf::Mouse::getPosition(window).y >= 175 && sf::Mouse::getPosition(window).y <= 220))//Rabbit
+			{
+				//if()
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
+				&& (sf::Mouse::getPosition(window).y >= 175 && sf::Mouse::getPosition(window).y <= 220))//Hedge
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
+				&& (sf::Mouse::getPosition(window).y >= 349 && sf::Mouse::getPosition(window).y <= 396))//Bee
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
+				&& (sf::Mouse::getPosition(window).y >= 351 && sf::Mouse::getPosition(window).y <= 396))//Chervei
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
+				&& (sf::Mouse::getPosition(window).y >= 525 && sf::Mouse::getPosition(window).y <= 571))//Frog
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
+				&& (sf::Mouse::getPosition(window).y >= 525 && sf::Mouse::getPosition(window).y <= 571))//Katerica
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
+				&& (sf::Mouse::getPosition(window).y >= 699 && sf::Mouse::getPosition(window).y <= 745))//Duck
+			{
+
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
+				&& (sf::Mouse::getPosition(window).y >= 699 && sf::Mouse::getPosition(window).y <= 745))//Mouse
+			{
+
 			}
 		}
 	}

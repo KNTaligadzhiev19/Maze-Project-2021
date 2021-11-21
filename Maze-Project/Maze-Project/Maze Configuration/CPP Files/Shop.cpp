@@ -1,20 +1,30 @@
 #include "../Header Files/Shop.h"
+#include "../../Interface/Header Files/FrontEnd.h"
+#include <iostream>
 
 void Shop::safeCoinData()
 {
-	statusDataIn.open("Status User Data.txt", std::ios::in | std::ios::app);
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
+	sf::String email = returnSafeEmail();
+
+	std::vector<std::string> v1;
 
 	if (statusDataIn.is_open())
 	{
-		std::string text;
+		std::string text,text1;
 
 		while (getline(statusDataIn, text))
 		{
-			if (text.find("Coins:") != std::string::npos)
-			{
-				text.erase(text.find("Coins:"), 7);
+			v1.push_back(text);
+		}
 
-				coins = std::stoi(text);
+		for (size_t i = 0; i < v1.size(); i++)
+		{
+			if (v1.at(i) == email)
+			{
+				v1.at(i + 1).erase(v1.at(i + 1).find("Coins:"), 7);
+				coins = std::stoi(v1.at(i + 1));
 			}
 		}
 	}

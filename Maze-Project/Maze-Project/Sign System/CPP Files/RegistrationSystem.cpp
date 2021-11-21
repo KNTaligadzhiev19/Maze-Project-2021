@@ -34,6 +34,8 @@ void RegistrationSystem::initializeDataIntoIndividualFile(sf::String name, sf::S
 	std::string password1 = password.toAnsiString();
 
 	userDataOut.open("User Data.txt", std::ios::out | std::ios::app);
+	std::ofstream figures;
+	figures.open("Owned Figures.txt", std::ios::out | std::ios::app);
 
 	if (userDataOut.is_open())
 	{
@@ -48,6 +50,13 @@ void RegistrationSystem::initializeDataIntoIndividualFile(sf::String name, sf::S
 
 	}
 
+	figures << name1 << std::endl << "Coins: 0" << std::endl << "Symbol: 1" << std::endl << "Background: 1" << std::endl << "Bought" << std::endl;
+	for (int i = 1; i <= 7; i++)
+	{
+		figures << "Buy" << std::endl;
+	}
+
+	figures.close();
 	userDataOut.close();
 }
 
