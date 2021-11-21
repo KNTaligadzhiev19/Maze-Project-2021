@@ -1,12 +1,24 @@
 mario123
-Coins: 9
-Symbol: 6
+Coins: 84
+Symbol: 8
+Background: 1
+Bought
+Bought
+Bought
+Bought
+Bought
+Bought
+Buy
+Bought
+test123
+Coins: 10
+Symbol: 1
 Background: 1
 Bought
 Buy
 Buy
 Buy
 Buy
-Bought
+Buy
 Buy
 Buy
