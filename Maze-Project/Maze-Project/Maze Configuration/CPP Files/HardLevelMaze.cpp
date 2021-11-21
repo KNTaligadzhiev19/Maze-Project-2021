@@ -8,6 +8,9 @@ HardLevelMaze::HardLevelMaze()
 	//Set chance for spawining a coin
 	chance = 60;
 
+	//Save what pawn the player will play with
+	getSymbolStatus();
+
 	//Save status for symbol and background
 	symbol.safeSymbolStatusData();
 	background.safeBackgroundStatusData();

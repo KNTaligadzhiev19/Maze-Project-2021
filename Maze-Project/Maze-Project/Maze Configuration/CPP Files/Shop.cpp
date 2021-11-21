@@ -34,7 +34,11 @@ void Shop::safeCoinData()
 
 void Shop::Symbols::safeSymbolStatusData()
 {
-	statusDataIn.open("Status User Data.txt", std::ios::in | std::ios::app);
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
+	sf::String email = returnSafeEmail();
+
+	std::vector<std::string> v1;
 
 	if (statusDataIn.is_open())
 	{
@@ -42,11 +46,15 @@ void Shop::Symbols::safeSymbolStatusData()
 
 		while (getline(statusDataIn, text))
 		{
-			if (text.find("Symbol:") != std::string::npos)
-			{
-				text.erase(text.find("Symbol:"), 8);
+			v1.push_back(text);
+		}
 
-				symbolStatus = std::stoi(text);
+		for (size_t i = 0; i < v1.size(); i++)
+		{
+			if (v1.at(i) == email)
+			{
+				v1.at(i+2).erase(v1.at(i+2).find("Symbol:"), 8);
+				symbolStatus = std::stoi(v1.at(i+2));
 			}
 		}
 	}
@@ -58,17 +66,25 @@ void Shop::Background::safeBackgroundStatusData()
 {
 	statusDataIn.open("Status User Data.txt", std::ios::in | std::ios::app);
 
+	sf::String email = returnSafeEmail();
+
+	std::vector<std::string> v1;
+
 	if (statusDataIn.is_open())
 	{
 		std::string text;
 
 		while (getline(statusDataIn, text))
 		{
-			if (text.find("Background:") != std::string::npos)
-			{
-				text.erase(text.find("Background:"), 12);
+			v1.push_back(text);
+		}
 
-				backgroundStatus = std::stoi(text);
+		for (size_t i = 0; i < v1.size(); i++)
+		{
+			if (v1.at(i) == email)
+			{
+				v1.at(i + 3).erase(v1.at(i + 3).find("Symbol:"), 12);
+				backgroundStatus = std::stoi(v1.at(i + 3));
 			}
 		}
 	}
@@ -106,14 +122,29 @@ void Shop::Symbols::setSymb()
 			t4.loadFromFile("Images, Fonts and Music/CoinEasy.png");
 			break;
 		case 4:
+			t2.loadFromFile("Images, Fonts and Music/anelidEasy.png");
+			t3.loadFromFile("Images, Fonts and Music/apple-houseEasy.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinEasy.png");
 			break;
 		case 5:
+			t2.loadFromFile("Images, Fonts and Music/frogEasy.png");
+			t3.loadFromFile("Images, Fonts and Music/flyEasy.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinEasy.png");
 			break;
 		case 6:
+			t2.loadFromFile("Images, Fonts and Music/squirrelEasy.png");
+			t3.loadFromFile("Images, Fonts and Music/acornEasy.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinEasy.png");
 			break;
 		case 7:
+			t2.loadFromFile("Images, Fonts and Music/duckEasy.png");
+			t3.loadFromFile("Images, Fonts and Music/cornEasy.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinEasy.png");
 			break;
 		case 8:
+			t2.loadFromFile("Images, Fonts and Music/mouseEasy.png");
+			t3.loadFromFile("Images, Fonts and Music/cheeseEasy.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinEasy.png");
 			break;
 		}
 		break;
@@ -138,14 +169,29 @@ void Shop::Symbols::setSymb()
 			t4.loadFromFile("Images, Fonts and Music/CoinHard.png");
 			break;
 		case 4:
+			t2.loadFromFile("Images, Fonts and Music/anelidHard.png");
+			t3.loadFromFile("Images, Fonts and Music/apple-houseHard.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinHard.png");
 			break;
 		case 5:
+			t2.loadFromFile("Images, Fonts and Music/frogHard.png");
+			t3.loadFromFile("Images, Fonts and Music/flyHard.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinHard.png");
 			break;
 		case 6:
+			t2.loadFromFile("Images, Fonts and Music/squirrelHard.png");
+			t3.loadFromFile("Images, Fonts and Music/acornHard.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinHard.png");
 			break;
 		case 7:
+			t2.loadFromFile("Images, Fonts and Music/duckHard.png");
+			t3.loadFromFile("Images, Fonts and Music/cornHard.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinHard.png");
 			break;
 		case 8:
+			t2.loadFromFile("Images, Fonts and Music/mouseHard.png");
+			t3.loadFromFile("Images, Fonts and Music/cheeseHard.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinHard.png");
 			break;
 		}
 		break;
@@ -170,14 +216,29 @@ void Shop::Symbols::setSymb()
 			t4.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 			break;
 		case 4:
+			t2.loadFromFile("Images, Fonts and Music/anelidMedium.png");
+			t3.loadFromFile("Images, Fonts and Music/apple-houseMedium.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 			break;
 		case 5:
+			t2.loadFromFile("Images, Fonts and Music/frogMedium.png");
+			t3.loadFromFile("Images, Fonts and Music/flyMedium.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 			break;
 		case 6:
+			t2.loadFromFile("Images, Fonts and Music/squirrelMedium.png");
+			t3.loadFromFile("Images, Fonts and Music/acornMedium.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 			break;
 		case 7:
+			t2.loadFromFile("Images, Fonts and Music/duckMedium.png");
+			t3.loadFromFile("Images, Fonts and Music/cornMedium.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 			break;
 		case 8:
+			t2.loadFromFile("Images, Fonts and Music/mouseMedium.png");
+			t3.loadFromFile("Images, Fonts and Music/cheeseMedium.png");
+			t4.loadFromFile("Images, Fonts and Music/CoinMedium.png");
 			break;
 		}
 		break;

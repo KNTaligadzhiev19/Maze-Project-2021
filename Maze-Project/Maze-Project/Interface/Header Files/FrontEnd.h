@@ -49,9 +49,13 @@ void saveCoinData2(int coins);
 
 void onClickSymbolMenu(sf::RenderWindow& window, sf::Event& event1);
 
+void getSymbolStatus();
+
 void printBackgroundMenu(sf::RenderWindow& window);
 
 void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event& event1);
+
+int getBackgroundStatus();
 
 //Reloading the player menu
 void reload();

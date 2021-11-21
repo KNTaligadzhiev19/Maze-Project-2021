@@ -30,6 +30,8 @@ namespace checkValues
 	bool inBackground = false;
 	std::vector<bool> savedFigures;
 	int coins;
+	int symbolStatus;
+	int backgroundStatus;
 
 	sf::String loginEmail;
 	sf::String loginPassword;
@@ -774,8 +776,46 @@ void saveCoinData(std::string email)
 	statusDataIn.close();
 }
 
+void getSymbolStatus()
+{
+	std::ifstream statusDataIn;
+	std::ofstream statusDataOut;
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+
+	std::vector<std::string> v1;
+
+	if (statusDataIn.is_open())
+	{
+		std::string text;
+
+		while (getline(statusDataIn, text))
+		{
+			v1.push_back(text);
+		}
+
+		for (size_t i = 0; i < v1.size(); i++)
+		{
+			if (v1.at(i) == checkValues::loginEmailSafe)
+			{
+				v1.at(i + 2) = "Symbol: " + std::to_string(checkValues::symbolStatus);
+			}
+		}
+	}
+
+	statusDataOut.open("Owned Figures.txt", std::ios::out | std::ios::trunc);
+
+	for (std::string i : v1)
+	{
+		statusDataOut << i << std::endl;
+	}
+
+	statusDataIn.close();
+	statusDataOut.close();
+}
+
 void onClickSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
 {
+
 	while (window.pollEvent(event1))
 	{
 		if (event1.type == sf::Event::Closed)
@@ -795,42 +835,66 @@ void onClickSymbolMenu(sf::RenderWindow& window, sf::Event &event1)
 			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
 				&& (sf::Mouse::getPosition(window).y >= 175 && sf::Mouse::getPosition(window).y <= 220))//Rabbit
 			{
-				//if()
+				if (checkValues::savedFigures[0])
+				{
+					checkValues::symbolStatus = 1;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
 				&& (sf::Mouse::getPosition(window).y >= 175 && sf::Mouse::getPosition(window).y <= 220))//Hedge
 			{
-
+				if (checkValues::savedFigures[1])
+				{
+					checkValues::symbolStatus = 2;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
 				&& (sf::Mouse::getPosition(window).y >= 349 && sf::Mouse::getPosition(window).y <= 396))//Bee
 			{
-
+				if (checkValues::savedFigures[2])
+				{
+					checkValues::symbolStatus = 3;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
 				&& (sf::Mouse::getPosition(window).y >= 351 && sf::Mouse::getPosition(window).y <= 396))//Chervei
 			{
-
+				if (checkValues::savedFigures[3])
+				{
+					checkValues::symbolStatus = 4;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
 				&& (sf::Mouse::getPosition(window).y >= 525 && sf::Mouse::getPosition(window).y <= 571))//Frog
 			{
-
+				if (checkValues::savedFigures[4])
+				{
+					checkValues::symbolStatus = 5;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
 				&& (sf::Mouse::getPosition(window).y >= 525 && sf::Mouse::getPosition(window).y <= 571))//Katerica
 			{
-
+				if (checkValues::savedFigures[5])
+				{
+					checkValues::symbolStatus = 6;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 139 && sf::Mouse::getPosition(window).x <= 281)
 				&& (sf::Mouse::getPosition(window).y >= 699 && sf::Mouse::getPosition(window).y <= 745))//Duck
 			{
-
+				if (checkValues::savedFigures[6])
+				{
+					checkValues::symbolStatus = 7;
+				}
 			}
 			else if ((sf::Mouse::getPosition(window).x >= 540 && sf::Mouse::getPosition(window).x <= 679)
 				&& (sf::Mouse::getPosition(window).y >= 699 && sf::Mouse::getPosition(window).y <= 745))//Mouse
 			{
-
+				if (checkValues::savedFigures[7])
+				{
+					checkValues::symbolStatus = 8;
+				}
 			}
 		}
 	}
@@ -888,6 +952,11 @@ void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event &event1)
 			}
 		}
 	}
+}
+
+int getBackgroundStatus()
+{
+	return checkValues::backgroundStatus;
 }
 
 

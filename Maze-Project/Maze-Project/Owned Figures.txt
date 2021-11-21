@@ -1,24 +1,12 @@
 mario123
-Coins: 7
-Symbol: 1
+Coins: 9
+Symbol: 6
 Background: 1
 Bought
 Buy
 Buy
 Buy
 Buy
-Buy
-Buy
-Buy
-test123
-Coins: 5
-Symbol: 1
-Background: 1
 Bought
-Buy
-Buy
-Buy
-Buy
-Buy
 Buy
 Buy

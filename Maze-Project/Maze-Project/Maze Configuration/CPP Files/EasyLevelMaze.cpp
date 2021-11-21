@@ -8,6 +8,9 @@ EasyLevelMaze::EasyLevelMaze()
 	//Set chance for spawining a coin
 	chance = 16;
 
+	//Save what pawn the player will play with
+	getSymbolStatus();
+
 	//Save status for symbol and background
 	symbol.safeSymbolStatusData();
 	background.safeBackgroundStatusData();
