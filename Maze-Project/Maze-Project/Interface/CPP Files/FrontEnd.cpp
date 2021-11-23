@@ -1489,7 +1489,7 @@ void playMusic(sf::Music &music)
 
 void setDataValue()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 800), "The Runners - Maze");
+	sf::RenderWindow window(sf::VideoMode(800, 800), "The Runners - Maze", sf::Style::Close);
 	sf::Music music;
 	
 	playMusic(music);
