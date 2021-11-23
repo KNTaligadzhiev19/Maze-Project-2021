@@ -33,6 +33,13 @@ namespace checkValues
 	int coins;
 	int symbolStatus=1;
 	int backgroundStatus=1;
+	int lastStatus;
+	bool inQuestion=false;
+	int randomQuestion;
+	bool correctAnswer = false;
+
+	std::string correctAnswerText;
+	std::string answer1, answer2, answer3, answer4;
 
 	sf::String loginEmail;
 	sf::String loginPassword;
@@ -1260,6 +1267,209 @@ void getBackgroundStatus()
 	statusDataOut.close();
 }
 
+void printQuestion(sf::RenderWindow &window)
+{
+	window.clear(sf::Color(0, 128, 128));
+	sf::Texture t1, t2, t3, t4;
+	t1.loadFromFile("Images, Fonts and Music/Pole.png");
+	sf::Sprite Pole(t1);
+
+	std::ifstream question;
+	question.open("Questions.txt", std::ios::in | std::ios::app);
+	int counter = 1;
+	std::string text,questionText;
+	while (getline(question, text))
+	{
+		if (counter == checkValues::randomQuestion)
+		{
+			questionText = text;
+		}
+		counter++;
+	}
+
+	std::string sentece = questionText.substr(0, questionText.find(" "));
+	questionText.erase(0, questionText.find(" ") + 1);
+	checkValues::answer1 = questionText.substr(0, questionText.find(" "));
+	questionText.erase(0, questionText.find(" ") + 1);
+	checkValues::answer2 = questionText.substr(0, questionText.find(" "));
+	questionText.erase(0, questionText.find(" ") + 1);
+	checkValues::answer3 = questionText.substr(0, questionText.find(" "));
+	questionText.erase(0, questionText.find(" ") + 1);
+	checkValues::answer4 = questionText.substr(0, questionText.find(" "));
+	questionText.erase(0, questionText.find(" ") + 1);
+	checkValues::correctAnswerText = questionText;
+
+	sf::Text text1,text2,text3,answer1Text,answer2Text,answer3Text,answer4Text,answerCorrect;
+	sf::Font font1;
+	font1.loadFromFile("Images, Fonts and Music/arial.ttf");
+	text1.setFont(font1);
+	text1.setCharacterSize(24);
+	text1.setString(sentece);
+	text2.setFont(font1);
+	text2.setCharacterSize(24);
+	text2.setString("If your answer is correct you will get 2 coins instead of 1.");
+	text3.setFont(font1);
+	text3.setCharacterSize(24);
+	text3.setString("Otherwise you get 1.");
+	text3.setCharacterSize(24);
+	answer1Text.setFont(font1);
+	answer1Text.setCharacterSize(28);
+	answer1Text.setString(checkValues::answer1);
+	answer2Text.setFont(font1);
+	answer2Text.setCharacterSize(28);
+	answer2Text.setString(checkValues::answer2);
+	answer3Text.setFont(font1);
+	answer3Text.setCharacterSize(28);
+	answer3Text.setString(checkValues::answer3);
+	answer4Text.setFont(font1);
+	answer4Text.setCharacterSize(28);
+	answer4Text.setString(checkValues::answer4);
+
+	text2.setPosition(75, 125);
+	window.draw(text2);
+	text3.setPosition(280, 175);
+	window.draw(text3);
+	text1.setPosition(355, 290);
+	window.draw(text1);
+	Pole.setPosition(250, 350);
+	window.draw(Pole);
+	answer1Text.setPosition(255, 360);
+	window.draw(answer1Text);
+	Pole.setPosition(500, 350);
+	window.draw(Pole);
+	answer2Text.setPosition(505, 360);
+	window.draw(answer2Text);
+	Pole.setPosition(250, 500);
+	window.draw(Pole);
+	answer3Text.setPosition(255, 510);
+	window.draw(answer3Text);
+	Pole.setPosition(500, 500);
+	window.draw(Pole);
+	answer4Text.setPosition(505, 510);
+	window.draw(answer4Text);
+}
+
+void saveCoinData3(int value)
+{
+	std::vector<std::string> v1;
+	std::string text3, text4;
+	std::ifstream statusDataIn;
+	std::ofstream statusDataOut;
+	statusDataIn.open("Owned Figures.txt", std::ios::in | std::ios::app);
+	int currentCoin=0;
+
+	while (getline(statusDataIn, text3))
+	{
+		v1.push_back(text3);
+	}
+
+	for (size_t i = 0; i < v1.size(); i++)
+	{
+		if (v1.at(i) == checkValues::loginEmailSafe)
+		{
+			v1.at(i + 1).erase(v1.at(i + 1).find("Coins:"), 7);
+			currentCoin = std::stoi(v1.at(i + 1));
+		}
+	}
+
+	statusDataOut.open("Owned Figures.txt", std::ios::out | std::ios::trunc);
+
+	for (size_t i = 0; i < v1.size(); i++)
+	{
+		if (v1.at(i) == checkValues::loginEmailSafe)
+		{
+			v1.at(i + 1) = "Coins: " + std::to_string(currentCoin + value);
+		}
+	}
+
+	for (size_t i = 0; i < v1.size(); i++)
+	{
+		statusDataOut << v1.at(i) << std::endl;
+	}
+
+	statusDataIn.close();
+}
+
+void onClickQuestion(sf::RenderWindow& window, sf::Event& event1)
+{
+	while (window.pollEvent(event1))
+	{
+		if (event1.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		if (event1.key.code == sf::Mouse::Left && event1.type == sf::Event::MouseButtonPressed)
+		{
+			if ((sf::Mouse::getPosition(window).x >= 250 && sf::Mouse::getPosition(window).x <= 310)
+				&& (sf::Mouse::getPosition(window).y >= 350 && sf::Mouse::getPosition(window).y <= 405))// A
+			{
+				if (checkValues::answer1 == checkValues::correctAnswerText)
+				{
+					saveCoinData3(2);
+				}
+				else {
+					saveCoinData3(1);
+				}
+				checkValues::inQuestion = false;
+				checkValues::status = checkValues::lastStatus;
+				checkValues::inGame = true;
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 500 && sf::Mouse::getPosition(window).x <= 560)
+				&& (sf::Mouse::getPosition(window).y >= 350 && sf::Mouse::getPosition(window).y <= 405)) //B
+			{
+				if (checkValues::answer2 == checkValues::correctAnswerText)
+				{
+					saveCoinData3(2);
+				}
+				else {
+					saveCoinData3(1);
+				}
+				checkValues::inQuestion = false;
+				checkValues::status = checkValues::lastStatus;
+				checkValues::inGame = true;
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 250 && sf::Mouse::getPosition(window).x <= 310)
+				&& (sf::Mouse::getPosition(window).y >= 500 && sf::Mouse::getPosition(window).y <= 555))// C
+			{
+				if (checkValues::answer3 == checkValues::correctAnswerText)
+				{
+					saveCoinData3(2);
+				}
+				else {
+					saveCoinData3(1);
+				}
+				checkValues::inQuestion = false;
+				checkValues::status = checkValues::lastStatus;
+				checkValues::inGame = true;
+			}
+			else if ((sf::Mouse::getPosition(window).x >= 500 && sf::Mouse::getPosition(window).x <= 560)
+				&& (sf::Mouse::getPosition(window).y >= 500 && sf::Mouse::getPosition(window).y <= 555))// D
+			{
+				if (checkValues::answer4 == checkValues::correctAnswerText)
+				{
+					saveCoinData3(2);
+				}
+				else {
+					saveCoinData3(1);
+				}
+				checkValues::inQuestion = false;
+				checkValues::status = checkValues::lastStatus;
+				checkValues::inGame = true;
+			}
+		}
+	}
+}
+
+void inQuestion()
+{
+	checkValues::inQuestion = true;
+	checkValues::inGame = false;
+	checkValues::lastStatus = checkValues::status;
+	checkValues::status = 13;
+	checkValues::randomQuestion = rand() % 22 + 1;
+}
+
 //Reloading the program
 void reload()
 {
@@ -1371,6 +1581,10 @@ void setDataValue()
 		{
 			onClickBackgroundMenu(window, event1);
 		}
+		if (checkValues::inQuestion)
+		{
+			onClickQuestion(window, event1);
+		}
 
 		switch (checkValues::status)
 		{
@@ -1419,6 +1633,9 @@ void setDataValue()
 			break;
 		case 12:
 			printBackgroundMenu(window);
+			break;
+		case 13:
+			printQuestion(window);
 			break;
 		}
 

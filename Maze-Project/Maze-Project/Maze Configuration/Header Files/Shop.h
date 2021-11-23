@@ -11,13 +11,13 @@ protected:
 	std::ifstream statusDataIn;
 	std::ofstream statusDataOut;
 
-	int coins=0;
+	int coins = 0;
 
 	//Integer as a counter for setting what difficulty of level player will play
 	int level = 0;
 
 public:
-
+	
 	void safeCoinData();
 
 	class Symbols 

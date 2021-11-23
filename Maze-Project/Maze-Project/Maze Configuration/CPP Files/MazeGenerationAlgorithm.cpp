@@ -315,10 +315,17 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 				}
 				else if (consoleGrid[positionX][positionY + 1] == COIN)
 				{
+					int randNumber = rand() % 3 + 1;
 					consoleGrid[positionX][positionY + 1] = ' ';
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY + 1]);
 					positionY++;
-					coins++;
+					if (randNumber == 2)
+					{
+						inQuestion();
+					}
+					else {
+						coins++;
+					}
 				}
 				else if (consoleGrid[positionX][positionY + 1] == ' ') {
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY + 1]);
@@ -336,10 +343,18 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 				}
 				else if (consoleGrid[positionX][positionY - 1] == COIN)
 				{
+					int randNumber = rand() % 3 + 1;
 					consoleGrid[positionX][positionY - 1] = ' ';
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY - 1]);
 					positionY++;
-					coins++;
+					if (randNumber == 2)
+					{
+						inQuestion();
+					}
+					else {
+						coins++;
+					}
+					
 				}
 				else if (consoleGrid[positionX][positionY - 1] == ' ') {
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX][positionY - 1]);
@@ -356,10 +371,17 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 				}
 				else if (consoleGrid[positionX + 1][positionY] == COIN)
 				{
+					int randNumber = rand() % 3 + 1;
 					consoleGrid[positionX + 1][positionY] = ' ';
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX + 1][positionY]);
 					positionX--;
-					coins++;
+					if (randNumber == 2)
+					{
+						inQuestion();
+					}
+					else {
+						coins++;
+					}
 				}
 				else if (consoleGrid[positionX + 1][positionY] == ' ') {
 
@@ -377,10 +399,17 @@ void MazeGenerationAlgorithm::moveOnClick(sf::RenderWindow& window, sf::Event& e
 				}
 				else if (consoleGrid[positionX - 1][positionY] == COIN)
 				{
+					int randNumber = rand() % 3 + 1;
 					consoleGrid[positionX - 1][positionY] = ' ';
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX - 1][positionY]);
 					positionX++;
-					coins++;
+					if (randNumber == 2)
+					{
+						inQuestion();
+					}
+					else {
+						coins++;
+					}
 				}
 				else if (consoleGrid[positionX - 1][positionY] == ' ') {
 					std::swap(consoleGrid[positionX][positionY], consoleGrid[positionX - 1][positionY]);

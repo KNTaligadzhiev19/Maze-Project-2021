@@ -57,6 +57,8 @@ void onClickBackgroundMenu(sf::RenderWindow& window, sf::Event& event1);
 
 void getBackgroundStatus();
 
+void inQuestion();
+
 //Reloading the player menu
 void reload();
 
